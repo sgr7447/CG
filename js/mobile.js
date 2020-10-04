@@ -39,26 +39,44 @@ function createBall(x, y, z) {
     scene.add(ball);
 }
 
-
-function createTable(x, y, z) {
+function createMobile(x, y, z){
     'use strict';
+    var mobile = new THREE.Object3D();
 
+    addArm(mobile, 0, 0, 0);
+
+}
+
+function addArm(obj, x, y, z){
+    'use strict'
+    geometry = new THREE.CylinderGeometry(10, 10, 30, 8, 1, false, Math.PI/5);
+    mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(x, y, z);
+
+    obj.add(mesh);
+}
+
+
+function createTable(x, y, z){
+    'use strict';
     var table = new THREE.Object3D();
-
-    material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-
+    var mobile = new THREE.Object3D();
+    material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
+  
+  
+    addArm(mobile, 0, 0, 0)
+  
     addTableTop(table, 0, 0, 0);
     addTableLeg(table, -25, -1, -8);
     addTableLeg(table, -25, -1, 8);
     addTableLeg(table, 25, -1, 8);
     addTableLeg(table, 25, -1, -8);
-
     scene.add(table);
-
+    scene.add(mobile);
     table.position.x = x;
     table.position.y = y;
     table.position.z = z;
-}
+  }
 
 function createScene() {
     'use strict';

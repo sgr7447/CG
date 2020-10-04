@@ -77,33 +77,20 @@ function createScene() {
 
 function createCamera() {
     'use strict';
-    camera = new THREE.PerspectiveCamera(70,
-                                         window.innerWidth / window.innerHeight,
-                                         1,
-                                         1000);
-    camera.position.x = 50;
-    camera.position.y = 50;
-    camera.position.z = 50;
-    camera.lookAt(scene.position);
+    camera = new Camera();
 }
 
 function onResize() {
     'use strict';
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    if (window.innerHeight > 0 && window.innerWidth > 0) {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-    }
+    camera.onResize();
 
 }
 
-/*function onKeyDown(e) {
+function onKeyDown(e) {
     'use strict';
 
     switch (e.keyCode) {
-    case 65: //A
+    /*case 65: //A
     case 97: //a
         scene.traverse(function (node) {
             if (node instanceof THREE.Mesh) {
@@ -122,9 +109,21 @@ function onResize() {
                 node.visible = !node.visible;
             }
         });
+        break;*/
+
+    case 49: /*key 1*/
+        camera.view1(); /* front */
+        break;
+
+    case 50: /*key 2*/
+        camera.view2(); /* top */
+        break;
+
+    case 51: /*key 3*/
+        camera.view3(); /* side */
         break;
     }
-}*/
+}
 
 function render() {
     'use strict';
@@ -145,17 +144,18 @@ function init() {
     render();
 
     window.addEventListener("keydown", onKeyDown);
+    /*TEMOS DE CRIAR: window.addEventListener("keyup", onKeyUp);*/
     window.addEventListener("resize", onResize);
 }
 
 function animate() {
     'use strict';
 
-    if (ball.userData.jumping) {
+    /*if (ball.userData.jumping) {
         ball.userData.step += 0.04;
         ball.position.y = Math.abs(30 * (Math.sin(ball.userData.step)));
         ball.position.z = 15 * (Math.cos(ball.userData.step));
-    }
+    }*/
     render();
 
     requestAnimationFrame(animate);

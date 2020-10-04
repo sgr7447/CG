@@ -4,7 +4,7 @@ var camera, scene, renderer;
 
 var geometry, material, mesh;
 
-var ball;
+/*var ball;
 
 function addTableLeg(obj, x, y, z) {
     'use strict';
@@ -37,15 +37,15 @@ function createBall(x, y, z) {
     ball.position.set(x, y, z);
 
     scene.add(ball);
-}
+}*/
 
 
-function addArm(obj, x, y, z){
+function addArm(obj, x, y, z, rad){
     'use strict'
-    geometry = new THREE.CylinderGeometry(2, 2, 10, 20, 1, false, Math.PI/5);
+    geometry = new THREE.CylinderGeometry(0.5, 0.5, 7, 20);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
-
+    mesh.rotation.set( Math.PI*rad, 0, 0);
     obj.add(mesh);
 }
 
@@ -55,18 +55,12 @@ function createMobile(x, y, z){
     var table = new THREE.Object3D();
     var mobile = new THREE.Object3D();
     material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
-
-
-    addArm(mobile, 0, 0, 0);
+  
+    addArm(mobile, 0, 0, 0, 0);
+    addArm(mobile, 0, -7, 0, 5/6);
     scene.add(mobile);
-
-    /*addTableTop(table, 0, 0, 0);
-    addTableLeg(table, -25, -1, -8);
-    addTableLeg(table, -25, -1, 8);
-    addTableLeg(table, 25, -1, 8);
-    addTableLeg(table, 25, -1, -8);
-    scene.add(table);*/
-
+  
+    
     mobile.position.x = x;
     mobile.position.y = y;
     mobile.position.z = z;
@@ -76,16 +70,17 @@ function createScene() {
     'use strict';
 
     scene = new THREE.Scene();
-
-
     scene.add(new THREE.AxisHelper(10));
 
-    createMobile(0,40,0);
+    createMobile(0,42,0);
 }
 
 function createCamera() {
     'use strict';
-    camera = new THREE.PerspectiveCamera(70,window.innerWidth / window.innerHeight,1,1000);
+    camera = new THREE.PerspectiveCamera(70,
+                                         window.innerWidth / window.innerHeight,
+                                         1,
+                                         1000);
     camera.position.x = 50;
     camera.position.y = 50;
     camera.position.z = 50;
@@ -104,7 +99,7 @@ function onResize() {
 
 }
 
-function onKeyDown(e) {
+/*function onKeyDown(e) {
     'use strict';
 
     switch (e.keyCode) {
@@ -129,7 +124,7 @@ function onKeyDown(e) {
         });
         break;
     }
-}
+}*/
 
 function render() {
     'use strict';

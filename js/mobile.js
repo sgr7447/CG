@@ -39,17 +39,10 @@ function createBall(x, y, z) {
     scene.add(ball);
 }
 
-function createMobile(x, y, z){
-    'use strict';
-    var mobile = new THREE.Object3D();
-
-    addArm(mobile, 0, 0, 0);
-
-}
 
 function addArm(obj, x, y, z){
     'use strict'
-    geometry = new THREE.CylinderGeometry(10, 10, 30, 8, 1, false, Math.PI/5);
+    geometry = new THREE.CylinderGeometry(2, 2, 10, 20, 1, false, Math.PI/5);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
 
@@ -57,25 +50,26 @@ function addArm(obj, x, y, z){
 }
 
 
-function createTable(x, y, z){
+function createMobile(x, y, z){
     'use strict';
     var table = new THREE.Object3D();
     var mobile = new THREE.Object3D();
     material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
   
   
-    addArm(mobile, 0, 0, 0)
+    addArm(mobile, 0, 0, 0);
+    scene.add(mobile);
   
-    addTableTop(table, 0, 0, 0);
+    /*addTableTop(table, 0, 0, 0);
     addTableLeg(table, -25, -1, -8);
     addTableLeg(table, -25, -1, 8);
     addTableLeg(table, 25, -1, 8);
     addTableLeg(table, 25, -1, -8);
-    scene.add(table);
-    scene.add(mobile);
-    table.position.x = x;
-    table.position.y = y;
-    table.position.z = z;
+    scene.add(table);*/
+    
+    mobile.position.x = x;
+    mobile.position.y = y;
+    mobile.position.z = z;
   }
 
 function createScene() {
@@ -86,8 +80,7 @@ function createScene() {
 
     scene.add(new THREE.AxisHelper(10));
 
-    createTable(0, 8, 0);
-    createBall(0, 0, 15);
+    createMobile(0,40,0);
 }
 
 function createCamera() {

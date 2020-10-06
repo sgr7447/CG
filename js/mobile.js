@@ -42,7 +42,7 @@ function createBall(x, y, z) {
 
 function addArm(obj, x, y, z){
     'use strict'
-    geometry = new THREE.CylinderGeometry(2, 2, 10, 20, 1, false, Math.PI/5);
+    geometry = new THREE.CylinderGeometry(2, 2, 10, 20);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
 
@@ -59,13 +59,6 @@ function createMobile(x, y, z){
 
     addArm(mobile, 0, 0, 0);
     scene.add(mobile);
-
-    /*addTableTop(table, 0, 0, 0);
-    addTableLeg(table, -25, -1, -8);
-    addTableLeg(table, -25, -1, 8);
-    addTableLeg(table, 25, -1, 8);
-    addTableLeg(table, 25, -1, -8);
-    scene.add(table);*/
 
     mobile.position.x = x;
     mobile.position.y = y;

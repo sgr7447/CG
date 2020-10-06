@@ -4,24 +4,7 @@ var camera, scene, renderer;
 
 var geometry, material, mesh;
 
-/*var ball;
-
-function addTableLeg(obj, x, y, z) {
-    'use strict';
-
-    geometry = new THREE.CubeGeometry(2, 6, 2);
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y - 3, z);
-    obj.add(mesh);
-}
-
-function addTableTop(obj, x, y, z) {
-    'use strict';
-    geometry = new THREE.CubeGeometry(60, 2, 20);
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y, z);
-    obj.add(mesh);
-}
+/*
 
 function createBall(x, y, z) {
     'use strict';
@@ -42,7 +25,7 @@ function createBall(x, y, z) {
 
 function addArm(obj, x, y, z, rad){
     'use strict'
-    geometry = new THREE.CylinderGeometry(0.5, 0.5, 7, 20);
+    geometry = new THREE.CylinderGeometry(3, 3, 10, 15);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
     mesh.rotation.set( Math.PI*rad, 0, 0);
@@ -52,15 +35,18 @@ function addArm(obj, x, y, z, rad){
 
 function createMobile(x, y, z){
     'use strict';
-    var table = new THREE.Object3D();
+    
     var mobile = new THREE.Object3D();
     material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
-
+  
     addArm(mobile, 0, 0, 0, 0);
-    addArm(mobile, 0, -7, 0, 5/6);
+    addArm(mobile, 0, -10, 0, 5/6);
+    addArm(mobile, 0, -10, 0, 1/6);
+    addArm(mobile, 0, -20, 0, 1/6);
+    addArm(mobile, 0, -20, 0, 5/6);
+
     scene.add(mobile);
-
-
+  
     mobile.position.x = x;
     mobile.position.y = y;
     mobile.position.z = z;
@@ -90,14 +76,8 @@ function onKeyDown(e) {
     'use strict';
 
     switch (e.keyCode) {
-    /*case 65: //A
-    case 97: //a
-        scene.traverse(function (node) {
-            if (node instanceof THREE.Mesh) {
-                node.material.wireframe = !node.material.wireframe;
-            }
-        });
-        break;
+        
+    /*
     case 83:  //S
     case 115: //s
         ball.userData.jumping = !ball.userData.jumping;
@@ -121,6 +101,15 @@ function onKeyDown(e) {
 
     case 51: /*key 3*/
         camera.view3(); /* side */
+        break;
+    
+    case 52: /*key 4*/
+        /* solid or not */
+        scene.traverse( function (node) {
+            if (node instanceof THREE.Mesh) {
+                node.material.wireframe = !node.material.wireframe;
+            }
+        } );
         break;
     }
 }
@@ -156,7 +145,7 @@ function animate() {
         ball.position.y = Math.abs(30 * (Math.sin(ball.userData.step)));
         ball.position.z = 15 * (Math.cos(ball.userData.step));
     }*/
-    render();
 
+    render();
     requestAnimationFrame(animate);
 }

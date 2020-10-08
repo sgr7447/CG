@@ -1,5 +1,5 @@
-class Camera extends THREE.PerspectiveCamera
-{
+class Camera extends THREE.PerspectiveCamera{
+    
     constructor(){
         super(70, window.innerWidth / window.innerHeight, 1, 1000);
         this.view1();
@@ -44,6 +44,7 @@ class Camera extends THREE.PerspectiveCamera
     }
 
     onResize() {
+        'use strict';
     
         renderer.setSize(window.innerWidth, window.innerHeight);
     

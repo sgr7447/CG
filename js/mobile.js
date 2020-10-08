@@ -4,49 +4,46 @@ var camera, scene, renderer;
 
 var geometry, material, mesh;
 
-/*
-
-function createBall(x, y, z) {
-    'use strict';
-
-    ball = new THREE.Object3D();
-    ball.userData = { jumping: true, step: 0 };
-
-    material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
-    geometry = new THREE.SphereGeometry(4, 10, 10);
-    mesh = new THREE.Mesh(geometry, material);
-
-    ball.add(mesh);
-    ball.position.set(x, y, z);
-
-    scene.add(ball);
-}*/
-
-
-function addArm(obj, x, y, z, rad){
+function addArm(obj, x, y, z, rad, len){
     'use strict'
-    geometry = new THREE.CylinderGeometry(3, 3, 10, 15);
+    geometry = new THREE.CylinderGeometry(0.2, 0.2, len);
     mesh = new THREE.Mesh(geometry, material);
     mesh.position.set(x, y, z);
-    mesh.rotation.set( Math.PI*rad, 0, 0);
+    mesh.rotation.set(Math.PI*rad, 0, 0);
     obj.add(mesh);
 }
 
 
 function createMobile(x, y, z){
     'use strict';
-    
+
     var mobile = new THREE.Object3D();
+    var mobileTopLayer = new THREE.Object3D();
+    var mobileTopArm1 = new THREE.Object3D();
+    var mobileTopArm2 = new THREE.Object3D();
+    var mobileTopArm3 = new THREE.Object3D();
+    var mobileMiddleLayer = new THREE.Object3D();
+    var mobileBottomLayer = new THREE.Object3D();
     material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
-  
-    addArm(mobile, 0, 0, 0, 0);
-    addArm(mobile, 0, -10, 0, 5/6);
-    addArm(mobile, 0, -10, 0, 1/6);
-    addArm(mobile, 0, -20, 0, 1/6);
-    addArm(mobile, 0, -20, 0, 5/6);
+
+    addArm(mobileTopArm1, 0, 0, 0, 0, 12);
+    addArm(mobileTopArm2, 0, -11, 2, -1/4, 8);
+    addArm(mobileTopArm3, 0, -10, 0, 1/6, 9);
+    mobileTopLayer.add(mobileTopLayer1);
+    mobileTopLayer.add(mobileTopLayer2);
+    mobileTopLayer.add(mobileTopLayer3);
+
+
+    addArm(mobile, 0, -20, 0, 1/6, 8);
+    addArm(mobile, 0, -20, 0, 5/6, 5);
+
+    mobileMiddleLayer.add(mobileBottomLayer);
+    mobileTopLayer.add(mobileMiddleLayer);
+    mobile.add(mobileTopLayer);
+
 
     scene.add(mobile);
-  
+
     mobile.position.x = x;
     mobile.position.y = y;
     mobile.position.z = z;
@@ -58,7 +55,7 @@ function createScene() {
     scene = new THREE.Scene();
     scene.add(new THREE.AxisHelper(10));
 
-    createMobile(0,42,0);
+    createMobile(0,46,0);
 }
 
 function createCamera() {
@@ -76,41 +73,27 @@ function onKeyDown(e) {
     'use strict';
 
     switch (e.keyCode) {
-        
-    /*
-    case 83:  //S
-    case 115: //s
-        ball.userData.jumping = !ball.userData.jumping;
-        break;
-    case 69:  //E
-    case 101: //e
-        scene.traverse(function (node) {
-            if (node instanceof THREE.AxisHelper) {
-                node.visible = !node.visible;
-            }
-        });
-        break;*/
 
-    case 49: /*key 1*/
-        camera.view1(); /* front */
-        break;
+        case 49: /*key 1*/
+            camera.view1(); /* front */
+            break;
 
-    case 50: /*key 2*/
-        camera.view2(); /* top */
-        break;
+        case 50: /*key 2*/
+            camera.view2(); /* top */
+            break;
 
-    case 51: /*key 3*/
-        camera.view3(); /* side */
-        break;
-    
-    case 52: /*key 4*/
-        /* solid or not */
-        scene.traverse( function (node) {
-            if (node instanceof THREE.Mesh) {
-                node.material.wireframe = !node.material.wireframe;
-            }
-        } );
-        break;
+        case 51: /*key 3*/
+            camera.view3(); /* side */
+            break;
+
+        case 52: /*key 4*/
+            /* solid or not */
+            scene.traverse( function (node) {
+                if (node instanceof THREE.Mesh) {
+                    node.material.wireframe = !node.material.wireframe;
+                }
+            } );
+            break;
     }
 }
 

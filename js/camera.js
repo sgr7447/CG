@@ -1,50 +1,44 @@
-class Camera extends THREE.PerspectiveCamera{
-    
+class Camera extends THREE.OrthographicCamera{
+
     constructor(){
-        super(70, window.innerWidth / window.innerHeight, 1, 1000);
+
+        var aspectRatio = (window.innerWidth/ window.innerHeight * 7);
+        var width = window.innerWidth / aspectRatio;
+        var height = window.innerHeight / aspectRatio;
+        super(-width, width, height, -height, 1, 2000 );
         this.view1();
         this.onResize();
     }
 
     /* FRONT */
     view1(){
-        'use strict';
 
         this.num = 1;
         this.onResize();
-        this.position.x = 50;
-        this.position.y = 50;
-        this.position.z = 50;
+        this.position.set(0, 0, 500);
         this.lookAt(scene.position);
 
     }
 
     /* TOP */
     view2(){
-        'use strict';
 
         this.num = 2;
         this.onResize();
-        this.position.x = 0;
-        this.position.y = 70;
-        this.position.z = 0;
+        this.position.set(0, window.innerHeight/2, 0);
         this.lookAt(scene.position);
     }
 
     /* SIDE */
     view3(){
-        'use strict';
 
         this.num = 3;
         this.onResize();
-        this.position.x = 0;
-        this.position.y = 0;
-        this.position.z = 70;
+        this.position.set( window.innerHeight/2, 0, 0);
         this.lookAt(scene.position);
     }
 
     onResize() {
-        'use strict';
     
         renderer.setSize(window.innerWidth, window.innerHeight);
     

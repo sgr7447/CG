@@ -11,29 +11,6 @@ function createMobile(x, y, z){
     material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
     var mobile = new Mobile(x, y, z);
 
-    /*var mobileTopLayer = new THREE.Object3D();
-    var mobileTopArm1 = new THREE.Object3D();
-    var mobileTopArm2 = new THREE.Object3D();
-    var mobileTopArm3 = new THREE.Object3D();
-    var mobileMiddleLayer = new THREE.Object3D();
-    var mobileBottomLayer = new THREE.Object3D();
-
-
-    addArm(mobileTopArm1, 0, 0, 0, 0, 12);
-    addArm(mobileTopArm2, 0, -11, 2, -1/4, 8);
-    addArm(mobileTopArm3, 0, -10, 0, 1/6, 9);
-    mobileTopLayer.add(mobileTopLayer1);
-    mobileTopLayer.add(mobileTopLayer2);
-    mobileTopLayer.add(mobileTopLayer3);
-
-
-    addArm(mobile, 0, -20, 0, 1/6, 8);
-    addArm(mobile, 0, -20, 0, 5/6, 5);
-
-    mobileMiddleLayer.add(mobileBottomLayer);
-    mobileTopLayer.add(mobileMiddleLayer);
-    mobile.add(mobileTopLayer);*/
-
 
   }
 

@@ -2,7 +2,8 @@ class Camera extends THREE.OrthographicCamera{
 
     constructor(){
 
-        var aspectRatio = (window.innerWidth/ window.innerHeight * 3);
+        var aspect = window.innerWidth / window.innerHeight;
+        var aspectRatio = (aspect * 3);
         var width = window.innerWidth / aspectRatio;
         var height = window.innerHeight / aspectRatio;
         super(-width/2, width/2, height/2, -height/2, 1, 1000);
@@ -43,8 +44,9 @@ class Camera extends THREE.OrthographicCamera{
         renderer.setSize(window.innerWidth, window.innerHeight);
 
         if (window.innerHeight > 0 && window.innerWidth > 0) {
+
             this.aspect = window.innerWidth / window.innerHeight;
-            var aspectRatio = (window.innerWidth/ window.innerHeight * 3);
+            var aspectRatio = (this.aspect * 3);
             var width = window.innerWidth / aspectRatio;
             var height = window.innerHeight / aspectRatio;
 

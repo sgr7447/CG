@@ -39,14 +39,22 @@ class Camera extends THREE.OrthographicCamera{
     }
 
     onResize() {
-    
+
         renderer.setSize(window.innerWidth, window.innerHeight);
-    
+
         if (window.innerHeight > 0 && window.innerWidth > 0) {
             this.aspect = window.innerWidth / window.innerHeight;
+            var aspectRatio = (window.innerWidth/ window.innerHeight * 3);
+            var width = window.innerWidth / aspectRatio;
+            var height = window.innerHeight / aspectRatio;
+
+            this.left = -width/2;
+            this.right = width/2
+            this.top = height/2;
+            this.bottom = -height/2;
             this.updateProjectionMatrix();
         }
-    
+
     }
 
 

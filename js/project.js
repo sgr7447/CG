@@ -7,7 +7,7 @@ var geometry, material, mesh;
 function createMobile(x, y, z){
     'use strict';
 
-    
+
     material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
     var mobile = new Mobile(x, y, z);
 
@@ -17,7 +17,7 @@ function createMobile(x, y, z){
     var mobileTopArm3 = new THREE.Object3D();
     var mobileMiddleLayer = new THREE.Object3D();
     var mobileBottomLayer = new THREE.Object3D();
-    
+
 
     addArm(mobileTopArm1, 0, 0, 0, 0, 12);
     addArm(mobileTopArm2, 0, -11, 2, -1/4, 8);

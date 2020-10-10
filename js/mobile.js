@@ -16,32 +16,36 @@ class Mobile extends THREE.Object3D{
         this.addArm(mobileTopLayer, -27, -11, 0, -1/2, 28);
         this.addArm(mobileTopLayer, -27, -8.5, 0, 0, 5);
         this.addArm(mobileTopLayer, 27, -8.5, 0, 0, 5);
-        this.addArm(mobileTopLayer, -45.24, -15.35, 0, -1/4, 12);//cubo
-        this.addArm(mobileTopLayer, -36.76, -15.35, 0, 1/4, 12);//oct 8.84
-        this.addArm(mobileTopLayer, 21.7, -16.3, 0, -1/4, 15);//lado: 10.6
+        this.addArm(mobileTopLayer, -41, -13.5, 0, 0, 5);
+        this.addArm(mobileTopLayer, -13, -15.24, 0, 0, 8.48);//3 - esfera
+        this.addArm(mobileTopLayer, -45.24, -20.35, 0, -1/4, 12);//1 - cubo
+        this.addArm(mobileTopLayer, -36.76, -20.35, 0, 1/4, 12);//2 - oct lado do triangulo: 8.84
+        this.addArm(mobileTopLayer, 21.7, -16.3, 0, -1/4, 15);//4 - lado: 10.6
         this.addArm(mobileTopLayer, 35.84, -19.84, 0, 1/4, 25);//lado:17.68 -8.84
         this.addArm(mobileTopLayer, 44.68, -33.6, 0, 0, 10);//
         this.addArm(mobileTopLayer, 44.68, -33.6, 0, 0, 10);//
         this.addArm(mobileTopLayer, 44.68, -38.6, 0, 1/2, 30);//
-        this.addArm(mobileTopLayer, 59.68, -41.1, 0, 0, 5);//cylinder
+        this.addArm(mobileTopLayer, 59.68, -41.1, 0, 0, 5);//5
         this.addArm(mobileTopLayer, 29.68, -42.5, 0, 0, 8);//
-        this.addArm(mobileTopLayer, -5.66, -46.5, 0, 1/2, 70.68);//
+        this.addArm(mobileTopLayer, 29.68, -46.5, 0, 1/2, 30);//
+        this.addArm(mobileTopLayer, 44.68, -61.5, 0, 0, 30);//6
+        this.addArm(mobileTopLayer, 14.68, -50.5, 0, 0, 8);//7
+        this.addArm(mobileTopLayer, 14.68, -54.5, 0, 1/2, 30);//
+        this.addArm(mobileTopLayer, 29.68, -58.5, 0, 0, 8);//
+        this.addArm(mobileTopLayer, -0.5, -58.5, 0, 0, 8);//8
 
-        this.addArm(mobileTopLayer, 0, -54.5, 0, 1/2, 30);//
-        this.addArm(mobileTopLayer, -15, -57, 0, 0, 5);//
-        this.addArm(mobileTopLayer, 15, -57, 0, 0, 5);//
+        this.addArm(mobileTopLayer, -5.8, -67.8, 0, -1/4, 15);//
+        this.addArm(mobileTopLayer, 4.8, -67.8, 0, 1/4, 15);//8
 
+        this.addArm(mobileTopLayer, -16.4, -78.4, 0, -1/4, 15);//10
+        this.addArm(mobileTopLayer, -5.8, -78.4, 0, 1/4, 15);//9
 
 //16.3+5.3+5
 
-        this.addSphere(mobileTopLayer, -41, -24.48, 0, 5, 0x836FFF);
-        this.addCube(mobileTopLayer, -21.48, -24.5, 0, 10, 0x836FFF);
-        this.addOct(mobileTopLayer, -4.52, -24.3, 0, 5, 0x836FFF);
+        this.addSphere(mobileTopLayer, -13, -24.48, 0, 5, 0x836FFF);
+        this.addCube(mobileTopLayer, -49.48, -29.5, 0, 10, 0x836FFF);
+        this.addOct(mobileTopLayer, -32.52, -29.3, 0, 5, 0x836FFF);
         this.addTorus(mobileTopLayer, 16.4, -27.6, 0, 5, 2, 0x836FFF);
-        this.addCylinder(mobileTopLayer, 59.68, -49.6, 0, 12, 3, 0x836FFF)
-        this.addSphere(mobileTopLayer, -15, -62.5, 0, 3, 0x836FFF);
-        this.addSphere(mobileTopLayer, 15, -62.5, 0, 3, 0x836FFF);
-
 
         /*this.addArm(mobileTopLayer, 0, 0, 0, 0, 12);
         this.addArm(mobileTopLayer, -8.48, -14.48, 0, -1/4, 24);

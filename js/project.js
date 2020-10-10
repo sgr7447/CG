@@ -2,17 +2,16 @@
 
 var camera, scene, renderer;
 var geometry, material, mesh;
+var mobile;
 
 
 function createMobile(x, y, z){
     'use strict';
 
-
     material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
-    var mobile = new Mobile(x, y, z);
+    mobile = new Mobile(x, y, z);
 
-
-  }
+}
 
 function createScene() {
     'use strict';
@@ -59,7 +58,34 @@ function onKeyDown(e) {
                 }
             } );
             break;
+
+        case 81: //Q or q - Top spin postive
+            mobile.spinTopPos();
+            break;
+
+        case 87: //W or w - Top spin negative
+            mobile.spinTopNeg();
+            break;
     }
+}
+
+function onKeyUp(e) {
+    'use strict';
+
+    switch (e.keyCode) {
+
+        case 81: //Q or q - Top stops spin positive
+            mobile.stopTop();      
+            break;
+
+        case 87: //W or w - Top stops spin negative
+            mobile.stopTop();      
+            break;
+
+        
+    }
+
+
 }
 
 function render() {
@@ -81,13 +107,14 @@ function init() {
     render();
 
     window.addEventListener("keydown", onKeyDown);
-    /*TEMOS DE CRIAR: window.addEventListener("keyup", onKeyUp);*/
+    window.addEventListener("keyup", onKeyUp);
     window.addEventListener("resize", onResize);
 }
 
 function animate() {
     'use strict';
 
+    mobile.update();
     render();
     requestAnimationFrame(animate);
 }

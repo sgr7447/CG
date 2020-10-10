@@ -1,4 +1,3 @@
-
 class Mobile extends THREE.Object3D{
 
     constructor(x, y, z) {
@@ -9,6 +8,12 @@ class Mobile extends THREE.Object3D{
         var mobileTopLayer = new THREE.Object3D();
         var mobileMiddleLayer = new THREE.Object3D();
         var mobileBottomLayer = new THREE.Object3D();
+
+        this.topLayerPos = false;
+        this.topLayerNeg = false;
+
+        this.time = new THREE.Clock();
+        this.delta;
 
 
         this.addArm(mobileTopLayer, 0, 0, 0, 0, 12);
@@ -53,7 +58,6 @@ class Mobile extends THREE.Object3D{
         this.addArm(mobileMiddleLayer, +8.48, -14.48, 0, 1/4, 24);
         this.addArm(mobileMiddleLayer, +8.48 +8.48, -14.48 -8.48, 0, 1/4, 24);
         this.addArm(mobileMiddleLayer, 8.48, -31.44, 0, -1/4, 24);
-
         this.addCylinder(mobileTopLayer, -16.96, -30.48, 0, 15, 4, 0x836FFF);
         this.addSphere(mobileTopLayer, -10.48, -30.48, 0,5,0x836FFF);*/
 
@@ -123,4 +127,36 @@ class Mobile extends THREE.Object3D{
         geometry = new THREE.TorusGeometry( r1, r2);
         this.addFigure(obj, x, y, z, 0, geometry, material);
     }
+
+    spinTopPos(){
+        this.topLayerPos = true;
+    }
+
+    spinTopNeg(){
+        this.topLayerNeg = true;
+    }
+
+    stopTop(){
+        this.topLayerPos = false;
+        this.topLayerNeg = false;
+    }
+
+    spinTop() {
+        var direction;
+        if ( this.topLayerNeg && !this.topLayerPos) direction = -1;
+        else if ( this.topLayerPos && !this.topLayerNeg ) direction = 1;
+        else direction = 0;
+
+        this.rotateY( direction * this.delta * 2);
+    }
+
+    updateTime() {
+        this.delta = this.time.getDelta();
+    }
+
+    update() {
+        this.updateTime();
+        this.spinTop();
+    }
+
 }

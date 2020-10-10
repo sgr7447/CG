@@ -13,19 +13,29 @@ class Mobile extends THREE.Object3D{
 
         this.addArm(mobileTopLayer, 0, 0, 0, 0, 12);
         this.addArm(mobileTopLayer, 0, -6, 0, -1/2, 54);
+        this.addArm(mobileTopLayer, -27, -11, 0, -1/2, 28);
         this.addArm(mobileTopLayer, -27, -8.5, 0, 0, 5);
         this.addArm(mobileTopLayer, 27, -8.5, 0, 0, 5);
-        this.addArm(mobileTopLayer, -27, -11, 0, -1/2, 27);
-        this.addArm(mobileTopLayer, -13.5, -13.5, 0, 0, 5);
-        this.addArm(mobileTopLayer, -44.5, -15.1, 0, -1/4, 12);
-        this.addArm(mobileTopLayer, -36.5, -15.3, 0, 1/4, 12);
-        this.addArm(mobileTopLayer, 34, -18, 0, 1/4, 20);
-        this.addArm(mobileTopLayer, 21.5, -16.5, 0, -1/4, 15);
+        this.addArm(mobileTopLayer, -41, -15.24, 0, 0, 8.48);//esfera
+        this.addArm(mobileTopLayer, -17.24, -15.35, 0, -1/4, 12);//cubo
+        this.addArm(mobileTopLayer, -8.76, -15.35, 0, 1/4, 12);//oct 8.84
+        this.addArm(mobileTopLayer, 21.7, -16.3, 0, -1/4, 15);//lado: 10.6
+        this.addArm(mobileTopLayer, 35.84, -19.84, 0, 1/4, 25);//lado:17.68 -8.84
+        this.addArm(mobileTopLayer, 44.68, -33.6, 0, 0, 10);//
+        this.addArm(mobileTopLayer, 44.68, -33.6, 0, 0, 10);//
+        this.addArm(mobileTopLayer, 44.68, -38.6, 0, 1/2, 30);//
+        this.addArm(mobileTopLayer, 59.68, -41.1, 0, 0, 5);//
+        this.addArm(mobileTopLayer, 29.68, -42.5, 0, 0, 8);//
+        this.addArm(mobileTopLayer, -5.66, -46.5, 0, 1/2, 70.68);//
+        this.addArm(mobileTopLayer, 39.68, -61.5, 0, 0, 30);//
+        this.addArm(mobileTopLayer, 19.68, -50.5, 0, 0, 8);//
 
-        this.addSphere(mobileTopLayer, -13.5, -21, 0, 5, 0x836FFF);
-        this.addCube(mobileTopLayer, -48.5, -24.5, 0, 10, 0x836FFF);
-        this.addOct(mobileTopLayer, -32.2, -24.3, 0, 5, 0x836FFF);
-        this.addTorus(mobileTopLayer, 16, -28, 0, 5, 2, 0x836FFF);
+//16.3+5.3+5
+
+        this.addSphere(mobileTopLayer, -41, -24.48, 0, 5, 0x836FFF);
+        this.addCube(mobileTopLayer, -21.48, -24.5, 0, 10, 0x836FFF);
+        this.addOct(mobileTopLayer, -4.52, -24.3, 0, 5, 0x836FFF);
+        this.addTorus(mobileTopLayer, 16.4, -27.6, 0, 5, 2, 0x836FFF);
 
 
 
@@ -74,7 +84,7 @@ class Mobile extends THREE.Object3D{
         material = new THREE.MeshBasicMaterial({ color: color, wireframe: true });
         geometry = new THREE.OctahedronGeometry(len);
         this.addFigure(obj, x, y, z, 0, geometry, material);
-        
+
     }
 
     addCube(obj, x, y, z, len, color){

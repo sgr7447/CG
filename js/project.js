@@ -38,20 +38,19 @@ function onKeyDown(e) {
 
     switch (e.keyCode) {
 
-        case 49: /*key 1*/
-            camera.view1(); /* front */
+        case 49: //key 1 - front
+            camera.view1();
             break;
 
-        case 50: /*key 2*/
-            camera.view2(); /* top */
+        case 50: //key 2 - top
+            camera.view2();
             break;
 
-        case 51: /*key 3*/
-            camera.view3(); /* side */
+        case 51: //key 3 - side
+            camera.view3();
             break;
 
-        case 52: /*key 4*/
-            /* solid or not */
+        case 52: //key 4 - solid or not
             scene.traverse( function (node) {
                 if (node instanceof THREE.Mesh) {
                     node.material.wireframe = !node.material.wireframe;
@@ -65,6 +64,22 @@ function onKeyDown(e) {
 
         case 87: //W or w - Top spin negative
             mobile.spinTopNeg();
+            break;
+
+        case 65: //A or a - Middle spin postive
+            mobile.spinMiddlePos();
+            break;
+
+        case 68: //D or d - Middle spin negative
+            mobile.spinMiddleNeg();
+            break;
+
+        case 90: //Z or z - Bottom spin postive
+            mobile.spinBottomPos();
+            break;
+
+        case 67: //C or c - Bottom spin negative
+            mobile.spinBottomNeg();
             break;
     }
 }
@@ -82,10 +97,23 @@ function onKeyUp(e) {
             mobile.stopTop();      
             break;
 
-        
+        case 65: //A or a - Middle stops spin postive
+            mobile.stopMiddle();
+            break;
+
+        case 68: //D or d - Middle stops spin negative
+            mobile.stopMiddle();
+            break;
+
+        case 90: //Z or z - Bottom stops spin postive
+            mobile.stopBottom();
+            break;
+
+        case 67: //C or c - Bottom stops spin negative
+            mobile.stopBottom();
+            break;
+  
     }
-
-
 }
 
 function render() {

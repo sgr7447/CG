@@ -66,7 +66,7 @@ class Mobile extends THREE.Object3D{
         this.position.z = z;
     }
 
-    
+
 
     // SPIN
 
@@ -115,7 +115,7 @@ class Mobile extends THREE.Object3D{
         else if ( typePos && !typeNeg ) direction = 1;
         else direction = 0;
 
-        this.mobileBottomLayer.rotateY( direction * this.delta * 2);
+        this.rotateY( direction * this.delta * 2);
     }
 
     // UPDATES

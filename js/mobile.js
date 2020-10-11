@@ -62,9 +62,9 @@ class Mobile extends THREE.Object3D{
         this.mobileTopLayer = mobileTopLayer;
         this.mobileMiddleLayer = mobileMiddleLayer;
         this.mobileBottomLayer = mobileBottomLayer;
-this.setPositionBottom(0, 46, 0);
+this.setPositionBottom(-45.18, -24.9, 0);
 this.setPositionMiddle(44.68, -33.6, 0);
-        this.setPositionTop(-45.18, -24.9, 0);
+        this.setPositionTop(0, 46, 0);
 
 
 

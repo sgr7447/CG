@@ -117,13 +117,13 @@ class Mobile extends THREE.Object3D{
         this.bottomLayerNeg = false;
     }
 
-    spin(type, typeNeg, typePos) {
+    spin(type, typeNeg, typePos, speed, center) {
 
         var direction = 0;
         if ( typeNeg && !typePos) direction = -1;
         else if ( typePos && !typeNeg ) direction = 1;
 
-        type.rotateY( direction * this.delta * 2);
+        type.rotateY( direction * this.delta * speed);
     }
 
     // UPDATES
@@ -135,9 +135,9 @@ class Mobile extends THREE.Object3D{
     update() {
 
         this.updateTime();
-        this.spin(this.mobileTopLayer, this.topLayerNeg, this.topLayerPos);
-        this.spin(this.mobileMiddleLayer, this.middleLayerNeg, this.middleLayerPos);
-        this.spin(this.mobileBottomLayer, this.bottomLayerNeg, this.bottomLayerPos);
+        this.spin(this.mobileTopLayer, this.topLayerNeg, this.topLayerPos, 1, 0);
+        this.spin(this.mobileMiddleLayer, this.middleLayerNeg, this.middleLayerPos, 2, 10);
+        this.spin(this.mobileBottomLayer, this.bottomLayerNeg, this.bottomLayerPos, 4, 0);
     }
 
 }

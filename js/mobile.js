@@ -4,7 +4,6 @@ class Mobile extends THREE.Object3D{
 
         super();
 
-
         var mobileTopLayer = new THREE.Object3D();
         var mobileMiddleLayer = new THREE.Object3D();
         var mobileBottomLayer = new THREE.Object3D();
@@ -18,7 +17,6 @@ class Mobile extends THREE.Object3D{
 
         this.time = new THREE.Clock();
         this.delta;
-
 
         addArm(mobileTopLayer, 0, 0, 0, 0, 12);
         addArm(mobileTopLayer, 0, -6, 0, -1/2, 54);
@@ -48,7 +46,6 @@ class Mobile extends THREE.Object3D{
         addArm(mobileBottomLayer, -16.4, -78.4, 0, -1/4, 15);//10
         addArm(mobileBottomLayer, -5.8, -78.4, 0, 1/4, 15);//9
 
-
         addSphere(mobileTopLayer, -13, -24.48, 0, 5, 0x836FFF);
         addCube(mobileTopLayer, -49.48, -29.5, 0, 10, 0x836FFF);
         addOct(mobileTopLayer, -32.52, -29.3, 0, 5, 0x836FFF);
@@ -59,13 +56,15 @@ class Mobile extends THREE.Object3D{
         mobileTopLayer.add(mobileMiddleLayer);
         this.add(mobileTopLayer);
 
-        scene.add(this);
+        this.mobileTopLayer = mobileTopLayer;
+        this.mobileMiddleLayer = mobileMiddleLayer;
+        this.mobileBottomLayer = mobileBottomLayer;
 
         this.position.x = x;
         this.position.y = y;
         this.position.z = z;
-    }
 
+    }
 
 
     // SPIN
@@ -109,13 +108,13 @@ class Mobile extends THREE.Object3D{
         this.bottomLayerNeg = false;
     }
 
-    spin(typeNeg, typePos) {
-        var direction;
+    spin(type, typeNeg, typePos) {
+
+        var direction = 0;
         if ( typeNeg && !typePos) direction = -1;
         else if ( typePos && !typeNeg ) direction = 1;
-        else direction = 0;
 
-        this.rotateY( direction * this.delta * 2);
+        type.rotateY( direction * this.delta * 2);
     }
 
     // UPDATES
@@ -125,11 +124,11 @@ class Mobile extends THREE.Object3D{
     }
 
     update() {
+
         this.updateTime();
-        /*this.spin(this.mobileTopLayer, this.topLayerNeg, this.topLayerPos);
+        this.spin(this.mobileTopLayer, this.topLayerNeg, this.topLayerPos);
         this.spin(this.mobileMiddleLayer, this.middleLayerNeg, this.middleLayerPos);
-        this.spin(this.mobileBottomLayer, this.bottomLayerNeg, this.bottomLayerPos);*/
-        this.spin(this.bottomLayerNeg, this.bottomLayerPos);
+        this.spin(this.mobileBottomLayer, this.bottomLayerNeg, this.bottomLayerPos);
     }
 
 }

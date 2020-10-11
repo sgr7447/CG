@@ -20,6 +20,9 @@ function createScene() {
     scene.add(new THREE.AxisHelper(10));
 
     createMobile(0,46,0);
+    scene.add(mobile);
+
+
 }
 
 function createCamera() {

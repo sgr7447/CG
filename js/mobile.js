@@ -51,8 +51,11 @@ class Mobile extends THREE.Object3D{
 
         addSphere(mobileTopLayer, -13, -24.48, 0, 5, 0x836FFF);
         addCube(mobileTopLayer, -49.48, -29.5, 0, 10, 0x836FFF);
-        addOct(mobileTopLayer, -32.52, -29.3, 0, 5, 0x836FFF);
+        addOct(mobileTopLayer, -32.52, -29.3, 0, 5, 0, 0x836FFF);
         addTorus(mobileTopLayer, 16.4, -27.6, 0, 5, 2, 0x836FFF);
+
+        addSphere(mobileMiddleLayer, 0, -48.9, 0, 6, 0x836FFF);
+        addOct(mobileMiddleLayer, 15, -14, 0, 4, 1, 0x836FFF);
 
 
         mobileMiddleLayer.add(mobileBottomLayer);

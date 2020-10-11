@@ -93,27 +93,27 @@ function onKeyUp(e) {
     switch (e.keyCode) {
 
         case 81: //Q or q - Top stops spin positive
-            mobile.stopTop();      
+            mobile.stopTopPos();      
             break;
 
         case 87: //W or w - Top stops spin negative
-            mobile.stopTop();      
+            mobile.stopTopNeg();      
             break;
 
         case 65: //A or a - Middle stops spin postive
-            mobile.stopMiddle();
+            mobile.stopMiddlePos();
             break;
 
         case 68: //D or d - Middle stops spin negative
-            mobile.stopMiddle();
+            mobile.stopMiddleNeg();
             break;
 
         case 90: //Z or z - Bottom stops spin postive
-            mobile.stopBottom();
+            mobile.stopBottomPos();
             break;
 
         case 67: //C or c - Bottom stops spin negative
-            mobile.stopBottom();
+            mobile.stopBottomNeg();
             break;
   
     }

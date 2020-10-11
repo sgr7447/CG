@@ -93,18 +93,27 @@ class Mobile extends THREE.Object3D{
         this.bottomLayerNeg = true;
     }
 
-    stopTop(){
+    stopTopPos(){
         this.topLayerPos = false;
+    }
+
+    stopTopNeg(){
         this.topLayerNeg = false;
     }
 
-    stopMiddle(){
+    stopMiddlePos(){
         this.middleLayerPos = false;
+    }
+
+    stopMiddleNeg(){
         this.middleLayerNeg = false;
     }
 
-    stopBottom(){
+    stopBottomPos(){
         this.bottomLayerPos = false;
+    }
+
+    stopBottomNeg(){
         this.bottomLayerNeg = false;
     }
 

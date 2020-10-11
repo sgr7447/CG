@@ -30,21 +30,24 @@ class Mobile extends THREE.Object3D{
         addArm(mobileTopLayer, 21.7, -16.3, 0, -1/4, 15);//4 - lado: 10.6
         addArm(mobileTopLayer, 35.84, -19.84, 0, 1/4, 25);//lado:17.68 -8.84
 
-        addArm(mobileMiddleLayer, 44.68, -33.6, 0, 0, 10);//
-        addArm(mobileMiddleLayer, 44.68, -38.6, 0, 1/2, 30);//
-        addArm(mobileMiddleLayer, 59.68, -41.1, 0, 0, 5);//5
-        addArm(mobileMiddleLayer, 29.68, -42.5, 0, 0, 8);//
-        addArm(mobileMiddleLayer, 29.68, -46.5, 0, 1/2, 30);//
-        addArm(mobileMiddleLayer, 44.68, -61.5, 0, 0, 30);//6
-        addArm(mobileMiddleLayer, 14.68, -50.5, 0, 0, 8);//7
-        addArm(mobileMiddleLayer, 14.68, -54.5, 0, 1/2, 30);//
-        addArm(mobileMiddleLayer, 29.68, -58.5, 0, 0, 8);//
 
-        addArm(mobileBottomLayer, -0.5, -58.5, 0, 0, 8);//8
-        addArm(mobileBottomLayer, -5.8, -67.8, 0, -1/4, 15);//
-        addArm(mobileBottomLayer, 4.8, -67.8, 0, 1/4, 15);//8
-        addArm(mobileBottomLayer, -16.4, -78.4, 0, -1/4, 15);//10
-        addArm(mobileBottomLayer, -5.8, -78.4, 0, 1/4, 15);//9
+
+
+        addArm(mobileMiddleLayer, 0, 0, 0, 0, 10);//
+        addArm(mobileMiddleLayer, 0, -5, 0, 1/2, 30);//
+        addArm(mobileMiddleLayer, 15, -7.5, 0, 0, 5);//5
+        addArm(mobileMiddleLayer, -15, -8.9, 0, 0, 8);//
+        addArm(mobileMiddleLayer, -15, -12.9, 0, 1/2, 30);//
+        addArm(mobileMiddleLayer, 0, -27.9, 0, 0, 30);//6
+        addArm(mobileMiddleLayer, -30, -16.9, 0, 0, 8);//7
+        addArm(mobileMiddleLayer, -30, -20.9, 0, 1/2, 30);//
+        addArm(mobileMiddleLayer, -15, -24.9, 0, 0, 8);//
+
+        addArm(mobileBottomLayer, 0, 0, 0, 0, 8);//8
+        addArm(mobileBottomLayer, -5.3, -9.3, 0, -1/4, 15);//
+        addArm(mobileBottomLayer, 5.3, -9.3, 0, 1/4, 15);//8
+        addArm(mobileBottomLayer, -15.9, -19.9, 0, -1/4, 15);//10
+        addArm(mobileBottomLayer, -5.3, -19.9, 0, 1/4, 15);//9
 
         addSphere(mobileTopLayer, -13, -24.48, 0, 5, 0x836FFF);
         addCube(mobileTopLayer, -49.48, -29.5, 0, 10, 0x836FFF);
@@ -59,11 +62,30 @@ class Mobile extends THREE.Object3D{
         this.mobileTopLayer = mobileTopLayer;
         this.mobileMiddleLayer = mobileMiddleLayer;
         this.mobileBottomLayer = mobileBottomLayer;
+this.setPositionBottom(0, 46, 0);
+this.setPositionMiddle(44.68, -33.6, 0);
+        this.setPositionTop(-45.18, -24.9, 0);
 
-        this.position.x = x;
-        this.position.y = y;
-        this.position.z = z;
 
+
+    }
+
+    setPositionTop(x,y,z){
+        this.mobileTopLayer.position.x = x;
+        this.mobileTopLayer.position.y = y;
+        this.mobileTopLayer.position.z = z;
+    }
+
+    setPositionMiddle(x,y,z){
+        this.mobileMiddleLayer.position.x = x;
+        this.mobileMiddleLayer.position.y = y;
+        this.mobileMiddleLayer.position.z = z;
+    }
+
+    setPositionBottom(x,y,z){
+        this.mobileBottomLayer.position.x = x;
+        this.mobileBottomLayer.position.y = y;
+        this.mobileBottomLayer.position.z = z;
     }
 
 

@@ -19,7 +19,7 @@ function createScene() {
     scene = new THREE.Scene();
     scene.add(new THREE.AxisHelper(10));
 
-    createMobile(0,46,0);
+    createMobile(0,0,0);
     scene.add(mobile);
 
 
@@ -93,11 +93,11 @@ function onKeyUp(e) {
     switch (e.keyCode) {
 
         case 81: //Q or q - Top stops spin positive
-            mobile.stopTopPos();      
+            mobile.stopTopPos();
             break;
 
         case 87: //W or w - Top stops spin negative
-            mobile.stopTopNeg();      
+            mobile.stopTopNeg();
             break;
 
         case 65: //A or a - Middle stops spin postive
@@ -115,7 +115,7 @@ function onKeyUp(e) {
         case 67: //C or c - Bottom stops spin negative
             mobile.stopBottomNeg();
             break;
-  
+
     }
 }
 
@@ -146,6 +146,11 @@ function animate() {
     'use strict';
 
     mobile.update();
+
+    /*mobile.setPositionBottom(-45.18, -24.9, 0);
+    mobile.setPositionMiddle(44.68, -33.6, 0);
+    mobile.setPositionTop(0, 46, 0);*/
+
     render();
     requestAnimationFrame(animate);
 }

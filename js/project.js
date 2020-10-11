@@ -147,10 +147,6 @@ function animate() {
 
     mobile.update();
 
-    /*mobile.setPositionBottom(-45.18, -24.9, 0);
-    mobile.setPositionMiddle(44.68, -33.6, 0);
-    mobile.setPositionTop(0, 46, 0);*/
-
     render();
     requestAnimationFrame(animate);
 }

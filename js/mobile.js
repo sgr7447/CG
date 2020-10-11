@@ -8,6 +8,7 @@ class Mobile extends THREE.Object3D{
         var mobileMiddleLayer = new THREE.Object3D();
         var mobileBottomLayer = new THREE.Object3D();
 
+        //SPIN OR NOT
         this.topLayerPos = false;
         this.topLayerNeg = false;
         this.middleLayerPos = false;
@@ -15,9 +16,11 @@ class Mobile extends THREE.Object3D{
         this.bottomLayerPos = false;
         this.bottomLayerNeg = false;
 
+        //TIME
         this.time = new THREE.Clock();
         this.delta;
 
+        //CREATING PARTS
         addArm(mobileTopLayer, 0, 0, 0, 0, 12);
         addArm(mobileTopLayer, 0, -6, 0, -1/2, 54);
         addArm(mobileTopLayer, -27, -8.5, 0, 0, 5);
@@ -29,9 +32,6 @@ class Mobile extends THREE.Object3D{
         addArm(mobileTopLayer, -36.76, -20.35, 0, 1/4, 12);//2 - oct lado do triangulo: 8.84
         addArm(mobileTopLayer, 21.7, -16.3, 0, -1/4, 15);//4 - lado: 10.6
         addArm(mobileTopLayer, 35.84, -19.84, 0, 1/4, 25);//lado:17.68 -8.84
-
-
-
 
         addArm(mobileMiddleLayer, 0, 0, 0, 0, 10);//
         addArm(mobileMiddleLayer, 0, -5, 0, 1/2, 30);//
@@ -62,30 +62,17 @@ class Mobile extends THREE.Object3D{
         this.mobileTopLayer = mobileTopLayer;
         this.mobileMiddleLayer = mobileMiddleLayer;
         this.mobileBottomLayer = mobileBottomLayer;
-this.setPositionBottom(-45.18, -24.9, 0);
-this.setPositionMiddle(44.68, -33.6, 0);
-        this.setPositionTop(0, 46, 0);
 
-
+        this.setPosition(this.mobileBottomLayer, -45.18, -24.9, 0);
+        this.setPosition(this.mobileMiddleLayer, 44.68, -33.6, 0);
+        this.setPosition(this.mobileTopLayer, 0, 46, 0);
 
     }
 
-    setPositionTop(x,y,z){
-        this.mobileTopLayer.position.x = x;
-        this.mobileTopLayer.position.y = y;
-        this.mobileTopLayer.position.z = z;
-    }
-
-    setPositionMiddle(x,y,z){
-        this.mobileMiddleLayer.position.x = x;
-        this.mobileMiddleLayer.position.y = y;
-        this.mobileMiddleLayer.position.z = z;
-    }
-
-    setPositionBottom(x,y,z){
-        this.mobileBottomLayer.position.x = x;
-        this.mobileBottomLayer.position.y = y;
-        this.mobileBottomLayer.position.z = z;
+    setPosition(type, x,y,z){
+        type.position.x = x;
+        type.position.y = y;
+        type.position.z = z;
     }
 
 

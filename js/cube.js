@@ -11,6 +11,9 @@ class Cube extends THREE.Object3D{
         mesh.rotation.set(0, 0, Math.PI*rad);
         mesh.position.set(x, y, z);
 
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
 }

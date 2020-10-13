@@ -10,21 +10,21 @@ function addFigure(obj, x, y, z, rad, geometry, material){
 
 // TYPES OF FIGURES
 
-function addArm(obj, x, y, z, rad, len){
+/*function addArm(obj, x, y, z, rad, len){
 
     material = new THREE.MeshBasicMaterial({ color: 0x00FA9A, wireframe: true });
     geometry = new THREE.CylinderGeometry(0.2, 0.2, len);
     addFigure(obj, x, y, z, rad, geometry, material);
 
-}
+}*/
 
-function addOct(obj, x, y, z, len, detail, color){
+/*function addOct(obj, x, y, z, len, detail, color){
 
     material = new THREE.MeshBasicMaterial({ color: color, wireframe: true });
     geometry = new THREE.OctahedronGeometry(len, detail);
     addFigure(obj, x, y, z, 0, geometry, material);
 
-}
+}*/
 
 function addCube(obj, x, y, z, len, height, color){
 
@@ -41,7 +41,7 @@ function addCylinder(obj, x, y, z, len, radius, color){
     addFigure(obj, x, y, z, 0, geometry, material);
 }
 
-function addSphere(obj, x, y, z, radius, color){
+/*function addSphere(obj, x, y, z, radius, color){
 
     material = new THREE.MeshBasicMaterial({ color: color, wireframe: true });
     geometry = new THREE.SphereGeometry(radius, 15, 15);
@@ -62,4 +62,4 @@ function addTorusKnot(obj, x, y, z,color){
     material = new THREE.MeshBasicMaterial({ color: color, wireframe: true });
     geometry = new THREE.TorusKnotGeometry(4, 2, 64, 8, 2, 3);
     addFigure(obj, x, y, z, 0, geometry, material);
-}
+}*/

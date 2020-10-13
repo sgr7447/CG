@@ -12,8 +12,8 @@ class Cylinder extends THREE.Object3D{
         mesh.position.set(x, y, z);
         obj.add(mesh);
 
-        var len = len;
-        var rad = rad;
+        this.len = len;
+        this.rad = rad;
 
     }
 

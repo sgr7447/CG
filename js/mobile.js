@@ -58,7 +58,7 @@ class Mobile extends THREE.Object3D{
         17 addArm(mobileMiddleLayer, -30, -16.9, 0, 0, 8);//7
         20 addArm(mobileMiddleLayer, -15, -24.9, 0, 0, 8);*/
         var arm12_len = 10;
-        var arm12 = new Cylinder(mobileMiddleLayer, 0, 0, 0, 0,arm12_len, armsRadius, armsColor);
+        var arm12 = new Cylinder(mobileMiddleLayer, x, y, z, 0, arm12_len, armsRadius, armsColor);
         //mobileMiddleLayer.add(arm12);
         var arm13_len = 30;
         var arm13 = new Cylinder(arm12, arm12.x, arm12.y - arm12.len/2 , z, 1/2, arm13_len, armsRadius, armsColor);
@@ -74,8 +74,8 @@ class Mobile extends THREE.Object3D{
         var arm18 = new Cylinder(arm16, arm16.x + arm16.len/2, arm16.y - arm18_len/2, z, 0, arm18_len, armsRadius, armsColor);
         var arm19_len = 30;
         var arm19 = new Cylinder(arm17, arm17.x, arm17.y - arm17.len/2, z, 1/2, arm19_len, armsRadius, armsColor);
-        var arm20_len = 8;
-        var arm20 = new Cylinder(arm17, arm17.x + arm17_len/2, arm17.y - arm20_len/2 , z, 0, arm20_len, armsRadius, armsColor);
+        //var arm20_len = 8;
+        //var arm20 = new Cylinder(arm17, arm17.x + arm17_len/2, arm17.y - arm20_len/2 , z, 0, arm20_len, armsRadius, armsColor);
 
         /*
         21 addArm(mobileBottomLayer, 0, 0, 0, 0, 8);//8
@@ -83,7 +83,7 @@ class Mobile extends THREE.Object3D{
         23 addArm(mobileBottomLayer, 5.3, -9.3, 0, 1/4, 15);//8
         25 addArm(mobileBottomLayer, -15.9, -19.9, 0, -1/4, 15);//10
         24 addArm(mobileBottomLayer, -5.3, -19.9, 0, 1/4, 15);//9*/
-        var arm21_len = 8;
+        /*var arm21_len = 8;
         var arm21 = new Cylinder(mobileBottomLayer, 0, 0, z, 0, arm21_len, armsRadius, armsColor);
         var arm22_len = 15;
         var arm22 = new Cylinder(arm21, arm21.x - arm22_len*Math.sin(Math.PI/4)/2, arm21.y  - arm21.len/2 - arm22_len*Math.cos(Math.PI/4)/2, z, -1/4, arm22_len, armsRadius, armsColor);
@@ -124,7 +124,7 @@ class Mobile extends THREE.Object3D{
         this.time = new THREE.Clock();
         this.delta;
 
-        mobileMiddleLayer.add(mobileBottomLayer);
+        //mobileMiddleLayer.add(mobileBottomLayer);
         mobileTopLayer.add(mobileMiddleLayer);
         this.add(mobileTopLayer);
 
@@ -134,9 +134,10 @@ class Mobile extends THREE.Object3D{
         this.mobileMiddleLayer = mobileMiddleLayer;
         this.mobileBottomLayer = mobileBottomLayer;
 
-        this.setPosition(this.mobileBottomLayer, arm19.x - arm19_len/2, arm19.y - arm21_len/2, 0);
-        this.setPosition(this.mobileMiddleLayer, arm11.x + arm11_len*Math.sin(Math.PI/4)/2, 0, 0);
+        //this.setPosition(this.mobileBottomLayer, arm19.x - arm19_len/2, arm19.y - arm21_len/2, 0);
         this.setPosition(this.mobileTopLayer, 0, 46, 0);
+
+        this.setPosition(this.mobileMiddleLayer, arm11.x + arm11_len*Math.sin(Math.PI/4)/2, arm11.y - arm11_len*Math.cos(Math.PI/4)/2 - arm12_len/2, 0);
 
     }
 

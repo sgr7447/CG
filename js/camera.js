@@ -6,7 +6,7 @@ class Camera extends THREE.OrthographicCamera{
         var aspectRatio = (aspect * 3);
         var width = window.innerWidth / aspectRatio;
         var height = window.innerHeight / aspectRatio;
-        super(-width/2, width/2, height/2, -height/2, 1, 1000);
+        super(-width/2, width/2, height/2, -height/2, 1, 1000); //default
         this.view1();
         this.onResize();
     }
@@ -26,7 +26,7 @@ class Camera extends THREE.OrthographicCamera{
 
         this.num = 2;
         this.onResize();
-        this.position.set(0, window.innerHeight/2, 0);
+        this.position.set(0, -window.innerHeight/2, 0);
         this.lookAt(scene.position);
     }
 
@@ -35,7 +35,7 @@ class Camera extends THREE.OrthographicCamera{
 
         this.num = 3;
         this.onResize();
-        this.position.set(window.innerHeight/2, 0, 0);
+        this.position.set(-window.innerHeight/2, 0, 0);
         this.lookAt(scene.position);
     }
 

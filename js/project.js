@@ -22,7 +22,6 @@ function createScene() {
     createMobile(0,0,0);
     scene.add(mobile);
 
-
 }
 
 function createCamera() {
@@ -84,8 +83,24 @@ function onKeyDown(e) {
         case 67: //C or c - Bottom spin negative
             mobile.spinBottomNeg();
             break;
+
+        case 39:
+            mobile.movingRight();
+            break;
+
+        case 37:
+            mobile.movingLeft();
+            break;
+
+        case 38:
+            mobile.movingFront();
+            break;
+
+        case 40:
+            mobile.movingBack();
+            break;
+        }
     }
-}
 
 function onKeyUp(e) {
     'use strict';
@@ -114,6 +129,22 @@ function onKeyUp(e) {
 
         case 67: //C or c - Bottom stops spin negative
             mobile.stopBottomNeg();
+            break;
+
+        case 39:
+            mobile.stopRight();
+            break;
+
+        case 37:
+            mobile.stopLeft();
+            break;
+
+        case 38:
+            mobile.stopFront();
+            break;
+
+        case 40:
+            mobile.stopBack();
             break;
 
     }

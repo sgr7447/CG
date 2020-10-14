@@ -23,23 +23,30 @@ class Mobile extends THREE.Object3D{
         10 addArm(mobileTopLayer, 21.7, -16.3, 0, -1/4, 15);//4 - lado: 10.6
         11 addArm(mobileTopLayer, 35.84, -19.84, 0, 1/4, 25);//lado:17.68 -8.84*/
 
-        //(x, y, z, rad, len, radius, colour)
-        var arm1 = new Cylinder(mobileTopLayer, 0, 0, 0, 0, 12, 0.2, armsColor);
-        //mobileTopLayer.add(arm1);
-        var arm2 = new Cylinder(mobileTopLayer, arm1.posx, arm1.posy - arm1.len/2, z, 1/2, 20, armsRadius, armsColor);
+        //(obj, x, y, z, rad, len, radius, colour)
+        var arm1_len = 12;
+        var arm1 = new Cylinder(mobileTopLayer, x, y, z, 0, arm1_len, armsRadius, armsColor);
+        var arm2_len = 54
+        var arm2 = new Cylinder(arm1, arm1.x, arm1.y - arm1.len/2, z, 1/2, arm2_len, armsRadius, armsColor);
         var arm3_len = 10;
-        var arm3 = new Cylinder(mobileTopLayer, arm2.posx - arm2.len/2, arm2.posy -arm3_len/2 , z, 0, arm3_len, armsRadius, armsColor); //NESTE CASO
-        //mobileTopLayer.add(arm2);
+        var arm3 = new Cylinder(arm2, arm2.x - arm2.len/2, arm2.y -arm3_len/2 , z, 0, arm3_len, armsRadius, armsColor); //NESTE CASO
+        var arm4_len = 28
+        var arm4 = new Cylinder(arm3, arm3.x, arm3.y - arm3.len/2, z, 1/2, arm4_len, armsRadius, armsColor);
+        var arm5_len = 5;
+        var arm5 = new Cylinder(arm4, arm4.x - arm4.len/2, arm4.y - arm5_len/2, z, 0, arm5_len, armsRadius, armsColor);
+        var arm6_len = 12;
+        var arm6 = new Cylinder(arm5, arm5.x - arm6_len*Math.sin(Math.PI/4)/2, arm5.y  - arm5.len/2 - arm6_len*Math.cos(Math.PI/4)/2, z, -1/4, arm6_len, armsRadius, armsColor);
+        var arm7_len = 12;
+        var arm7 = new Cylinder(arm6, arm6.x + arm6_len*Math.sin(Math.PI/4), arm6.y, z, 1/4, arm7_len, armsRadius, armsColor);
+        var arm8_len = 12;
+        var arm8 = new Cylinder(arm4, arm4.x + arm4.len/2, arm4.y - arm8_len/2, z, 0, arm8_len, armsRadius, armsColor);
+        var arm9_len = 5;
+        var arm9 = new Cylinder(arm2, arm2.x + arm2.len/2, arm2.y - arm9_len/2, z, 0, arm9_len, armsRadius, armsColor);
+        var arm10_len = 40;
+        var arm10 = new Cylinder(arm9, arm9.x - arm10_len*Math.sin(Math.PI/4)/2, arm9.y  - arm9.len/2 - arm10_len*Math.cos(Math.PI/4)/2, z, -1/4, arm10_len, armsRadius, armsColor);
+        var arm11_len = 25;
+        var arm11 = new Cylinder(arm9, arm10.x + arm10_len*Math.sin(Math.PI/4)/2 + arm11_len*Math.sin(Math.PI/4)/2, arm9.y  - arm9.len/2 - arm11_len*Math.cos(Math.PI/4)/2, z, 1/4, arm11_len, armsRadius, armsColor);
 
-
-        /*var arm4 = new Cylinder(mobileTopLayer, arm3.position.x, arm3.position.y - arm3.len/2, z, 1/2, 28, armsRadius, armsColor);
-        var arm5 = new Cylinder(mobileTopLayer, arm4.position.x - arm4.len/2, arm4.position.y , z, 0, 5, armsRadius, armsColor);
-        var arm6 = new Cylinder(mobileTopLayer, arm5.position.x - arm5.position.x*Math.sin(Math.PI/4)/2, arm5.position.y  - arm5.len/2 - arm5.position.x*Math.cos(Math.PI/4)/2, z, -1/4, 12, armsRadius, armsColor);
-        var arm7 = new Cylinder(mobileTopLayer, arm6.position.x + arm6.position.x*Math.sin(Math.PI/4), arm6.y, z, 1/4, 12, armsRadius, armsColor);
-        var arm8 = new Cylinder(mobileTopLayer, arm4.position.x + arm4.len/2, arm4.position.y , z, 0, 12, armsRadius, armsColor);
-        var arm9 = new Cylinder(mobileTopLayer, arm2.position.x + arm2.len/2, arm2.position.y , z, 0, 5, armsRadius, armsColor);
-        var arm10 = new Cylinder(mobileTopLayer, arm9.position.x, arm9.position.y - arm9.len/2, z, -1/4, 15, armsRadius, armsColor);
-        var arm11 = new Cylinder(mobileTopLayer, arm9.position.x, arm9.position.y - arm9.len/2 , z, 1/4, 25, armsRadius, armsColor);
         /*
         12 addArm(mobileMiddleLayer, 0, 0, 0, 0, 10);//
         13 addArm(mobileMiddleLayer, 0, -5, 0, 1/2, 30);//
@@ -50,15 +57,25 @@ class Mobile extends THREE.Object3D{
         19 addArm(mobileMiddleLayer, -30, -20.9, 0, 1/2, 30);//
         17 addArm(mobileMiddleLayer, -30, -16.9, 0, 0, 8);//7
         20 addArm(mobileMiddleLayer, -15, -24.9, 0, 0, 8);*/
-        /*var arm12 = new Cylinder(mobileMiddleLayer, 0, 0, z, 0, 10, armsRadius, armsColor);
-        var arm13 = new Cylinder(mobileMiddleLayer, arm12.position.x, arm12.position.y - arm12.len/2 , z, 1/2, 30, armsRadius, armsColor);
-        var arm14 = new Cylinder(mobileMiddleLayer, arm13.position.x - arm13.len/2, arm13.position.y , z, 0, 8, armsRadius, armsColor);
-        var arm15 = new Cylinder(mobileMiddleLayer, arm13.position.x - arm13.len/2, arm13.position.y , z, 0, 5, armsRadius, armsColor);
-        var arm16 = new Cylinder(mobileMiddleLayer, arm14.position.x, arm14.position.y  - arm14.len/2, z, 1/2, 30, armsRadius, armsColor);
-        var arm17 = new Cylinder(mobileMiddleLayer, arm16.position.x - arm16.len/2, arm16.position.y , z, 0, 8, armsRadius, armsColor);
-        var arm18 = new Cylinder(mobileMiddleLayer, arm16.position.x + arm16.len/2, arm16.position.y , z, 0, 30, armsRadius, armsColor);
-        var arm19 = new Cylinder(mobileMiddleLayer, arm17.position.x, arm17.position.y - arm17.len/2, z, 1/2, 30, armsRadius, armsColor);
-        var arm20 = new Cylinder(mobileMiddleLayer, arm17.position.x, arm17.position.y - arm17.len/2 , z, 0, 8, armsRadius, armsColor);
+        var arm12_len = 10;
+        var arm12 = new Cylinder(arm11, arm11.x + arm11_len*Math.sin(Math.PI/4)/2, 0, z, 0, arm12_len, armsRadius, armsColor);
+        mobileMiddleLayer.add(arm12);
+        var arm13_len = 30;
+        var arm13 = new Cylinder(arm12, arm12.x, arm12.y - arm12.len/2 , z, 1/2, arm13_len, armsRadius, armsColor);
+        var arm14_len = 8;
+        var arm14 = new Cylinder(arm13, arm13.x - arm13.len/2, arm13.y - arm14_len/2, z, 0, arm14_len, armsRadius, armsColor);
+        var arm15_len = 5;
+        var arm15 = new Cylinder(arm13, arm13.x + arm13.len/2, arm13.y - arm15_len/2, z, 0, arm15_len, armsRadius, armsColor);
+        var arm16_len = 30;
+        var arm16 = new Cylinder(arm14, arm14.x, arm14.y  - arm14.len/2, z, 1/2, arm16_len, armsRadius, armsColor);
+        var arm17_len = 8;
+        var arm17 = new Cylinder(arm16, arm16.x - arm16.len/2, arm16.y - arm17_len/2, z, 0, arm17_len, armsRadius, armsColor);
+        var arm18_len = 30;
+        var arm18 = new Cylinder(arm16, arm16.x + arm16.len/2, arm16.y - arm18_len/2, z, 0, arm18_len, armsRadius, armsColor);
+        var arm19_len = 30;
+        var arm19 = new Cylinder(arm17, arm17.x, arm17.y - arm17.len/2, z, 1/2, arm19_len, armsRadius, armsColor);
+        var arm20_len = 8;
+        var arm20 = new Cylinder(arm17, arm17.x + arm17_len/2, arm17.y - arm20_len/2 , z, 0, arm20_len, armsRadius, armsColor);
 
         /*
         21 addArm(mobileBottomLayer, 0, 0, 0, 0, 8);//8
@@ -66,12 +83,16 @@ class Mobile extends THREE.Object3D{
         23 addArm(mobileBottomLayer, 5.3, -9.3, 0, 1/4, 15);//8
         25 addArm(mobileBottomLayer, -15.9, -19.9, 0, -1/4, 15);//10
         24 addArm(mobileBottomLayer, -5.3, -19.9, 0, 1/4, 15);//9*/
-
-        /*var arm21 = new Cylinder(mobileBottomLayer, 0, 0, z, 0, 8, armsRadius, armsColor);
-        var arm22 = new Cylinder(mobileBottomLayer, arm21.position.x, arm21.position.y - arm21.len/2, z, -1/4, 15, armsRadius, armsColor);
-        /*var arm23 = new Cylinder(mobileBottomLayer, arm16.position.x + arm16.len/2, arm16.position.y , z, 0, 30, armsRadius, armsColor);
-        var arm24 = new Cylinder(mobileBottomLayer, arm17.position.x, arm17.position.y - arm17.len/2, z, 1/2, 30, armsRadius, armsColor);
-        var arm25 = new Cylinder(mobileBottomLayer, arm17.position.x, arm17.position.y - arm17.len/2 , z, 0, 8, armsRadius, armsColor);*/
+        var arm21_len = 8;
+        var arm21 = new Cylinder(arm19, arm19.x - arm19_len/2, arm19.y - arm21_len/2, z, 0, arm21_len, armsRadius, armsColor);
+        var arm22_len = 15;
+        var arm22 = new Cylinder(arm21, arm21.x + arm21_len*Math.sin(Math.PI/4)/2 + arm22_len*Math.sin(Math.PI/4)/2, arm21.y  - arm21.len/2 - arm22_len*Math.cos(Math.PI/4)/2, z, -1/4, arm22_len, armsRadius, armsColor);
+        var arm23_len = 30;
+        var arm23 = new Cylinder(arm16, arm16.x + arm16.len/2, arm16.y , z, 0, arm23_len, armsRadius, armsColor);
+        var arm24_len = 30;
+        var arm24 = new Cylinder(arm17, arm17.x, arm17.y - arm17.len/2, z, 1/2, arm24_len, armsRadius, armsColor);
+        var arm25_len = 8;
+        var arm25 = new Cylinder(arm17, arm17.x, arm17.y - arm17.len/2 , z, 0, arm25_len, armsRadius, armsColor);
 
 
         /*var shape1 =
@@ -93,12 +114,18 @@ class Mobile extends THREE.Object3D{
         this.bottomLayerPos = false;
         this.bottomLayerNeg = false;
 
+        //MOVE OR NOT
+        this.moveRight = false;
+        this.moveLeft = false;
+        this.moveFront = false;
+        this.moveBack = false;
+
         //TIME
         this.time = new THREE.Clock();
         this.delta;
 
-        //mobileMiddleLayer.add(mobileBottomLayer);
-        //mobileTopLayer.add(mobileMiddleLayer);
+        mobileMiddleLayer.add(arm19);
+        mobileTopLayer.add(arm12);
         this.add(mobileTopLayer);
 
 
@@ -109,7 +136,7 @@ class Mobile extends THREE.Object3D{
 
         //this.setPosition(this.mobileBottomLayer, -45.18, -24.9, 0);
         //this.setPosition(this.mobileMiddleLayer, 44.68, -33.6, 0);
-        //this.setPosition(this.mobileTopLayer, 0, 46, 0);
+        this.setPosition(this.mobileTopLayer, 0, 46, 0);
 
     }
 
@@ -118,6 +145,59 @@ class Mobile extends THREE.Object3D{
         type.position.y = y;
         type.position.z = z;
     }
+
+    // MOVING WITH ARROWS
+
+    movingRight(){
+        this.moveRight = true;
+    }
+
+    movingLeft(){
+        this.moveLeft = true;
+    }
+
+    movingFront(){
+        this.moveFront = true;
+    }
+
+    movingBack(){
+        this.moveBack = true;
+    }
+
+    stopRight(){
+        this.moveRight = false;
+    }
+
+    stopLeft(){
+        this.moveLeft = false;
+    }
+
+    stopFront(){
+        this.moveFront = false;
+    }
+
+    stopBack(){
+        this.moveBack = false;
+    }
+
+    xxMovement(){
+        if ( this.moveRight && !this.moveLeft ) return 1;
+        else if ( this.moveLeft && !this.moveRight ) return -1;
+        else return 0;
+    }
+
+    zzMovement(){
+        if ( this.moveFront && !this.moveBack ) return 1;
+        else if ( this.moveBack && !this.moveFront ) return -1;
+        else return 0;
+    }
+
+    move(){
+        var speed = 20;
+        this.translateX(this.delta * speed * this.xxMovement());
+        this.translateZ(this.delta * speed * this.zzMovement());
+    }
+
 
 
     // SPIN
@@ -191,6 +271,7 @@ class Mobile extends THREE.Object3D{
         this.spin(this.mobileTopLayer, this.topLayerNeg, this.topLayerPos, 1, 0);
         this.spin(this.mobileMiddleLayer, this.middleLayerNeg, this.middleLayerPos, 2, 10);
         this.spin(this.mobileBottomLayer, this.bottomLayerNeg, this.bottomLayerPos, 4, 0);
+        this.move();
     }
 
 }

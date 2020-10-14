@@ -10,13 +10,17 @@ class Cylinder extends THREE.Object3D{
         mesh = new THREE.Mesh(geometry, material);
         mesh.rotation.set(0, 0, Math.PI*rad);
         mesh.position.set(x, y, z);
-        obj.add(mesh);
+
+        //adds geometry to class Cylinder and adds Cylinder to obj
+        this.add(mesh);
+        obj.add(this);
 
         this.len = len;
         this.rad = rad;
-        this.posx = x;
-        this.posy = y;
-        this.posz = z;
+
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
 }

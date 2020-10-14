@@ -84,7 +84,7 @@ class Mobile extends THREE.Object3D{
         25 addArm(mobileBottomLayer, -15.9, -19.9, 0, -1/4, 15);//10
         24 addArm(mobileBottomLayer, -5.3, -19.9, 0, 1/4, 15);//9*/
         var arm21_len = 8;
-        var arm21 = new Cylinder(arm19, arm19.x - arm19_len/2, arm19.y - arm21_len/2, z, 0, arm21_len, armsRadius, armsColor);
+        var arm21 = new Cylinder(mobileBottomLayer, 0, 0, z, 0, arm21_len, armsRadius, armsColor);
         var arm22_len = 15;
         var arm22 = new Cylinder(arm21, arm21.x - arm22_len*Math.sin(Math.PI/4)/2, arm21.y  - arm21.len/2 - arm22_len*Math.cos(Math.PI/4)/2, z, -1/4, arm22_len, armsRadius, armsColor);
         var arm23_len = 30;

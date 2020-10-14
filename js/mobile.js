@@ -24,10 +24,12 @@ class Mobile extends THREE.Object3D{
         11 addArm(mobileTopLayer, 35.84, -19.84, 0, 1/4, 25);//lado:17.68 -8.84*/
 
         //(x, y, z, rad, len, radius, colour)
-        var arm1 = new Cylinder(mobileTopLayer, 0, 0, 0, 0, 40, 0.2, armsColor);
+        var arm1 = new Cylinder(mobileTopLayer, 0, 0, 0, 0, 12, 0.2, armsColor);
         //mobileTopLayer.add(arm1);
-        var arm2 = new Cylinder(arm1, arm1.position.x, arm1.position.y - arm1.len/2, z, 1/2, 54, armsRadius, armsColor);
-        var arm3 = new Cylinder(arm2, arm2.position.x - arm2.len, arm2.position.y, z, 0, 5, armsRadius, armsColor);
+        var arm2 = new Cylinder(mobileTopLayer, arm1.posx, arm1.posy - arm1.len/2, z, 1/2, 20, armsRadius, armsColor);
+        var arm3_len = 10;
+        var arm3 = new Cylinder(mobileTopLayer, arm2.posx - arm2.len/2, arm2.posy -arm3_len/2 , z, 0, arm3_len, armsRadius, armsColor); //NESTE CASO
+        //mobileTopLayer.add(arm2);
 
 
         /*var arm4 = new Cylinder(mobileTopLayer, arm3.position.x, arm3.position.y - arm3.len/2, z, 1/2, 28, armsRadius, armsColor);
@@ -107,7 +109,7 @@ class Mobile extends THREE.Object3D{
 
         //this.setPosition(this.mobileBottomLayer, -45.18, -24.9, 0);
         //this.setPosition(this.mobileMiddleLayer, 44.68, -33.6, 0);
-        this.setPosition(this.mobileTopLayer, 0, 46, 0);
+        //this.setPosition(this.mobileTopLayer, 0, 46, 0);
 
     }
 

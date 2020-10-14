@@ -14,7 +14,9 @@ class Cylinder extends THREE.Object3D{
 
         this.len = len;
         this.rad = rad;
-
+        this.posx = x;
+        this.posy = y;
+        this.posz = z;
     }
 
 }

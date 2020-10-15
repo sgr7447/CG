@@ -4,13 +4,12 @@ class Cube extends THREE.Object3D{
 
         super();
 
-        var material = new THREE.MeshBasicMaterial({ color: color, wireframe: true });
+        var material = new THREE.MeshBasicMaterial({ color: color, wireframe: false });
         var geometry = new THREE.BoxGeometry(len, height, len);
 
         mesh = new THREE.Mesh(geometry, material);
         mesh.rotation.set(0, 0, Math.PI*rad);
         mesh.position.set(x, y, z);
-        //adds geometry to class Cube and adds Cube to obj
         this.add(mesh);
         obj.add(this);
 

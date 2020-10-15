@@ -8,7 +8,7 @@ var mobile;
 function createMobile(x, y, z){
     'use strict';
 
-    material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: true});
+    material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: false});
     mobile = new Mobile(x, y, z);
 
 }

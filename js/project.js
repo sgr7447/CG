@@ -164,6 +164,8 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
+    //aspect = window.innerWidth / window.innerHeight;
+
     createScene();
     createCamera();
 

@@ -8,6 +8,7 @@ class Camera extends THREE.OrthographicCamera{
 
         //delimita os campos da camara
         super(-width/2, width/2, height/2, -height/2);
+        this.aspect = aspect;
         this.view1();
         this.zoom = 2;
         this.onResize();
@@ -43,11 +44,11 @@ class Camera extends THREE.OrthographicCamera{
 
         if (window.innerHeight > 0 && window.innerWidth > 0) {
 
-            this.zoom = 2;
-            var aspect = window.innerWidth / window.innerHeight;
+            //this.zoom = 2;
+            //this.aspect = window.innerWidth / window.innerHeight;
 
-            var width = window.innerWidth / aspect;
-            var height = window.innerHeight / aspect;
+            var width = window.innerWidth / this.aspect;
+            var height = window.innerHeight / this.aspect;
 
             this.left = -width/2;
             this.right = width/2;

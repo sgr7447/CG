@@ -145,68 +145,68 @@ class Mobile extends THREE.Object3D{
         var shape_radius = 4;
         var shape_x = arm6.x - arm6_len*Math.sin(Math.PI/4)/2;
         var shape_y = arm6.y - arm6_len*Math.cos(Math.PI/4)/2 - shape_len/2;
-        var shape = new Cylinder(arm6, shape_x, shape_y, z, 0, shape_len, shape_radius, 0x07EEAC);
+        var shape1 = new Cylinder(arm6, shape_x, shape_y, z, 0, shape_len, shape_radius, 0x07EEAC);
 
         // shape 2
         shape_len = 10;
         var shape_height = 10;
         shape_x = arm7.x + arm7_len*Math.sin(Math.PI/4)/2;
         shape_y = arm7.y - arm7_len*Math.cos(Math.PI/4)/2 - shape_len/2;
-        shape = new Cube(arm7, shape_x, shape_y, z, 0, shape_len, shape_height, 0xF946C8);
+        var shape2 = new Cube(arm7, shape_x, shape_y, z, 0, shape_len, shape_height, 0xF946C8);
 
         // shape 3
         shape_len = 10;
         shape_radius = 2;
         shape_x = arm8.x;
         shape_y = arm8.y + arm8_len/2 - shape_radius/2;
-        shape = new Cylinder(arm8, shape_x, shape_y, z, 1/2, shape_len, shape_radius, 0xFF6100);
-        shape.scale.set(1,2,1);
+        var shape3 = new Cylinder(arm8, shape_x, shape_y, z, 1/2, shape_len, shape_radius, 0xFF6100);
+        shape3.scale.set(1,2,1);
 
         // shape 4
         shape_len = 20;
         shape_height = 20;
         shape_x = arm10.x - arm10_len*Math.sin(Math.PI/4)/2;
         shape_y = arm10.y - arm10_len*Math.cos(Math.PI/4)/2 - shape_len/2;
-        shape = new Cube(arm10, shape_x, shape_y, z, 0, shape_len, shape_height, 0xF946C8);
+        var shape4 = new Cube(arm10, shape_x, shape_y, z, 0, shape_len, shape_height, 0xF946C8);
 
         // shape 5
         shape_len = 7;
         shape_radius = 5;
         shape_x = arm25.x - arm25_len*Math.sin(Math.PI/4)/2;
         shape_y = arm25.y - arm25_len*Math.cos(Math.PI/4)/2 - shape_radius;
-        shape = new Cylinder(arm25, shape_x, shape_y, z, 1/2, shape_len, shape_radius, 0x07EEAC);
+        var shape5 = new Cylinder(arm25, shape_x, shape_y, z, 1/2, shape_len, shape_radius, 0x07EEAC);
 
         // shape 6
         shape_len = 5;
         shape_radius = 5;
         shape_x = arm24.x + arm24_len*Math.sin(Math.PI/4)/2;
         shape_y = arm24.y - arm24_len*Math.cos(Math.PI/4)/2 - shape_len/2;
-        shape = new Cylinder(arm24, shape_x, shape_y, z, 0, shape_len, shape_radius, 0xFF6100);
+        var shape6 = new Cylinder(arm24, shape_x, shape_y, z, 0, shape_len, shape_radius, 0xFF6100);
 
         // shape 7
         shape_len = 5;
         shape_x = arm23.x + arm23_len*Math.sin(Math.PI/4)/2;
         shape_y = arm23.y - arm23_len*Math.cos(Math.PI/4)/2 - shape_len/2;
-        shape = new Cube(arm23, shape_x, shape_y, z, 0, shape_len, shape_len, 0xF946C8);
+        var shape7 = new Cube(arm23, shape_x, shape_y, z, 0, shape_len, shape_len, 0xF946C8);
 
         // shape 8
         shape_len = 10;
         shape_height = 20
         shape_x = arm20.x;
         shape_y = arm20.y - arm20_len/2 - shape_len/2;
-        shape = new Cube(arm20, shape_x, shape_y, z, 1/2, shape_len, shape_height, 0x07EEAC);
+        var shape8 = new Cube(arm20, shape_x, shape_y, z, 1/2, shape_len, shape_height, 0x07EEAC);
 
         // shape 9
         shape_len = 20;
         shape_x = arm18.x;
         shape_y = arm18.y - arm18_len/2 - Math.sqrt(shape_len*shape_len/2);
-        shape = new Cube(arm18, shape_x, shape_y, z, 1/4, shape_len, shape_len, 0xFF6100);
+        var shape9 = new Cube(arm18, shape_x, shape_y, z, 1/4, shape_len, shape_len, 0xFF6100);
 
         // shape 10
         shape_len = 7;
         shape_x = arm15.x;
         shape_y = arm15.y - arm15_len/2- Math.sqrt(shape_len*shape_len/2);
-        shape = new Cube(arm15, shape_x, shape_y, z, 1/4, shape_len, shape_len, 0xF946C8);
+        var shape10 = new Cube(arm15, shape_x, shape_y, z, 1/4, shape_len, shape_len, 0xF946C8);
 
         //SPIN OR NOT
         this.topLayerPos = false;

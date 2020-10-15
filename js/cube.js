@@ -10,6 +10,7 @@ class Cube extends THREE.Object3D{
         mesh = new THREE.Mesh(geometry, material);
         mesh.rotation.set(0, 0, Math.PI*rad);
         mesh.position.set(x, y, z);
+        //adds geometry to class Cube and adds Cube to obj
         this.add(mesh);
         obj.add(this);
 

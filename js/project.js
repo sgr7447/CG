@@ -26,6 +26,7 @@ function createScene() {
 
 function createCamera() {
     'use strict';
+
     camera = new Camera();
 }
 

@@ -45,7 +45,7 @@ class Camera extends THREE.OrthographicCamera{
         if (window.innerHeight > 0 && window.innerWidth > 0) {
 
             //this.zoom = 2;
-            //this.aspect = window.innerWidth / window.innerHeight;
+            //var aspect = window.innerWidth / window.innerHeight;
 
             var width = window.innerWidth / this.aspect;
             var height = window.innerHeight / this.aspect;

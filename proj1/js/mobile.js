@@ -292,6 +292,8 @@ class Mobile extends THREE.Object3D{
         else return 0;
     }
 
+    //vai para o update
+    //delta para manter o movimento constante, dar velocidade, dependendo do resultado 1 ou -1 anda para a frente/Esq ou para tras/dir
     move(){
         var speed = 20;
         this.translateX(this.delta * speed * this.xxMovement());

@@ -1,15 +1,15 @@
 /*global THREE, requestAnimationFrame, console*/
 
-var camera, scene, renderer;
+var orthographicCamera, scene, renderer;
 var geometry, material, mesh;
-var mobile;
+var poolTable;
 
 
-function createMobile(x, y, z){
+function createPoolTable(x, y, z){
     'use strict';
 
     material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: false});
-    mobile = new Mobile(x, y, z);
+    poolTable = new PoolTable(x, y, z);
 
 }
 
@@ -19,20 +19,20 @@ function createScene() {
     scene = new THREE.Scene();
     scene.add(new THREE.AxisHelper(10));
 
-    createMobile(0,0,0);
-    scene.add(mobile);
+    createPoolTable(0,0,0);
+    scene.add(poolTable);
 
 }
 
 function createCamera() {
     'use strict';
 
-    camera = new Camera();
+    orthographicCamera = new OrthographicCamera();
 }
 
 function onResize() {
     'use strict';
-    camera.onResize();
+    orthographicCamera.onResize();
 
 }
 
@@ -41,31 +41,43 @@ function onKeyDown(e) {
 
     switch (e.keyCode) {
 
-        case 49: //key 1 - front
-            camera.view1();
+        case 49: //key 1 - top orthographic camera
+            orthographicCamera.view1();
             break;
 
-        case 50: //key 2 - top
-            camera.view2();
+        case 50: //para apagar FRONT
+            orthographicCamera.view2();
             break;
 
-        case 51: //key 3 - side
-            camera.view3();
+        case 51: //para apagar SIDE
+            orthographicCamera.view3();
             break;
 
-        case 52: //key 4 - solid or not
-            scene.traverse( function (node) {
-                if (node instanceof THREE.Mesh) {
-                    node.material.wireframe = !node.material.wireframe;
-                }
-            } );
+        /*case 50: //key 2 - perspective camera
             break;
 
-        case 81: //Q or q - Top spin postive
-            mobile.spinTopPos();
+        case 51: //key 3 - mobile perspective camera
+            break;*/
+
+        case 52: //key 4 - taco1
             break;
 
-        case 87: //W or w - Top spin negative
+        case 53: //key 5 - taco2
+            break;
+
+        case 54: //key 6 - taco3
+            break;
+        case 55: //key 7 - taco4
+            break;
+        case 56: //key 8 - taco5
+            break;
+        case 57: //key 9 - taco6
+            break;
+
+        case 20: //shoot -space
+            break;
+
+        /*case 87: //W or w - Top spin negative
             mobile.spinTopNeg();
             break;
 
@@ -99,11 +111,11 @@ function onKeyDown(e) {
 
         case 40:
             mobile.movingBack();
-            break;
+            break;*/
         }
     }
 
-function onKeyUp(e) {
+/*function onKeyUp(e) {
     'use strict';
 
     switch (e.keyCode) {
@@ -149,11 +161,11 @@ function onKeyUp(e) {
             break;
 
     }
-}
+}*/
 
 function render() {
     'use strict';
-    renderer.render(scene, camera);
+    renderer.render(scene, orthographicCamera);
 }
 
 function init() {
@@ -172,14 +184,14 @@ function init() {
     render();
 
     window.addEventListener("keydown", onKeyDown);
-    window.addEventListener("keyup", onKeyUp);
+    //window.addEventListener("keyup", onKeyUp);
     window.addEventListener("resize", onResize);
 }
 
 function animate() {
     'use strict';
 
-    mobile.update();
+    poolTable.update();
 
     render();
     requestAnimationFrame(animate);

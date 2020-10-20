@@ -1,4 +1,4 @@
-class Camera extends THREE.OrthographicCamera{
+class OrthographicCamera extends THREE.OrthographicCamera{
 
     constructor(){
 
@@ -14,21 +14,21 @@ class Camera extends THREE.OrthographicCamera{
         this.onResize();
     }
 
-    /* FRONT */
+    /* TOP */
     view1(){
+
+        this.onResize();
+        this.position.set(0, window.innerHeight, 0);
+        this.lookAt(scene.position);
+
+    }
+    /* FRONT */
+    view2(){
 
         this.onResize();
         this.position.set(0, 0, window.innerHeight);
         this.lookAt(scene.position);
 
-    }
-
-    /* TOP */
-    view2(){
-
-        this.onResize();
-        this.position.set(0, window.innerHeight, 0);
-        this.lookAt(scene.position);
     }
 
     /* SIDE */
@@ -43,9 +43,6 @@ class Camera extends THREE.OrthographicCamera{
         renderer.setSize(window.innerWidth, window.innerHeight);
 
         if (window.innerHeight > 0 && window.innerWidth > 0) {
-
-            //this.zoom = 2;
-            //var aspect = window.innerWidth / window.innerHeight;
 
             var width = window.innerWidth / this.aspect;
             var height = window.innerHeight / this.aspect;

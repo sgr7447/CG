@@ -1,10 +1,11 @@
-class Club extends THREE.Object3D{
+class Cylinder extends THREE.Object3D{
 
-    constructor(obj, x, y, z, radx, rady, radz, len, color){
+    constructor(obj, x, y, z, radx, rady, radz, len, radius1, radius2, segL, segR, color){
+
         super();
 
         var material = new THREE.MeshBasicMaterial({ color: color, wireframe: false });
-        var geometry = new THREE.CylinderGeometry(0.7, 1.3, len, 20);
+        var geometry = new THREE.CylinderGeometry( radius1, radius2, len, segR, segL);
 
         mesh = new THREE.Mesh(geometry, material);
         mesh.rotation.set(Math.PI*radx, Math.PI*rady, Math.PI*radz);
@@ -20,4 +21,5 @@ class Club extends THREE.Object3D{
         this.y = y;
         this.z = z;
     }
+
 }

@@ -3,6 +3,7 @@
 var orthographicCamera, scene, renderer;
 var geometry, material, mesh;
 var poolTable;
+var balls;
 
 
 function createPoolTable(x, y, z){
@@ -21,6 +22,8 @@ function createScene() {
 
     createPoolTable(0,0,0);
     scene.add(poolTable);
+
+    balls = new Ball();
 
 }
 
@@ -75,70 +78,13 @@ function onKeyDown(e) {
 
         case 20: //shoot -space
             break;
-
-        /*case 87: //W or w - Top spin negative
-            mobile.spinTopNeg();
-            break;
-        case 65: //A or a - Middle spin postive
-            mobile.spinMiddlePos();
-            break;
-        case 68: //D or d - Middle spin negative
-            mobile.spinMiddleNeg();
-            break;
-        case 90: //Z or z - Bottom spin postive
-            mobile.spinBottomPos();
-            break;
-        case 67: //C or c - Bottom spin negative
-            mobile.spinBottomNeg();
-            break;
-        case 39:
-            mobile.movingRight();
-            break;
-        case 37:
-            mobile.movingLeft();
-            break;
-        case 38:
-            mobile.movingFront();
-            break;
-        case 40:
-            mobile.movingBack();
-            break;*/
         }
     }
 
 /*function onKeyUp(e) {
     'use strict';
     switch (e.keyCode) {
-        case 81: //Q or q - Top stops spin positive
-            mobile.stopTopPos();
-            break;
-        case 87: //W or w - Top stops spin negative
-            mobile.stopTopNeg();
-            break;
-        case 65: //A or a - Middle stops spin postive
-            mobile.stopMiddlePos();
-            break;
-        case 68: //D or d - Middle stops spin negative
-            mobile.stopMiddleNeg();
-            break;
-        case 90: //Z or z - Bottom stops spin postive
-            mobile.stopBottomPos();
-            break;
-        case 67: //C or c - Bottom stops spin negative
-            mobile.stopBottomNeg();
-            break;
-        case 39:
-            mobile.stopRight();
-            break;
-        case 37:
-            mobile.stopLeft();
-            break;
-        case 38:
-            mobile.stopFront();
-            break;
-        case 40:
-            mobile.stopBack();
-            break;
+
     }
 }*/
 

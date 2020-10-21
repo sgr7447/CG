@@ -30,6 +30,7 @@ class PoolTable extends THREE.Object3D{
         var floorColor = '#004731';
         var clubColor = '#F5F5DC';
         var ballColor = '#FFFFFF';
+        var holesColor = '#0A0A0A';
 
         //WALLS
         //LEFT
@@ -72,45 +73,65 @@ class PoolTable extends THREE.Object3D{
 
         //CLUBS
         //RIGHT
-        new Club(club1, 100+35+5, 5, 0, 0, 0, 1/2, 70, clubColor);
+        new Cylinder(club1, 100+35+5, 5, 0, 0, 0, 1/2, 70, 0.7, 1.3, clubColor);
         this.add(club1);
         //LEFT
-        new Club(club2, -(100+35+5), 5, 0, 0, 0, -1/2, 70, clubColor);
+        new Cylinder(club2, -(100+35+5), 5, 0, 0, 0, -1/2, 70, 0.7, 1.3,clubColor);
         this.add(club2);
         //UP
-        new Club(club3, -50, 5, -(50+35+5), 0, 1/2, 1/2, 70, clubColor);
+        new Cylinder(club3, -50, 5, -(50+35+5), 0, 1/2, 1/2, 70, 0.7, 1.3,clubColor);
         this.add(club3);
 
-        new Club(club4, 50, 5, -(50+35+5), 0, 1/2, 1/2, 70, clubColor);
+        new Cylinder(club4, 50, 5, -(50+35+5), 0, 1/2, 1/2, 70, 0.7, 1.3,clubColor);
         this.add(club4);
         //DOWN
-        new Club(club5, -50, 5, 50+35+5, 0, -1/2, 1/2, 70, clubColor);
+        new Cylinder(club5, -50, 5, 50+35+5, 0, -1/2, 1/2, 70, 0.7, 1.3,clubColor);
         this.add(club5);
 
-        new Club(club6, 50, 5, 50+35+5, 0, -1/2, 1/2, 70, clubColor);
+        new Cylinder(club6, 50, 5, 50+35+5, 0, -1/2, 1/2, 70, 0.7, 1.3,clubColor);
         this.add(club6);
 
         //BALLS
         //RIGHT
-        new Ball(ball1, 90, 5.1, 0, 5, ballColor);
+        /*new Sphere(ball1, 90, 5.1, 0, 5, ballColor);
         this.add(ball1);
         //LEFT
-        new Ball(ball2, -90, 5.1, 0, 5, ballColor);
+        new Sphere(ball2, -90, 5.1, 0, 5, ballColor);
         this.add(ball2);
         //UP
-        new Ball(ball3, -50, 5.1, -40, 5, ballColor);
+        new Sphere(ball3, -50, 5.1, -40, 5, ballColor);
         this.add(ball3);
-        new Ball(ball4, 50, 5.1, -40, 5, ballColor);
+        new Sphere(ball4, 50, 5.1, -40, 5, ballColor);
         this.add(ball4);
         //DOWN
-        new Ball(ball5, -50, 5.1, 40, 5, ballColor);
+        new Sphere(ball5, -50, 5.1, 40, 5, ballColor);
         this.add(ball5);
-        new Ball(ball6, 50, 5.1, 40, 5, ballColor);
-        this.add(ball6);
+        new Sphere(ball6, 50, 5.1, 40, 5, ballColor);
+        this.add(ball6);*/
+
+
+        new Cylinder(legs, -100+6.5+1, 0.05, -50+6.5+1, 0, 0, 0, 0.1, 6.5, 6.5, holesColor);
+        new Cylinder(legs, -100+6.5+1, 0.05, 50-6.5-1, 0, 0, 0,  0.1, 6.5, 6.5, holesColor);
+        new Cylinder(legs, 0, 0.05, -50+6.5+1, 0, 0, 0,  0.1, 6.5, 6.5, holesColor);
+        new Cylinder(legs, 100-6.5-1, 0.05, -50+6.5+1, 0, 0, 0,  0.1, 6.5, 6.5, holesColor);
+        new Cylinder(legs, 100-6.5-1, 0.05, 50-6.5-1, 0, 0, 0,  0.1, 6.5, 6.5, holesColor);
+        new Cylinder(legs, 0, 0.05, 50-6.5-1, 0, 0, 0,  0.1, 6.5, 6.5, holesColor);
+
 
         this.time = new THREE.Clock();
         this.delta;
 
+        this.wallL = wallL;
+        this.wallR = wallR;
+        this.wallU = wallU;
+        this.wallD = wallD;
+
+    }
+
+    setPosition(type, x,y,z){
+        type.position.x = x;
+        type.position.y = y;
+        type.position.z = z;
     }
 
     updateTime() {

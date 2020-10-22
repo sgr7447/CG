@@ -148,6 +148,7 @@ function animate() {
     'use strict';
 
     clubs.update();
+    balls.update();
 
     render();
     requestAnimationFrame(animate);

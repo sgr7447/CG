@@ -14,6 +14,7 @@ class BallsHandler {
     }
 
     update(){
+        
         for (var i=0; i<15; i++){
 
             this.balls[i].update();

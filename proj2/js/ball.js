@@ -8,7 +8,10 @@ class Ball extends Sphere{
 
         super(THREE.Math.randFloat(x[0], x[1]), radius +0.1, THREE.Math.randFloat(z[0], z[1]), radius, 0xFFFFFFF);
 
+        //TIME
+        this.time = new THREE.Clock();
         this.delta;
+        
         this.speed = THREE.Math.randFloat(0,15);
         var random_x = THREE.Math.randInt(-1,1);
         var random_z = THREE.Math.randInt(-1,1);
@@ -27,7 +30,7 @@ class Ball extends Sphere{
     }
 
     checkInHole(){
-        
+
     }
 
     updateTime() {

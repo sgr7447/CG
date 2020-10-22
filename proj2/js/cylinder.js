@@ -5,6 +5,7 @@ class Cylinder extends THREE.Object3D{
 
         var material = new THREE.MeshBasicMaterial({ color: color, wireframe: false });
         var geometry = new THREE.CylinderGeometry(radius1, radius2, len, 20);
+        this.material = material;
 
         mesh = new THREE.Mesh(geometry, material);
         mesh.rotation.set(Math.PI*radx, Math.PI*rady, Math.PI*radz);

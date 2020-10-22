@@ -4,6 +4,7 @@ var orthographicCamera, perspectiveCamera, currentCamera, scene, renderer;
 var geometry, material, mesh;
 var poolTable;
 var balls;
+var clubs;
 
 
 function createPoolTable(x, y, z){
@@ -11,6 +12,8 @@ function createPoolTable(x, y, z){
 
     material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: false});
     poolTable = new PoolTable(x, y, z);
+    clubs = new ClubHandler();
+    scene.add(poolTable);
 
 }
 
@@ -21,7 +24,6 @@ function createScene() {
     scene.add(new THREE.AxisHelper(10));
 
     createPoolTable(0,0,0);
-    scene.add(poolTable);
 
     balls = new Ball();
 
@@ -51,39 +53,46 @@ function onKeyDown(e) {
             currentCamera.view1();
             break;
 
-        case 50: //para apagar FRONT
+        case 81: //para apagar FRONT
             currentCamera = orthographicCamera;
             currentCamera.view2();
             break;
 
-        case 51: //para apagar SIDE
+        case 65: //para apagar SIDE
             currentCamera = orthographicCamera;
             currentCamera.view3();
             break;
 
-        case 52:
+        case 50: //key 2 - perspective camera
             currentCamera = perspectiveCamera;
             currentCamera.view1();
             break;
 
-        /*case 50: //key 2 - perspective camera
-            break;
-        case 51: //key 3 - mobile perspective camera
+        /*case 51: //key 3 - mobile perspective camera
             break;*/
 
-        //case 52: //key 4 - taco1
-        //    break;
+        case 52: //key 4 - taco1
+            clubs.selected(0);
+            break;
 
         case 53: //key 5 - taco2
+            clubs.selected(1);
             break;
 
         case 54: //key 6 - taco3
+            clubs.selected(2);
             break;
+
         case 55: //key 7 - taco4
+            clubs.selected(3);
             break;
+
         case 56: //key 8 - taco5
+            clubs.selected(4);
             break;
+
         case 57: //key 9 - taco6
+            clubs.selected(5);
             break;
 
         case 20: //shoot -space

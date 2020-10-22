@@ -13,6 +13,7 @@ function createPoolTable(x, y, z){
     material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: false});
     poolTable = new PoolTable(x, y, z);
     clubs = new ClubHandler();
+    balls = new BallsHandler();
     scene.add(poolTable);
 
 }
@@ -24,9 +25,6 @@ function createScene() {
     scene.add(new THREE.AxisHelper(10));
 
     createPoolTable(0,0,0);
-
-    balls = new Ball();
-
 }
 
 function createCamera() {
@@ -149,7 +147,6 @@ function init() {
 function animate() {
     'use strict';
 
-    poolTable.update();
     clubs.update();
 
     render();

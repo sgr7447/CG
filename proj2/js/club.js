@@ -1,8 +1,8 @@
 class Club extends Cylinder{
 
-    constructor(obj, x, y, z, radx, rady, radz, len, radius1, radius2, color){
+    constructor(x, y, z, radx, rady, radz, len, radius1, radius2, color){
 
-        super(obj, x, y, z, radx, rady, radz, len, radius1, radius2, color);
+        super(x, y, z, radx, rady, radz, len, radius1, radius2, color);
 
         this.orig_color = new THREE.Color( color );
         this.angle_left = false;
@@ -13,6 +13,8 @@ class Club extends Cylinder{
         //TIME
         this.time = new THREE.Clock();
         this.delta;
+
+        scene.add(this);
 
     }
 

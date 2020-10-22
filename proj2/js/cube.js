@@ -1,6 +1,6 @@
 class Cube extends THREE.Object3D{
 
-    constructor(obj, x, y, z, radx, rady, radz, len, height, depth, color){
+    constructor(x, y, z, radx, rady, radz, len, height, depth, color){
 
         super();
 
@@ -12,7 +12,6 @@ class Cube extends THREE.Object3D{
         mesh.position.set(x, y, z);
 
         this.add(mesh);
-        obj.add(this);
 
         this.x = x;
         this.y = y;

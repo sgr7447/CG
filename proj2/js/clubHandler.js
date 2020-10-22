@@ -5,12 +5,12 @@ class ClubHandler {
         var clubColor = '#F5F5DC';
 
         // sao colocados na pos (0,0,0) para poderem rodar sobre eles mesmos
-        var club0 = new Club(poolTable, 0, 0, 0, 0, 0, -1/2, 70, 0.7, 1.3, clubColor);
-        var club3 = new Club(poolTable, 0, 0, 0, 0, 0, 1/2, 70, 0.7, 1.3, clubColor);
-        var club1 = new Club(poolTable, 0, 0, 0, 0, 1/2, 1/2, 70, 0.7, 1.3, clubColor);
-        var club2 = new Club(poolTable, 0, 0, 0, 0, 1/2, 1/2, 70, 0.7, 1.3, clubColor);
-        var club5 = new Club(poolTable, 0, 0, 0, 0, -1/2, 1/2, 70, 0.7, 1.3, clubColor);
-        var club4 = new Club(poolTable, 0, 0, 0, 0, -1/2, 1/2, 70, 0.7, 1.3, clubColor);
+        var club0 = new Club(0, 0, 0, 0, 0, -1/2, 70, 0.7, 1.3, clubColor);
+        var club3 = new Club(0, 0, 0, 0, 0, 1/2, 70, 0.7, 1.3, clubColor);
+        var club1 = new Club(0, 0, 0, 0, 1/2, 1/2, 70, 0.7, 1.3, clubColor);
+        var club2 = new Club(0, 0, 0, 0, 1/2, 1/2, 70, 0.7, 1.3, clubColor);
+        var club5 = new Club(0, 0, 0, 0, -1/2, 1/2, 70, 0.7, 1.3, clubColor);
+        var club4 = new Club(0, 0, 0, 0, -1/2, 1/2, 70, 0.7, 1.3, clubColor);
 
         // sao transferidos para a pos correta
         this.setClub(club0, -(100+35+5), 5, 0);

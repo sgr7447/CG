@@ -71,28 +71,36 @@ function onKeyDown(e) {
         /*case 51: //key 3 - mobile perspective camera
             break;*/
 
-        case 52: //key 4 - taco1
+        case 52: //key 4 - club1
             clubs.selected(0);
             break;
 
-        case 53: //key 5 - taco2
+        case 53: //key 5 - club2
             clubs.selected(1);
             break;
 
-        case 54: //key 6 - taco3
+        case 54: //key 6 - club3
             clubs.selected(2);
             break;
 
-        case 55: //key 7 - taco4
+        case 55: //key 7 - club4
             clubs.selected(3);
             break;
 
-        case 56: //key 8 - taco5
+        case 56: //key 8 - club5
             clubs.selected(4);
             break;
 
-        case 57: //key 9 - taco6
+        case 57: //key 9 - club6
             clubs.selected(5);
+            break;
+
+        case 39: //key -> - angle to the right
+            clubs.angleRight();
+            break;
+
+        case 37: //key <- - angle to the left
+            clubs.angleLeft();
             break;
 
         case 20: //shoot -space
@@ -100,12 +108,20 @@ function onKeyDown(e) {
         }
     }
 
-/*function onKeyUp(e) {
+function onKeyUp(e) {
     'use strict';
     switch (e.keyCode) {
 
+        case 37: //key -> - stop angle left
+            clubs.stopAngleLeft();
+            break;
+
+        case 39: //key <- - stop angle right
+            clubs.stopAngleRight();
+            break;
+
     }
-}*/
+}
 
 function render() {
     'use strict';
@@ -126,7 +142,7 @@ function init() {
     render();
 
     window.addEventListener("keydown", onKeyDown);
-    //window.addEventListener("keyup", onKeyUp);
+    window.addEventListener("keyup", onKeyUp);
     window.addEventListener("resize", onResize);
 }
 
@@ -134,6 +150,7 @@ function animate() {
     'use strict';
 
     poolTable.update();
+    clubs.update();
 
     render();
     requestAnimationFrame(animate);

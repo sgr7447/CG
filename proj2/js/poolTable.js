@@ -34,16 +34,16 @@ class PoolTable extends THREE.Object3D{
 
         //WALLS
         //LEFT
-        new Cube(wallL, -100, 7.5, 0, 0, 1/2, 0, 100.5, 15, 0.1, wallColor);
+        new Cube(wallL, -100, 7.5, 0, 0, 1/2, 0, 100.5, 15, 0.1, clubColor);
         this.add(wallL);
         //RIGHT
-        new Cube(wallR, 100, 7.5, 0, 0, 1/2, 0, 100.5, 15, 0.1, wallColor);
+        new Cube(wallR, 100, 7.5, 0, 0, 1/2, 0, 100.5, 15, 0.1, clubColor);
         this.add(wallR);
         //UP
-        new Cube(wallU, 0, 7.5, -50, 0, 0, 0, 200.5, 15, 0.1, wallColor);
+        new Cube(wallU, 0, 7.5, -50, 0, 0, 0, 200.5, 15, 0.1, clubColor);
         this.add(wallU);
         //DOWN
-        new Cube(wallD, 0, 7.5, 50, 0, 0, 0, 200.5, 15, 0.1, wallColor);
+        new Cube(wallD, 0, 7.5, 50, 0, 0, 0, 200.5, 15, 0.1, clubColor);
         this.add(wallD);
 
         //FLOOR
@@ -91,32 +91,12 @@ class PoolTable extends THREE.Object3D{
         new Cylinder(club6, 50, 5, 50+35+5, 0, -1/2, 1/2, 70, 0.7, 1.3,clubColor);
         this.add(club6);
 
-        //BALLS
-        //RIGHT
-        /*new Sphere(ball1, 90, 5.1, 0, 5, ballColor);
-        this.add(ball1);
-        //LEFT
-        new Sphere(ball2, -90, 5.1, 0, 5, ballColor);
-        this.add(ball2);
-        //UP
-        new Sphere(ball3, -50, 5.1, -40, 5, ballColor);
-        this.add(ball3);
-        new Sphere(ball4, 50, 5.1, -40, 5, ballColor);
-        this.add(ball4);
-        //DOWN
-        new Sphere(ball5, -50, 5.1, 40, 5, ballColor);
-        this.add(ball5);
-        new Sphere(ball6, 50, 5.1, 40, 5, ballColor);
-        this.add(ball6);*/
-
-
         new Cylinder(legs, -100+6.5+1, 0.05, -50+6.5+1, 0, 0, 0, 0.1, 6.5, 6.5, holesColor);
         new Cylinder(legs, -100+6.5+1, 0.05, 50-6.5-1, 0, 0, 0,  0.1, 6.5, 6.5, holesColor);
         new Cylinder(legs, 0, 0.05, -50+6.5+1, 0, 0, 0,  0.1, 6.5, 6.5, holesColor);
         new Cylinder(legs, 100-6.5-1, 0.05, -50+6.5+1, 0, 0, 0,  0.1, 6.5, 6.5, holesColor);
         new Cylinder(legs, 100-6.5-1, 0.05, 50-6.5-1, 0, 0, 0,  0.1, 6.5, 6.5, holesColor);
         new Cylinder(legs, 0, 0.05, 50-6.5-1, 0, 0, 0,  0.1, 6.5, 6.5, holesColor);
-
 
         this.time = new THREE.Clock();
         this.delta;

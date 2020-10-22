@@ -1,6 +1,6 @@
 /*global THREE, requestAnimationFrame, console*/
 
-var orthographicCamera, scene, renderer;
+var orthographicCamera, perspectiveCamera, currentCamera, scene, renderer;
 var geometry, material, mesh;
 var poolTable;
 var balls;
@@ -31,12 +31,14 @@ function createCamera() {
     'use strict';
 
     orthographicCamera = new OrthographicCamera();
+    perspectiveCamera = new PerspectiveCamera();
+
+    currentCamera = orthographicCamera;
 }
 
 function onResize() {
     'use strict';
-    orthographicCamera.onResize();
-
+    currentCamera.onResize();
 }
 
 function onKeyDown(e) {
@@ -45,15 +47,23 @@ function onKeyDown(e) {
     switch (e.keyCode) {
 
         case 49: //key 1 - top orthographic camera
-            orthographicCamera.view1();
+            currentCamera = orthographicCamera;
+            currentCamera.view1();
             break;
 
         case 50: //para apagar FRONT
-            orthographicCamera.view2();
+            currentCamera = orthographicCamera;
+            currentCamera.view2();
             break;
 
         case 51: //para apagar SIDE
-            orthographicCamera.view3();
+            currentCamera = orthographicCamera;
+            currentCamera.view3();
+            break;
+
+        case 52:
+            currentCamera = perspectiveCamera;
+            currentCamera.view1();
             break;
 
         /*case 50: //key 2 - perspective camera
@@ -61,8 +71,8 @@ function onKeyDown(e) {
         case 51: //key 3 - mobile perspective camera
             break;*/
 
-        case 52: //key 4 - taco1
-            break;
+        //case 52: //key 4 - taco1
+        //    break;
 
         case 53: //key 5 - taco2
             break;
@@ -90,7 +100,7 @@ function onKeyDown(e) {
 
 function render() {
     'use strict';
-    renderer.render(scene, orthographicCamera);
+    renderer.render(scene, currentCamera);
 }
 
 function init() {
@@ -100,8 +110,6 @@ function init() {
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
-
-    //aspect = window.innerWidth / window.innerHeight;
 
     createScene();
     createCamera();

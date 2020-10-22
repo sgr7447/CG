@@ -10,7 +10,7 @@ class OrthographicCamera extends THREE.OrthographicCamera{
         super(-width/2, width/2, height/2, -height/2);
         this.aspect = aspect;
         this.view1();
-        this.zoom = 2;
+        this.zoom = 1.2;
         this.onResize();
     }
 

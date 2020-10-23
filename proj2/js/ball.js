@@ -8,14 +8,18 @@ class Ball extends Sphere{
         this.time = new THREE.Clock();
         this.delta;
 
-        this.start_speed = THREE.Math.randFloat(20,35);
+        //SPEED
+        this.start_speed = THREE.Math.randFloat(20,30);
         this.fall_speed = 0;
 
+        //DIRECTION
         var random_x = THREE.Math.randInt(-1,1);
         var random_z = THREE.Math.randInt(-1,1);
         this.direction = new THREE.Vector3(random_x, 0, random_z);
 
+        //FLAGS
         this.fall = false;
+        this.inside_hole = false;
 
         scene.add(this);
 
@@ -41,35 +45,64 @@ class Ball extends Sphere{
     falling(){
 
         if (this.fall){
+
             this.start_speed = 0;
             this.translateY( this.delta * this.fall_speed * -1);
+            //mov unif acelerado -  a = g
             this.fall_speed = this.fall_speed + this.delta * 9.8;
 
         }
 
     }
 
-    inHole(hole_x, hole_z, hole_radius){
+
+    //quando o centro de massa da bola esta dentro do buraco mas
+    //uma parte da bola ainda esta na mesa
+    moveInsideHole(){
+
+        //esta dentro do buraco mas nao esta pronto para cair
+        if (this.inside_hole && !this.fall){
+
+            //verifica se esta dentro do buraco
+            if (Math.abs(this.hole_x - this.position.x) + this.radius < this.hole_radius && 
+                Math.abs(this.hole_z - this.position.z) + this.radius < this.hole_radius){
+
+                    //encontra-se pronto para cair
+                    this.fall = true;
+                            
+            }
+
+            //se nao estiver faz com que ele tombe para centro do buraco
+            else{
+                this.translateX(this.delta * this.direction.x * 2);
+                this.translateZ(this.delta * this.direction.z * 2);
+            }
+
+        }
+
+    }
+
+    insideHole(hole_x, hole_z, hole_radius){
 
         var distHoleToBall = Math.sqrt((hole_x - this.position.x)**2 + (hole_z - this.position.z)**2);
 
         if ( distHoleToBall < hole_radius) {
 
-                //var translactionValue = this.radius - (hole_radius - distHoleToBall);
+            //var color = new THREE.Color('#ff0000');
+            //this.material.color.setHex( color.getHex());
 
-                this.translateX(this.delta*5 * this.direction.x);
-                this.translateZ(this.delta*5 * this.direction.z);
+            this.inside_hole = true;
+            this.hole_x = hole_x;
+            this.hole_z = hole_z;
+            this.hole_radius = hole_radius;
+            this.direction.x = (hole_x - this.position.x);
+            this.direction.z = (hole_z - this.position.z);
+            this.start_speed = 0;
 
-                var color = new THREE.Color('#ff0000');
-                this.material.color.setHex( color.getHex());
-
-                //this.start_speed = 0;
-                this.fall = true;
-
-                // METER BOLA MESMO NO BURACO
-
-
+            return true;
         }
+
+        return false;
     }
 
     // se o centro da bola estiver dentro do buraco cai,
@@ -77,30 +110,30 @@ class Ball extends Sphere{
     checkInHole(){
 
         var hole_radius = 6.5;
-
+        
         var hole_x = -100+6.5+1;
         var hole_z = -50+6.5+1;
-        this.inHole(hole_x, hole_z, hole_radius);
+        if (this.insideHole(hole_x, hole_z, hole_radius)) return;
 
         hole_x = -100+6.5+1;
         hole_z = 50-6.5-1;
-        this.inHole(hole_x, hole_z, hole_radius);
+        if (this.insideHole(hole_x, hole_z, hole_radius)) return;
 
         hole_x = 0;
         hole_z = -50+6.5+1;
-        this.inHole(hole_x, hole_z, hole_radius);
+        if(this.insideHole(hole_x, hole_z, hole_radius)) return;
 
         hole_x = 100-6.5-1;
         hole_z = -50+6.5+1;
-        this.inHole(hole_x, hole_z, hole_radius);
+        if (this.insideHole(hole_x, hole_z, hole_radius)) return;
 
         hole_x = 100-6.5-1;
         hole_z = 50-6.5-1;
-        this.inHole(hole_x, hole_z, hole_radius);
+        if (this.insideHole(hole_x, hole_z, hole_radius)) return;
 
         hole_x = 0;
         hole_z = 50-6.5-1;
-        this.inHole(hole_x, hole_z, hole_radius);
+        if (this.insideHole(hole_x, hole_z, hole_radius)) return;
 
     }
 
@@ -111,8 +144,9 @@ class Ball extends Sphere{
     update(){
         this.updateTime();
         this.checkInHole();
-        this.falling();
+        this.moveInsideHole();
         this.move();
+        this.falling();
         this.spin();
     }
 

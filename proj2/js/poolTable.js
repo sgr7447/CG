@@ -59,6 +59,7 @@ class PoolTable extends THREE.Object3D{
         legs.add(new Cube(80, -25, 40, 0, 0, 1/2, 50, 10, 10, extWallColor));
         this.add(legs);
 
+        //HOLES
         legs.add(new Cylinder(-100+6.5+1, 0.05, -50+6.5+1, 0, 0, 0, 0.1, 6.5, 6.5, holesColor));
         legs.add(new Cylinder(-100+6.5+1, 0.05, 50-6.5-1, 0, 0, 0,  0.1, 6.5, 6.5, holesColor));
         legs.add(new Cylinder(0, 0.05, -50+6.5+1, 0, 0, 0,  0.1, 6.5, 6.5, holesColor));

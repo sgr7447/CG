@@ -1,5 +1,5 @@
 class Ball extends Sphere{
-    
+
     constructor(radius){
 
         super(0, 0, 0, radius, 0xFFFFFFF);
@@ -7,7 +7,7 @@ class Ball extends Sphere{
         //TIME
         this.time = new THREE.Clock();
         this.delta;
-        
+
         this.start_speed = THREE.Math.randFloat(20,35);
         this.fall_speed = 0;
 
@@ -22,13 +22,16 @@ class Ball extends Sphere{
     }
 
     move(){
-        
+
         this.translateX(this.direction.x * this.delta * this.start_speed);
         this.translateZ(this.direction.z * this.delta * this.start_speed);
 
-        if (this.start_speed > 0) this.start_speed = this.start_speed - this.delta*10;
-        else this.start_speed = 0;
-
+        if (this.start_speed > 0) {
+            this.start_speed = this.start_speed - this.delta*10;
+        }
+        else {
+            this.start_speed = 0;
+        }
     }
 
     spin(){
@@ -37,29 +40,35 @@ class Ball extends Sphere{
 
     falling(){
 
-        if (this.fall){            
-        
+        if (this.fall){
+            this.start_speed = 0;
             this.translateY( this.delta * this.fall_speed * -1);
-            this.fall_speed = this.fall_speed + (this.delta*5) * 9.8;
+            this.fall_speed = this.fall_speed + this.delta * 9.8;
 
-        } 
+        }
 
     }
 
     inHole(hole_x, hole_z, hole_radius){
 
-        if ( Math.sqrt( (hole_x - this.position.x)**2 + 
-            (hole_z - this.position.z)**2) < hole_radius) {
+        var distHoleToBall = Math.sqrt((hole_x - this.position.x)**2 + (hole_z - this.position.z)**2);
+
+        if ( distHoleToBall < hole_radius) {
+
+                //var translactionValue = this.radius - (hole_radius - distHoleToBall);
+
+                this.translateX(this.delta*5 * this.direction.x);
+                this.translateZ(this.delta*5 * this.direction.z);
 
                 var color = new THREE.Color('#ff0000');
                 this.material.color.setHex( color.getHex());
 
-                this.start_speed = 0;
+                //this.start_speed = 0;
                 this.fall = true;
 
                 // METER BOLA MESMO NO BURACO
 
-                
+
         }
     }
 
@@ -73,23 +82,23 @@ class Ball extends Sphere{
         var hole_z = -50+6.5+1;
         this.inHole(hole_x, hole_z, hole_radius);
 
-        hole_x = -100+6.5+1; 
+        hole_x = -100+6.5+1;
         hole_z = 50-6.5-1;
         this.inHole(hole_x, hole_z, hole_radius);
 
-        hole_x = 0; 
+        hole_x = 0;
         hole_z = -50+6.5+1;
         this.inHole(hole_x, hole_z, hole_radius);
 
-        hole_x = 100-6.5-1; 
+        hole_x = 100-6.5-1;
         hole_z = -50+6.5+1;
         this.inHole(hole_x, hole_z, hole_radius);
 
-        hole_x = 100-6.5-1; 
+        hole_x = 100-6.5-1;
         hole_z = 50-6.5-1;
         this.inHole(hole_x, hole_z, hole_radius);
 
-        hole_x = 0; 
+        hole_x = 0;
         hole_z = 50-6.5-1;
         this.inHole(hole_x, hole_z, hole_radius);
 

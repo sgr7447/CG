@@ -15,7 +15,7 @@ class Ball extends Sphere{
         this.speed = THREE.Math.randFloat(0,15);
         var random_x = THREE.Math.randInt(-1,1);
         var random_z = THREE.Math.randInt(-1,1);
-        this.direction = new THREE.Vector3(random_x, 1, random_z);
+        this.direction = new THREE.Vector3(random_x, 0, random_z);
 
         scene.add(this);
 

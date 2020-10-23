@@ -14,7 +14,6 @@ function createPoolTable(x, y, z){
     poolTable = new PoolTable(x, y, z);
     clubs = new ClubHandler();
     balls = new BallsHandler();
-    scene.add(poolTable);
 
 }
 

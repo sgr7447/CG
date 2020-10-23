@@ -71,6 +71,8 @@ class PoolTable extends THREE.Object3D{
         this.wallU = wallU;
         this.wallD = wallD;
 
+        scene.add(this);
+
     }
 
 }

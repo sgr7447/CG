@@ -45,14 +45,14 @@ class Club extends Cylinder{
 
     doAngle(){
 
-        var max_angle = Math.PI/5;
+        var max_angle = Math.PI/4;
         var angle = Math.PI/10;
         var rotation = angle * this.delta;
 
         if (this.angle_right && !this.angle_left){
             var total_rot_right = this.total_rot_right + rotation;
 
-            if (this.total_rot_right <= max_angle){
+            if (total_rot_right <= max_angle){
                 this.total_rot_right = total_rot_right;
                 this.total_rot_left = this.total_rot_left - rotation;
                 this.rotateY(-rotation);

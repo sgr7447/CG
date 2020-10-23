@@ -31,14 +31,21 @@ class Ball extends Sphere{
         this.translateZ(this.direction.z * this.delta * this.start_speed);
 
         if (this.start_speed > 0) {
+
+            //mov unif retardado
             this.start_speed = this.start_speed - this.delta*10;
         }
+
         else {
             this.start_speed = 0;
         }
     }
 
     spin(){
+
+        if (this.start_speed>0 || this.fall_speed>0){
+            
+        }
 
     }
 

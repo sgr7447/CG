@@ -1,19 +1,14 @@
 class Ball extends Sphere{
     
-    constructor(){
+    constructor(radius){
 
-        var radius = 5;
-        var hole_radius = 14;
-        var x = [-100 +radius + hole_radius, 100 -radius -hole_radius];
-        var z = [-50 +radius + hole_radius, 50 -radius -hole_radius];
-
-        super(THREE.Math.randFloat(x[0], x[1]), radius +0.1, THREE.Math.randFloat(z[0], z[1]), radius, 0xFFFFFFF);
+        super(0, 0, 0, radius, 0xFFFFFFF);
 
         //TIME
         this.time = new THREE.Clock();
         this.delta;
         
-        this.speed = THREE.Math.randFloat(0,15);
+        this.speed = THREE.Math.randFloat(15,30);
         var random_x = THREE.Math.randInt(-1,1);
         var random_z = THREE.Math.randInt(-1,1);
         this.direction = new THREE.Vector3(random_x, 0, random_z);
@@ -23,6 +18,11 @@ class Ball extends Sphere{
     }
 
     move(){
+        
+        this.translateX(this.direction.x * this.delta * this.speed);
+        this.translateZ(this.direction.z * this.delta * this.speed);
+
+        if (this.speed > 0) this.speed = this.speed - this.delta*10;
 
     }
 

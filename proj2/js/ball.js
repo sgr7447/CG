@@ -35,37 +35,30 @@ class Ball extends Sphere{
 
     }
 
-    falling(hole_x, hole_z, radius){
+    falling(){
 
-        if (this.fall){
-
-            var ball_x = this.position.x;
-            var ball_z = this.position.z;
-
-        /*while(ball_x ){
-            this.translateX( this.delta * this.speed);
-            this.translateZ( this.delta * this.speed);
-        }*/
+        if (this.fall){            
         
             this.translateY( this.delta * this.fall_speed * -1);
             this.fall_speed = this.fall_speed + (this.delta*5) * 9.8;
-        }
 
-        
-        
+        } 
 
     }
 
-    inHole(hole_x, hole_z, radius){
+    inHole(hole_x, hole_z, hole_radius){
 
         if ( Math.sqrt( (hole_x - this.position.x)**2 + 
-            (hole_z - this.position.z)**2) < radius) {
+            (hole_z - this.position.z)**2) < hole_radius) {
 
                 var color = new THREE.Color('#ff0000');
                 this.material.color.setHex( color.getHex());
 
                 this.start_speed = 0;
                 this.fall = true;
+
+                // METER BOLA MESMO NO BURACO
+
                 
         }
     }
@@ -74,31 +67,31 @@ class Ball extends Sphere{
     // se nao mantem-se no sitio
     checkInHole(){
 
-        var radius = 6.5;
+        var hole_radius = 6.5;
 
         var hole_x = -100+6.5+1;
         var hole_z = -50+6.5+1;
-        this.inHole(hole_x, hole_z, radius);
+        this.inHole(hole_x, hole_z, hole_radius);
 
         hole_x = -100+6.5+1; 
         hole_z = 50-6.5-1;
-        this.inHole(hole_x, hole_z, radius);
+        this.inHole(hole_x, hole_z, hole_radius);
 
         hole_x = 0; 
         hole_z = -50+6.5+1;
-        this.inHole(hole_x, hole_z, radius);
+        this.inHole(hole_x, hole_z, hole_radius);
 
         hole_x = 100-6.5-1; 
         hole_z = -50+6.5+1;
-        this.inHole(hole_x, hole_z, radius);
+        this.inHole(hole_x, hole_z, hole_radius);
 
         hole_x = 100-6.5-1; 
         hole_z = 50-6.5-1;
-        this.inHole(hole_x, hole_z, radius);
+        this.inHole(hole_x, hole_z, hole_radius);
 
         hole_x = 0; 
         hole_z = 50-6.5-1;
-        this.inHole(hole_x, hole_z, radius);
+        this.inHole(hole_x, hole_z, hole_radius);
 
     }
 

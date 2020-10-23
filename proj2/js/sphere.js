@@ -7,6 +7,8 @@ class Sphere extends THREE.Object3D{
         var geometry = new THREE.SphereGeometry(radius, 30, 30);
         this.material = material;
 
+        this.radius = radius;
+
         //this.axis = new THREE.AxisHelper(50);
         //this.add(this.axis);
 

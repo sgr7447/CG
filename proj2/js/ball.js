@@ -32,6 +32,7 @@ class Ball extends Sphere{
 
         if (this.start_speed > 0) {
             this.start_speed = this.start_speed - this.delta*10;
+
         }
         else {
             this.start_speed = 0;
@@ -39,6 +40,15 @@ class Ball extends Sphere{
     }
 
     spin(){
+
+
+        var rotationAxis = new THREE.Vector3();
+        rotationAxis.set(this.direction.x * this.delta * this.start_speed, 0, this.direction.z * this.delta * this.start_speed).normalize(); //vetor perpendicular ao da velocidade
+        rotationAxis.cross(THREE.Object3D.DefaultUp); //produto externo
+
+        var auxVector = new THREE.Vector3(this.direction.x * this.delta * this.start_speed, 0, this.direction.z * this.delta * this.start_speed);
+        var angle = -auxVector.length() / this.radius;
+        this.rotateOnAxis(rotationAxis, angle);
 
     }
 
@@ -64,12 +74,12 @@ class Ball extends Sphere{
         if (this.inside_hole && !this.fall){
 
             //verifica se esta dentro do buraco
-            if (Math.abs(this.hole_x - this.position.x) + this.radius < this.hole_radius && 
+            if (Math.abs(this.hole_x - this.position.x) + this.radius < this.hole_radius &&
                 Math.abs(this.hole_z - this.position.z) + this.radius < this.hole_radius){
 
                     //encontra-se pronto para cair
                     this.fall = true;
-                            
+
             }
 
             //se nao estiver faz com que ele tombe para centro do buraco
@@ -110,7 +120,7 @@ class Ball extends Sphere{
     checkInHole(){
 
         var hole_radius = 6.5;
-        
+
         var hole_x = -100+6.5+1;
         var hole_z = -50+6.5+1;
         if (this.insideHole(hole_x, hole_z, hole_radius)) return;
@@ -146,8 +156,9 @@ class Ball extends Sphere{
         this.checkInHole();
         this.moveInsideHole();
         this.move();
-        this.falling();
         this.spin();
+        this.falling();
+
     }
 
 }

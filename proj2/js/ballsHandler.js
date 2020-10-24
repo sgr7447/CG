@@ -10,7 +10,7 @@ class BallsHandler {
             var ball = new Ball(radius);
 
             var hole_radius = 14;
-            
+
             var x = [-100 +radius + hole_radius, 100 -radius -hole_radius];
             var z = [-50 +radius + hole_radius, 50 -radius -hole_radius];
             this.setBall(ball, THREE.Math.randFloat(x[0], x[1]), radius +0.1, THREE.Math.randFloat(z[0], z[1]));

@@ -9,17 +9,21 @@ class Ball extends Sphere{
         this.delta;
 
         //SPEED
-        this.start_speed = THREE.Math.randFloat(20,30);
+        this.start_speed = THREE.Math.randFloat(50,80);
         this.fall_speed = 0;
 
         //DIRECTION
         var random_x = THREE.Math.randInt(-1,1);
         var random_z = THREE.Math.randInt(-1,1);
         this.direction = new THREE.Vector3(random_x, 0, random_z);
+        this.direction.setLength(this.start_speed);
 
         //FLAGS
         this.fall = false;
         this.inside_hole = false;
+
+        this.radius = radius;
+
 
         scene.add(this);
 
@@ -27,18 +31,17 @@ class Ball extends Sphere{
 
     move(){
 
-        this.translateX(this.direction.x * this.delta * this.start_speed);
-        this.translateZ(this.direction.z * this.delta * this.start_speed);
+        this.translateX(this.direction.x * this.delta);
+        this.translateZ(this.direction.z * this.delta);
 
-        if (this.start_speed > 0) {
-
-            //mov unif retardado
-            this.start_speed = this.start_speed - this.delta*10;
+        if (this.direction.length() > 0) {
+            var l = this.direction.length()
+            this.direction.setLength(l - this.delta*10);
+            //this.spin();
 
         }
-
         else {
-            this.start_speed = 0;
+            this.direction.setLength(0);
         }
     }
 
@@ -46,10 +49,10 @@ class Ball extends Sphere{
 
 
         var rotationAxis = new THREE.Vector3();
-        rotationAxis.set(this.direction.x * this.delta * this.start_speed, 0, this.direction.z * this.delta * this.start_speed).normalize(); //vetor perpendicular ao da velocidade
+        rotationAxis.set(this.direction.x * this.delta, 0, this.direction.z * this.delta).normalize(); //vetor perpendicular ao da velocidade
         rotationAxis.cross(THREE.Object3D.DefaultUp); //produto externo
 
-        var auxVector = new THREE.Vector3(this.direction.x * this.delta * this.start_speed, 0, this.direction.z * this.delta * this.start_speed);
+        var auxVector = new THREE.Vector3(this.direction.x * this.delta, 0, this.direction.z * this.delta);
         var angle = -auxVector.length() / this.radius;
         this.rotateOnAxis(rotationAxis, angle);
 
@@ -59,10 +62,16 @@ class Ball extends Sphere{
 
         if (this.fall){
 
-            this.start_speed = 0;
-            this.translateY( this.delta * this.fall_speed * -1);
+            //this.direction.setLength(0);
+
             //mov unif acelerado -  a = g
-            this.fall_speed = this.fall_speed + this.delta * 9.8;
+            //this.direction.set(0, this.direction.y - this.delta * 9.8, 0);
+            //this.translateY(this.direction.y);
+            this.direction.set(0, 0, 0);
+            var l = this.direction.length();
+            this.direction.setLength(l + this.delta * 9.8);
+            l = this.direction.length();
+            this.translateY(l * this.delta * -1);
 
         }
 
@@ -85,11 +94,7 @@ class Ball extends Sphere{
 
             }
 
-            //se nao estiver faz com que ele tombe para centro do buraco
-            else{
-                this.translateX(this.delta * this.direction.x * 2);
-                this.translateZ(this.delta * this.direction.z * 2);
-            }
+            //se nao estiver continuar move com velocidade inicial, mas mudamos a direcao no inside_hole
 
         }
 
@@ -108,10 +113,9 @@ class Ball extends Sphere{
             this.hole_x = hole_x;
             this.hole_z = hole_z;
             this.hole_radius = hole_radius;
-            this.direction.x = (hole_x - this.position.x);
-            this.direction.z = (hole_z - this.position.z);
-            this.start_speed = 0;
-
+            var y =
+            this.direction.set(hole_x - this.position.x, 0, hole_z - this.position.z).normalize(); //normalizar o vetor;
+            //this.direction.setLength(0);
             return true;
         }
 
@@ -150,6 +154,21 @@ class Ball extends Sphere{
 
     }
 
+    wallColision(){
+        var wallL = -100+0.05;
+        var wallR = 100-0.05;
+        var wallU = 50-0.05;
+        var wallD = -50+0.05;
+
+        if((this.position.x <= wallL + this.radius) || (this.position.x >=wallR - this.radius)){
+          this.direction.x = -this.direction.x;
+        }
+
+        if((this.position.z >= wallU - this.radius) || (this.position.z <=wallD + this.radius)){
+          this.direction.z = -this.direction.z;
+        }
+    }
+
     updateTime() {
         this.delta = this.time.getDelta();
     }
@@ -158,8 +177,8 @@ class Ball extends Sphere{
         this.updateTime();
         this.checkInHole();
         this.moveInsideHole();
+        this.wallColision();
         this.move();
-        this.spin();
         this.falling();
 
     }

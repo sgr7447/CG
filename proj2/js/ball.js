@@ -22,9 +22,6 @@ class Ball extends Sphere{
         this.fall = false;
         this.inside_hole = false;
 
-        this.radius = radius;
-
-
         scene.add(this);
 
     }
@@ -35,10 +32,8 @@ class Ball extends Sphere{
         this.translateZ(this.direction.z * this.delta);
 
         if (this.direction.length() > 0) {
-            var l = this.direction.length()
-            this.direction.setLength(l - this.delta*10);
+            this.direction.setLength(this.direction.length() - this.delta*10);
             //this.spin();
-
         }
         else {
             this.direction.setLength(0);
@@ -62,19 +57,10 @@ class Ball extends Sphere{
 
         if (this.fall){
 
-            //this.direction.setLength(0);
-
-            //mov unif acelerado -  a = g
-            //this.direction.set(0, this.direction.y - this.delta * 9.8, 0);
-            //this.translateY(this.direction.y);
-            this.direction.set(0, 0, 0);
-            var l = this.direction.length();
-            this.direction.setLength(l + this.delta * 9.8);
-            l = this.direction.length();
-            this.translateY(l * this.delta * -1);
+            this.direction.set(0, this.direction.length() + this.delta * 9.8, 0);
+            this.translateY(-this.direction.length() * this.delta);
 
         }
-
     }
 
 
@@ -113,9 +99,10 @@ class Ball extends Sphere{
             this.hole_x = hole_x;
             this.hole_z = hole_z;
             this.hole_radius = hole_radius;
-            var y =
+            var speed = this.direction.length();
             this.direction.set(hole_x - this.position.x, 0, hole_z - this.position.z).normalize(); //normalizar o vetor;
-            //this.direction.setLength(0);
+            this.direction.setLength(speed);
+
             return true;
         }
 
@@ -126,31 +113,34 @@ class Ball extends Sphere{
     // se nao mantem-se no sitio
     checkInHole(){
 
-        var hole_radius = 6.5;
+        if (!this.fall){
 
-        var hole_x = -100+6.5+1;
-        var hole_z = -50+6.5+1;
-        if (this.insideHole(hole_x, hole_z, hole_radius)) return;
+            var hole_radius = 6.5;
 
-        hole_x = -100+6.5+1;
-        hole_z = 50-6.5-1;
-        if (this.insideHole(hole_x, hole_z, hole_radius)) return;
+            var hole_x = -100+6.5+1;
+            var hole_z = -50+6.5+1;
+            if (this.insideHole(hole_x, hole_z, hole_radius)) return;
 
-        hole_x = 0;
-        hole_z = -50+6.5+1;
-        if(this.insideHole(hole_x, hole_z, hole_radius)) return;
+            hole_x = -100+6.5+1;
+            hole_z = 50-6.5-1;
+            if (this.insideHole(hole_x, hole_z, hole_radius)) return;
 
-        hole_x = 100-6.5-1;
-        hole_z = -50+6.5+1;
-        if (this.insideHole(hole_x, hole_z, hole_radius)) return;
+            hole_x = 0;
+            hole_z = -50+6.5+1;
+            if(this.insideHole(hole_x, hole_z, hole_radius)) return;
 
-        hole_x = 100-6.5-1;
-        hole_z = 50-6.5-1;
-        if (this.insideHole(hole_x, hole_z, hole_radius)) return;
+            hole_x = 100-6.5-1;
+            hole_z = -50+6.5+1;
+            if (this.insideHole(hole_x, hole_z, hole_radius)) return;
 
-        hole_x = 0;
-        hole_z = 50-6.5-1;
-        if (this.insideHole(hole_x, hole_z, hole_radius)) return;
+            hole_x = 100-6.5-1;
+            hole_z = 50-6.5-1;
+            if (this.insideHole(hole_x, hole_z, hole_radius)) return;
+
+            hole_x = 0;
+            hole_z = 50-6.5-1;
+            if (this.insideHole(hole_x, hole_z, hole_radius)) return;
+        }
 
     }
 
@@ -160,12 +150,15 @@ class Ball extends Sphere{
         var wallU = 50-0.05;
         var wallD = -50+0.05;
 
-        if((this.position.x <= wallL + this.radius) || (this.position.x >=wallR - this.radius)){
-          this.direction.x = -this.direction.x;
-        }
+        if (!this.inside_hole){
 
-        if((this.position.z >= wallU - this.radius) || (this.position.z <=wallD + this.radius)){
-          this.direction.z = -this.direction.z;
+            if((this.position.x <= wallL + this.radius) || (this.position.x >=wallR - this.radius)){
+              this.direction.x = -this.direction.x;
+            }
+
+            if((this.position.z >= wallU - this.radius) || (this.position.z <=wallD + this.radius)){
+              this.direction.z = -this.direction.z;
+            }
         }
     }
 

@@ -58,13 +58,13 @@ class BallsHandler {
                   var speed1 = ball1.direction.length();
                   var speed2 = ball2.direction.length();
 
-                  ball1.direction.setLength(speed2);
-                  ball2.direction.setLength(speed1);
-
                   var x1 = ball1.direction.x;
                   var z1 = ball1.direction.z;
                   var x2 = ball2.direction.x;
                   var z2 = ball2.direction.z;
+
+                  ball1.direction.setLength(speed2);
+                  ball2.direction.setLength(speed1);
 
                   ball1.direction.set(x2, ball1.direction.y, z2);
                   ball2.direction.set(x1, ball2.direction.y, z1);

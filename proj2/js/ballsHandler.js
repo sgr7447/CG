@@ -17,9 +17,9 @@ class BallsHandler {
             var flag = this.verifyBalls(x_position, z_position, radius);
 
             if (flag){
-              var ball = new Ball(radius);
-              this.setBall(ball, x_position, radius +0.05, z_position);
-              this.balls.push(ball);
+                var ball = new Ball(radius);
+                this.setBall(ball, x_position, radius +0.05, z_position);
+                this.balls.push(ball);
 
             }
         }

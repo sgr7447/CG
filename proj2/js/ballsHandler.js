@@ -46,51 +46,40 @@ class BallsHandler {
       return flag;
     }
 
-    ballColision(){
+    checkBallColision(ball_index){
 
-      var ball1, ball2;
+        var ball1 = this.balls[ball_index];
+        var list_ball_colisions = [];
 
-        for (var i = 0; i < this.balls.length; i++) {
+        for (var j = ball_index+1; j < this.balls.length; j++) {
 
-            ball1 = this.balls[i];
+            var ball2 = this.balls[j];
 
-            for (var j = i+1; j < this.balls.length; j++) {
+            var distBalls = Math.sqrt((ball1.position.x - ball2.position.x)**2 + (ball1.position.z - ball2.position.z)**2);
 
-                ball2 = this.balls[j];
-
-                var distBalls = Math.sqrt((ball1.position.x - ball2.position.x)**2 + (ball1.position.z - ball2.position.z)**2);
-
-                if(distBalls <= 2*ball1.radius){
-
-                    //verifica se as bolas estão na mesma posição nos yy
-                    if(ball1.direction.y == ball2.direction.y){
-
-                        var speed1 = ball1.direction.length();
-                        var speed2 = ball2.direction.length();
-
-                        var x1 = ball1.direction.x;
-                        var z1 = ball1.direction.z;
-                        var x2 = ball2.direction.x;
-                        var z2 = ball2.direction.z;
-
-                        //if (speed1 == 0) speed1 = 1;
-                        //if (speed2 == 0) speed2 = 1;
-
-                        ball1.direction.set(x2, ball1.direction.y, z2);
-                        ball2.direction.set(x1, ball2.direction.y, z1);
-
-                        ball1.direction.setLength(speed2);
-                        ball2.direction.setLength(speed1);
-                    }
-                }
+            if(distBalls <= 2*ball1.radius){
+                list_ball_colisions.push(ball2);
+                    
             }
         }
+
+        return list_ball_colisions;
     }
 
     update(){
-        for (var i=0; i<15; i++){
+
+        for (var i=0; i<this.balls.length; i++){
+
+            //does movement and checks for hole and wall colisions
             this.balls[i].update();
+            
+            //checks for ball colisions
+            var list_ball_colisions = this.checkBallColision(i);
+
+            //treating all colisions
+            this.balls[i].moveInsideHole();
+            this.balls[i].treatWallColision();
+            this.balls[i].treatBallsColision(list_ball_colisions);
         }
-        this.ballColision();
     }
 }

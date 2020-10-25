@@ -17,9 +17,12 @@ class Ball extends Sphere{
         var random_z = THREE.Math.randInt(-1,1);
         this.direction = new THREE.Vector3(random_x, 0, random_z);
         this.direction.setLength(this.start_speed);
+
         //FLAGS
         this.fall = false;
         this.inside_hole = false;
+        this.wall_colision_x = false;
+        this.wall_colision_z = false;
 
         this.radius = radius;
 
@@ -153,18 +156,63 @@ class Ball extends Sphere{
 
     }
 
-    wallColision(){
+    checkWallColision(){
         var wallL = -100+0.05;
         var wallR = 100-0.05;
         var wallU = 50-0.05;
         var wallD = -50+0.05;
 
         if((this.position.x <= wallL + this.radius) || (this.position.x >=wallR - this.radius)){
-          this.direction.x = -this.direction.x;
+          this.wall_colision_x = true;
         }
 
         if((this.position.z >= wallU - this.radius) || (this.position.z <=wallD + this.radius)){
-          this.direction.z = -this.direction.z;
+          this.wall_colision_z = true;
+        }
+    }
+
+    treatWallColision(){
+
+        if (this.wall_colision_x){
+            this.direction.x = -this.direction.x;
+            this.wall_colision_x = false;
+        }
+
+        if (this.wall_colision_z){
+            this.direction.z = -this.direction.z;
+            this.wall_colision_z = false;
+        }
+    }
+
+    treatBallsColision(list_ball_colisions){
+
+        var ball1 = this;
+
+        for (var i=0; i<list_ball_colisions.length; i++){
+
+            var ball2 = list_ball_colisions[i];
+
+            //verifica se as bolas estão na mesma posição nos yy
+            if(ball1.direction.y == ball2.direction.y){
+
+                var speed1 = ball1.direction.length();
+                var speed2 = ball2.direction.length();
+
+                var x1 = ball1.direction.x;
+                var z1 = ball1.direction.z;
+                var x2 = ball2.direction.x;
+                var z2 = ball2.direction.z;
+
+                //if (speed1 == 0) speed1 = 1;
+                //if (speed2 == 0) speed2 = 1;
+
+                ball1.direction.set(x2, ball1.direction.y, z2);
+                ball2.direction.set(x1, ball2.direction.y, z1);
+
+                ball1.direction.setLength(speed2);
+                ball2.direction.setLength(speed1);
+            }
+
         }
     }
 
@@ -173,14 +221,18 @@ class Ball extends Sphere{
     }
 
     update(){
+
         this.updateTime();
+
+        //movement
         this.move();
         this.falling();
-        this.wallColision();
+
+        //checks for inside hole colision
         this.checkInHole();
-        this.moveInsideHole();
 
-
+        //checks for wall colision
+        this.checkWallColision();
 
     }
 

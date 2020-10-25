@@ -15,15 +15,12 @@ class BallsHandler {
             var x_position = THREE.Math.randFloat(x[0], x[1]);
             var z_position = THREE.Math.randFloat(z[0], z[1]);
 
-            console.log(this.balls.length);
-            console.log(x_position);
-            console.log(z_position);
-            var flag = this.verifyBalls(x_position, z_position);
-            console.log(flag);
+            var flag = this.verifyBalls(x_position, z_position, radius);
+
             if (flag){
               this.setBall(ball, x_position, radius +0.05, z_position);
               this.balls.push(ball);
-              console.log(ball.position)
+
             }
         }
     }
@@ -34,14 +31,15 @@ class BallsHandler {
         ball.position.z = z;
     }
 
-    verifyBalls(x, z){
+    verifyBalls(x, z, radius){
       var flag = true
       if (this.balls.length == 0){return flag;}
+      console.log(this.balls.length);
       for (var i = 0; i < this.balls.length; i++) {
+
           var ball = this.balls[i];
           var dist_balls = Math.sqrt((x - ball.position.x)**2 + (z - ball.position.z)**2);
-          if (dist_balls <= 2*this.radius){
-              console.log('oii');
+          if (dist_balls <= 2*radius){
               flag = false;
               break;
           }

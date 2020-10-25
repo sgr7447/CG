@@ -32,45 +32,55 @@ class BallsHandler {
    }
 
     verifyBalls(x, z, radius){
-      var flag = true
-      if (this.balls.length == 0){return flag;}
-      for (var i = 0; i < this.balls.length; i++) {
+        var flag = true
+        if (this.balls.length == 0){return flag;}
+        for (var i = 0; i < this.balls.length; i++) {
 
           var ball = this.balls[i];
           var dist_balls = Math.sqrt((x - ball.position.x)**2 + (z - ball.position.z)**2);
-          if (dist_balls <= 2*radius){
+          if (dist_balls < 2*radius){
               flag = false;
               break;
-          }
+        }
       }
       return flag;
     }
 
     ballColision(){
+
       var ball1, ball2;
-      for (var i = 0; i < this.balls.length; i++) {
-          ball1 = this.balls[i];
-          for (var j = i+1; j < this.balls.length; j++) {
-              ball2 = this.balls[j];
 
-              var distBalls = Math.sqrt((ball1.position.x - ball2.position.x)**2 + (ball1.position.z - ball2.position.z)**2);
-              if(distBalls <= 2*ball1.radius){
-                  var speed1 = ball1.direction.length();
-                  var speed2 = ball2.direction.length();
+        for (var i = 0; i < this.balls.length; i++) {
 
-                  var x1 = ball1.direction.x;
-                  var z1 = ball1.direction.z;
-                  var x2 = ball2.direction.x;
-                  var z2 = ball2.direction.z;
+            ball1 = this.balls[i];
 
-                  ball1.direction.setLength(speed2);
-                  ball2.direction.setLength(speed1);
+            for (var j = i+1; j < this.balls.length; j++) {
 
-                  ball1.direction.set(x2, ball1.direction.y, z2);
-                  ball2.direction.set(x1, ball2.direction.y, z1);
-              }
-          }
-      }
+                ball2 = this.balls[j];
+
+                var distBalls = Math.sqrt((ball1.position.x - ball2.position.x)**2 + (ball1.position.z - ball2.position.z)**2);
+
+                if(distBalls <= 2*ball1.radius){
+
+                    var speed1 = ball1.direction.length();
+                    var speed2 = ball2.direction.length();
+
+                    var x1 = ball1.direction.x;
+                    var z1 = ball1.direction.z;
+                    var x2 = ball2.direction.x;
+                    var z2 = ball2.direction.z;
+
+                    if (speed1 == 0) speed1 = 1;
+                    if (speed2 == 0) speed2 = 1;
+
+                    ball1.direction.setLength(speed2);
+                    ball2.direction.setLength(speed1);
+
+                    ball1.direction.set(x2, ball1.direction.y, z2);
+                    ball2.direction.set(x1, ball2.direction.y, z1);
+                }
+            }
+        }
     }
 
     update(){

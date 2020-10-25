@@ -174,11 +174,12 @@ class Ball extends Sphere{
 
     update(){
         this.updateTime();
+        this.move();
+        this.falling();
         this.wallColision();
         this.checkInHole();
-        this.move();
         this.moveInsideHole();
-        this.falling();
+
 
 
     }

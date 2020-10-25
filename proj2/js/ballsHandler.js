@@ -4,6 +4,9 @@ class BallsHandler {
 
         this.balls = [];
 
+        //amarelo, azul, verde, rosa, roxo, vermelho
+        var color_array = ['#FFE4B5', '#87CEEB', '#8FBC8F', '#DB7093', '#9370DB', '#FF6347'];
+
         while(this.balls.length < 15){
 
             var radius = 5;
@@ -17,7 +20,9 @@ class BallsHandler {
             var flag = this.verifyBalls(x_position, z_position, radius);
 
             if (flag){
-                var ball = new Ball(radius);
+                var index_color = THREE.Math.randInt(0,4);
+                var color = color_array[index_color];
+                var ball = new Ball(radius, color);
                 this.setBall(ball, x_position, radius +0.05, z_position);
                 this.balls.push(ball);
 
@@ -72,7 +77,7 @@ class BallsHandler {
 
             //does movement and checks for hole and wall colisions
             this.balls[i].update();
-            
+
             //checks for ball colisions
             var list_ball_colisions = this.checkBallColision(i);
 

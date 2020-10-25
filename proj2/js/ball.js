@@ -1,8 +1,8 @@
 class Ball extends Sphere{
 
-    constructor(radius){
+    constructor(radius, color){
 
-        super(0, 0, 0, radius, 0xFFFFFFF);
+        super(0, 0, 0, radius, color);
 
         //TIME
         this.time = new THREE.Clock();

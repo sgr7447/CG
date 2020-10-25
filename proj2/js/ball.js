@@ -25,7 +25,7 @@ class Ball extends Sphere{
 
         this.hole_x;
         this.hole_z;
-        this.hole_radius;        
+        this.hole_radius;
 
         scene.add(this);
 
@@ -36,11 +36,12 @@ class Ball extends Sphere{
         this.translateX(this.direction.x * this.delta);
         this.translateZ(this.direction.z * this.delta);
 
+        if(!this.fall){
+          //this.spin();
+        }
         if (this.direction.length() > 0) {
             var l = this.direction.length()
             this.direction.setLength(l - this.delta*10);
-            //this.spin();
-
         }
         else {
             this.direction.setLength(0);
@@ -55,7 +56,7 @@ class Ball extends Sphere{
         rotationAxis.cross(THREE.Object3D.DefaultUp); //produto externo
 
         var auxVector = new THREE.Vector3(this.direction.x * this.delta, 0, this.direction.z * this.delta);
-        var angle = -auxVector.length() / this.radius;
+        var angle = -auxVector.length() / (Math.Pi * this.radius) * Math.Pi;
         this.rotateOnAxis(rotationAxis, angle);
 
     }
@@ -63,7 +64,6 @@ class Ball extends Sphere{
     falling(){
 
       if (this.fall){
-          console.log(this.direction.length());
           this.direction.set(0, this.direction.length() + this.delta * 9.8, 0);
           this.translateY(-this.direction.length() * this.delta);
 

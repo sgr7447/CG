@@ -1,8 +1,8 @@
 class Ball extends Sphere{
 
-    constructor(radius){
+    constructor(x, y, z, radius){
 
-        super(0, 0, 0, radius, 0xFFFFFFF);
+        super(x, y, z, radius, 0xFFFFFFF);
 
         //TIME
         this.time = new THREE.Clock();
@@ -52,7 +52,7 @@ class Ball extends Sphere{
 
 
         var rotationAxis = new THREE.Vector3();
-        rotationAxis.set(this.direction.x * this.delta, 0, this.direction.z * this.delta).normalize(); //vetor perpendicular ao da velocidade
+        rotationAxis.set(this.direction.x, 0, this.direction.z).normalize(); //vetor perpendicular ao da velocidade
         rotationAxis.cross(THREE.Object3D.DefaultUp); //produto externo
 
         var auxVector = new THREE.Vector3(this.direction.x * this.delta, 0, this.direction.z * this.delta);

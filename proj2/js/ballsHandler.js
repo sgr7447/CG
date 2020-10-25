@@ -1,13 +1,12 @@
 class BallsHandler {
 
-    constructor() {
+    constructor(){
 
         this.balls = [];
 
         while(this.balls.length < 15){
 
             var radius = 5;
-            var ball = new Ball(radius);
             var hole_radius = 14;
 
             var x = [-100 +radius + hole_radius, 100 -radius -hole_radius];
@@ -18,23 +17,16 @@ class BallsHandler {
             var flag = this.verifyBalls(x_position, z_position, radius);
 
             if (flag){
-              this.setBall(ball, x_position, radius +0.05, z_position);
-              this.balls.push(ball);
+                var ball = new Ball(x_position, radius + 0.05, z_position, radius);
+                this.balls.push(ball);
 
             }
         }
     }
 
-    setBall(ball, x,y,z){
-        ball.position.x = x;
-        ball.position.y = y;
-        ball.position.z = z;
-    }
-
     verifyBalls(x, z, radius){
       var flag = true
       if (this.balls.length == 0){return flag;}
-      console.log(this.balls.length);
       for (var i = 0; i < this.balls.length; i++) {
 
           var ball = this.balls[i];

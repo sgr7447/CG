@@ -7,7 +7,6 @@ class BallsHandler {
         while(this.balls.length < 15){
 
             var radius = 5;
-            var ball = new Ball(radius);
             var hole_radius = 14;
 
             var x = [-100 +radius + hole_radius, 100 -radius -hole_radius];
@@ -18,6 +17,7 @@ class BallsHandler {
             var flag = this.verifyBalls(x_position, z_position, radius);
 
             if (flag){
+              var ball = new Ball(radius);
               this.setBall(ball, x_position, radius +0.05, z_position);
               this.balls.push(ball);
 

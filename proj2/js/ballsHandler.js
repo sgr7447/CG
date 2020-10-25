@@ -25,6 +25,12 @@ class BallsHandler {
         }
     }
 
+    setBall(ball, x,y,z){
+       ball.position.x = x;
+       ball.position.y = y;
+       ball.position.z = z;
+   }
+
     verifyBalls(x, z, radius){
       var flag = true
       if (this.balls.length == 0){return flag;}

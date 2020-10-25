@@ -9,8 +9,8 @@ class Sphere extends THREE.Object3D{
 
         this.radius = radius;
 
-        this.axis = new THREE.AxisHelper(10);
-        this.add(this.axis);
+        this.Axis = new THREE.AxisHelper(10);
+        this.add(this.Axis);
 
         mesh = new THREE.Mesh(geometry, material);
         mesh.position.set(x, y, z);

@@ -23,6 +23,9 @@ class Ball extends Sphere{
 
         this.radius = radius;
 
+        this.hole_x;
+        this.hole_z;
+        this.hole_radius;        
 
         scene.add(this);
 
@@ -77,10 +80,10 @@ class Ball extends Sphere{
         if (this.inside_hole && !this.fall){
 
             //verifica se esta dentro do buraco
-            
-            var distHoleToBall = Math.sqrt((hole_x - this.position.x)**2 + (hole_z - this.position.z)**2);
 
-            if (distHoleToBall + this.radius < hole_radius){
+            var distHoleToBall = Math.sqrt((this.hole_x - this.position.x)**2 + (this.hole_z - this.position.z)**2);
+
+            if (distHoleToBall + this.radius < this.hole_radius){
 
                     //encontra-se pronto para cair
 

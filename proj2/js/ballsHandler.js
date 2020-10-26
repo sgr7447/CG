@@ -34,35 +34,65 @@ class BallsHandler {
         //GHOST BALLS
         
         //club0
-        var direction = new THREE.Vector3(1,0,0);
-        this.createGhostBall(0, -100+6.5+1, 0, direction );
+        this.createGhostBall(0);
         
         //club1
-        direction.set(0,0,1);
-        this.createGhostBall(1, -50 , -(50-6.5-1), direction );
+        this.createGhostBall(1);
         
         //club2
-        direction.set(0,0,1);
-        this.createGhostBall(2, 50, -(50-6.5-1), direction );
+        this.createGhostBall(2);
 
         //club3
-        direction.set(-1,0,0);
-        this.createGhostBall(3, 100-6.5, 0, direction);
+        this.createGhostBall(3);
 
         //club4
-        direction.set(0,0,-1);
-        this.createGhostBall(4, 50, 50-6.5-1, direction );
+        this.createGhostBall(4);
 
         //club5
-        direction.set(0,0,-1);
-        this.createGhostBall(5, -50, 50-6.5-1, direction);
+        this.createGhostBall(5);
 
     }
     
-    createGhostBall(index, x, z, direction){
+    createGhostBall(index){
 
         var ghostBall = new Ball(this.radius, '#FFFFFF');
+        var x=0, z=0;
+        var direction = new THREE.Vector3(0,0,0);
         ghostBall.start_speed = 80;
+
+        if (index == 0){
+            x = -100+6.5+1;
+            direction.set(1,0,0);
+        }
+
+        else if(index == 1){
+            x = -50;
+            z = -(50-6.5-1);
+            direction.set(0,0,1);
+        }
+
+        else if(index == 2){
+            x = 50;
+            z = -(50-6.5-1)
+            direction.set(0,0,1);
+        }
+
+        else if(index == 3){
+            x = 100-6.5;
+            direction.set(-1,0,0);
+        }
+
+        else if(index == 4){
+            x = 50;
+            z = 50-6.5-1;
+            direction.set(0,0,-1);
+        }
+
+        else if(index == 5){
+            x = -50;
+            z = 50-6.5-1;
+            direction.set(0,0,-1);
+        }
 
         ghostBall.setBall(x, this.radius + 0.05 , z);
         ghostBall.direction.set(direction);
@@ -73,13 +103,7 @@ class BallsHandler {
     shoot(index){
 
         /*this.balls.push(this.ghostBalls[index]);
-        var newGhostBall = this.createGhostBall();
-        newGhostBall.start_speed = 80;
-
-
-        newGhostBall.setBall(-50, radius +0.05, 50-6.5-1);
-        newGhostBall.direction.set(0,0,-1);
-        newGhostBall.direction.setLength(newGhostBall.start_speed);
+        var newGhostBall = this.createGhostBall(index);
         this.ghostBalls[index] = newGhostBall;*/
         
     }

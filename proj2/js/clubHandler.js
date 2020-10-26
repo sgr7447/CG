@@ -29,7 +29,7 @@ class ClubHandler {
 
     selected(index) {
         if (this.selectedClub >= 0) this.clubs[this.selectedClub].unselect();
-        this.clubs[index].select();
+        this.clubs[index].select(index);
         this.selectedClub = index;
     }
 

@@ -32,13 +32,13 @@ class BallsHandler {
         }
 
         //GHOST BALLS
-        
+
         //club0
         this.createGhostBall(0);
-        
+
         //club1
         this.createGhostBall(1);
-        
+
         //club2
         this.createGhostBall(2);
 
@@ -52,7 +52,7 @@ class BallsHandler {
         this.createGhostBall(5);
 
     }
-    
+
     createGhostBall(index){
 
         var ghostBall = new Ball(this.radius, '#FFFFFF');
@@ -101,11 +101,13 @@ class BallsHandler {
     }
 
     shoot(index){
-
-        /*this.balls.push(this.ghostBalls[index]);
+        console.log(this.ghostBalls[index].direction.length());
+        this.balls.push(this.ghostBalls[index]);
+        console.log(this.balls.length);
+        console.log(this.balls[15].direction.length());
         var newGhostBall = this.createGhostBall(index);
-        this.ghostBalls[index] = newGhostBall;*/
-        
+        this.ghostBalls[index] = newGhostBall;
+
     }
 
     remBall(ball){

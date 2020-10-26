@@ -21,7 +21,7 @@ function createScene() {
     'use strict';
 
     scene = new THREE.Scene();
-    scene.add(new THREE.AxisHelper(10));
+    scene.add(new THREE.AxesHelper(10));
 
     createPoolTable(0,0,0);
 }

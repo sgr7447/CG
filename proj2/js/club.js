@@ -18,8 +18,14 @@ class Club extends Cylinder{
 
     }
 
+    setClub(x,y,z){
+        this.position.x = x;
+        this.position.y = y;
+        this.position.z = z;
+    }
+
     
-    select() {
+    select(index) {
         this.material.color.setHex(0xFAF301);
     }
 

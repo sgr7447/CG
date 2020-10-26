@@ -95,18 +95,15 @@ class BallsHandler {
         }
 
         ghostBall.setBall(x, this.radius + 0.05 , z);
-        ghostBall.direction.set(direction);
+        ghostBall.direction = direction;
         ghostBall.direction.setLength(ghostBall.start_speed);
         this.ghostBalls[index] = ghostBall;
     }
 
     shoot(index){
-        console.log(this.ghostBalls[index].direction.length());
+        console.log(this.ghostBalls.length);
         this.balls.push(this.ghostBalls[index]);
-        console.log(this.balls.length);
-        console.log(this.balls[15].direction.length());
-        var newGhostBall = this.createGhostBall(index);
-        this.ghostBalls[index] = newGhostBall;
+        this.createGhostBall(index);
 
     }
 

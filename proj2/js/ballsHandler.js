@@ -3,13 +3,15 @@ class BallsHandler {
     constructor(){
 
         this.balls = [];
+        this.ghostBalls = [[],[],[],[],[],[]];
+        var radius = 5;
 
+        //NORMAL BALLS
         //amarelo, azul, verde, rosa, roxo, vermelho
         var color_array = ['#FFE4B5', '#87CEEB', '#8FBC8F', '#DB7093', '#9370DB', '#FF6347'];
 
         while(this.balls.length < 15){
 
-            var radius = 5;
             var hole_radius = 14;
 
             var x = [-100 +radius + hole_radius, 100 -radius -hole_radius];
@@ -28,37 +30,87 @@ class BallsHandler {
 
             }
         }
-    }
 
-    shoot(){
-    }
+        //GHOST BALLS
 
-    addGhostBall(index){
-
-        var radius = 5;
+        //club0
         var ghostBall = new Ball(radius, '#FFFFFF');
-
         ghostBall.start_speed = 0;
+        ghostBall.setBall(-100+6.5+1, radius +0.05, 0);
+        ghostBall.direction.set(1,0,0);
+        this.ghostBalls[0].push(ghostBall);
+
+        //club1
+        ghostBall = new Ball(radius, '#FFFFFF');
+        ghostBall.start_speed = 0;
+        ghostBall.setBall(-50 , radius +0.05, -(50-6.5-1));
+        ghostBall.direction.set(0,0,1);
+        this.ghostBalls[1].push(ghostBall);
+
+        //club2
+        ghostBall = new Ball(radius, '#FFFFFF');
+        ghostBall.start_speed = 0;
+        ghostBall.setBall(50, radius +0.05, -(50-6.5-1));
+        ghostBall.direction.set(0,0,1);
+        this.ghostBalls[2].push(ghostBall);
+
+        //club3
+        ghostBall = new Ball(radius, '#FFFFFF');
+        ghostBall.start_speed = 0;
+        ghostBall.setBall(100-6.5, radius +0.05, 0);
+        ghostBall.direction.set(-1,0,0);
+        this.ghostBalls[3].push(ghostBall);
+
+        //club4
+        ghostBall = new Ball(radius, '#FFFFFF');
+        ghostBall.start_speed = 0;
+        ghostBall.setBall(50, radius +0.05, 50-6.5-1);
+        ghostBall.direction.set(0,0,-1);
+        this.ghostBalls[4].push(ghostBall);
+
+        //club5
+        ghostBall = new Ball(radius, '#FFFFFF');
+        ghostBall.start_speed = 0;
+        ghostBall.setBall(-50, radius +0.05, 50-6.5-1);
+        ghostBall.direction.set(0,0,-1);
+        this.ghostBalls[5].push(ghostBall);
+
+    }
+
+    shoot(index){
 
         if (index == 0){
-            ghostBall.setBall(-100+6.5+1, radius +0.05, 0);
-            ghostBall.direction.set(1,0,0);
-        }
-        else if (index == 1) ghostBall.setBall(-50 , radius +0.05, -(50-6.5-1));
-        else if (index == 2) ghostBall.setBall(50, radius +0.05, -(50-6.5-1));
-        else if (index == 3) ghostBall.setBall(100-6.5, radius +0.05, 0);
-        else if (index == 4) ghostBall.setBall(50, radius +0.05, 50-6.5-1);
-        else if (index == 5) ghostBall.setBall(-50, radius +0.05, 50-6.5-1);
 
-        this.balls.push(ghostBall);
+            for (var i=0; i<this.ghostBalls[index].length; i++){
+                
+                    this.ghostBalls[index][i].start_speed = 80;
+                    this.ghostBalls[index][i].shoot();
+                    return;
+                
+            }
+                        
+        }
+        else if (index == 1){
+            
+        }
+        else if (index == 2){
+            
+        } 
+        else if (index == 3){
+            
+        }
+        else if (index == 4){
+            
+        }
+        else if (index == 5){
+            
+        }
+        
     }
 
-    remPrevGhostBall(){
-        if (this.balls.length > 15){
-            var ghostBall = this.balls[this.balls.length-1];
-            scene.remove(ghostBall);
-            ghostBall = null;
-        }
+    remBall(ball){
+        scene.remove(ball);
+        ball = null;
     }
 
     verifyBalls(x, z, radius){

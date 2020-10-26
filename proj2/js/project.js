@@ -70,38 +70,26 @@ function onKeyDown(e) {
 
         case 52: //key 4 - club1
             clubs.selected(0);
-            balls.remPrevGhostBall();
-            balls.addGhostBall(0);
             break;
 
         case 53: //key 5 - club2
             clubs.selected(1);
-            balls.remPrevGhostBall();
-            balls.addGhostBall(1);
             break;
 
         case 54: //key 6 - club3
             clubs.selected(2);
-            balls.remPrevGhostBall();
-            balls.addGhostBall(2);
             break;
 
         case 55: //key 7 - club4
             clubs.selected(3);
-            balls.remPrevGhostBall();
-            balls.addGhostBall(3);
             break;
 
         case 56: //key 8 - club5
             clubs.selected(4);
-            balls.remPrevGhostBall();
-            balls.addGhostBall(4);
             break;
 
         case 57: //key 9 - club6
             clubs.selected(5);
-            balls.remPrevGhostBall();
-            balls.addGhostBall(5);
             break;
 
         case 39: //key -> - angle to the right
@@ -112,8 +100,8 @@ function onKeyDown(e) {
             clubs.angleLeft();
             break;
 
-        case 20: //shoot -space
-            balls.shoot();
+        case 32: //shoot -space
+            balls.shoot( clubs.getSelectedClub() );
             break;
         }
     }

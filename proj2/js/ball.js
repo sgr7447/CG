@@ -40,14 +40,6 @@ class Ball extends Sphere{
         this.position.z = z;
     }
 
-    shoot(){
-        this.updateTime();
-        var l = this.direction.length()
-        this.direction.setLength(l - this.delta*10);
-        this.translateX(this.direction.x * this.delta);
-        this.translateZ(this.direction.z * this.delta);
-    }
-
     move(){
         if(this.fall) return;
         //this.spin();

@@ -23,18 +23,12 @@ class BallsHandler {
                 var index_color = THREE.Math.randInt(0,4);
                 var color = color_array[index_color];
                 var ball = new Ball(radius, color);
-                this.setBall(ball, x_position, radius +0.05, z_position);
+                ball.setBall(x_position, radius +0.05, z_position);
                 this.balls.push(ball);
 
             }
         }
     }
-
-    setBall(ball, x,y,z){
-       ball.position.x = x;
-       ball.position.y = y;
-       ball.position.z = z;
-   }
 
     verifyBalls(x, z, radius){
         var flag = true

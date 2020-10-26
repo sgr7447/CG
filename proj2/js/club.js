@@ -14,12 +14,26 @@ class Club extends Cylinder{
         this.time = new THREE.Clock();
         this.delta;
 
+        //Ghost Ball
+        this.ghostBall;
+
         scene.add(this);
 
     }
 
+    setClub(x,y,z){
+        this.position.x = x;
+        this.position.y = y;
+        this.position.z = z;
+    }
+
     
     select() {
+        //create ghost ball
+        /*if ( primeira vez que for chamado ){
+            this.ghostBall = new Ball(radius, '#FFFFFF');
+            this.ghostBall.setBall(0, 0, 0);
+        }*/
         this.material.color.setHex(0xFAF301);
     }
 

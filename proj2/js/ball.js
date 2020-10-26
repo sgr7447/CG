@@ -34,6 +34,12 @@ class Ball extends Sphere{
 
     }
 
+    setBall(x,y,z){
+        this.position.x = x;
+        this.position.y = y;
+        this.position.z = z;
+    }
+
     move(){
         if(this.fall) return;
         this.translateX(this.direction.x * this.delta);

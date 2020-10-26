@@ -13,24 +13,18 @@ class ClubHandler {
         var club4 = new Club(0, 0, 0, 0, -1/2, 1/2, 70, 0.7, 1.3, clubColor);
 
         // sao transferidos para a pos correta
-        this.setClub(club0, -(100+35+5), 5, 0);
-        this.setClub(club3, 100+35+5, 5, 0);
-        this.setClub(club1, -50, 5, -(50+35+5));
-        this.setClub(club2, 50, 5, -(50+35+5));
-        this.setClub(club5, -50, 5, 50+35+5);
-        this.setClub(club4, 50, 5, 50+35+5);
+        club0.setClub(-(100+35+5), 5, 0);
+        club3.setClub(100+35+5, 5, 0);
+        club1.setClub(-50, 5, -(50+35+5));
+        club2.setClub(50, 5, -(50+35+5));
+        club5.setClub(-50, 5, 50+35+5);
+        club4.setClub(50, 5, 50+35+5);
 
         this.clubs = [ club0, club1, club2, club3, club4, club5 ];
 
         //taco que ira ser selecionado
         this.selectedClub;
 
-    }
-
-    setClub(club, x,y,z){
-        club.position.x = x;
-        club.position.y = y;
-        club.position.z = z;
     }
 
     selected(index) {

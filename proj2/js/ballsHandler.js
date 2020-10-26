@@ -101,7 +101,6 @@ class BallsHandler {
     }
 
     shoot(index){
-        console.log(this.ghostBalls.length);
         this.balls.push(this.ghostBalls[index]);
         this.createGhostBall(index);
 

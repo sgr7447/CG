@@ -42,9 +42,9 @@ class Ball extends Sphere{
 
     move(){
         if(this.fall) return;
-        //this.spin();
-        this.translateX(this.direction.x * this.delta);
-        this.translateZ(this.direction.z * this.delta);
+        this.spin();
+        this.position.x += (this.direction.x * this.delta);
+        this.position.z += (this.direction.z * this.delta);
 
         if (this.direction.length() > 0) {
             var l = this.direction.length()
@@ -56,9 +56,8 @@ class Ball extends Sphere{
     }
 
     spin(){
-        if (!this.fall && this.direction.length() !== 0){
-            var rotationAxis = new THREE.Vector3();
-            rotationAxis.set(this.direction.x, 0, this.direction.z); //vetor perpendicular ao da velocidade
+        if (!this.fall && this.direction.length() != 0){
+            var rotationAxis = new THREE.Vector3(this.direction.x, 0, this.direction.z); //vetor perpendicular ao da velocidade
             rotationAxis.cross(THREE.Object3D.DefaultUp).normalize(); //produto externo
 
             var auxVector = new THREE.Vector3(this.direction.x * this.delta, 0, this.direction.z * this.delta);
@@ -71,7 +70,7 @@ class Ball extends Sphere{
 
       if (this.fall){
           this.direction.set(0, this.direction.length() + this.delta * 9.8, 0);
-          this.translateY(-this.direction.length() * this.delta);
+          this.position.y -= (this.direction.length() * this.delta);
 
       }
 

@@ -101,7 +101,7 @@ function onKeyDown(e) {
             break;
 
         case 32: //shoot -space
-            balls.shoot( clubs.getSelectedClub() );
+            balls.shoot(clubs.getSelectedClub(), clubs.clubs);
             break;
         }
     }

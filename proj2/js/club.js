@@ -14,11 +14,6 @@ class Club extends Cylinder{
         this.time = new THREE.Clock();
         this.delta;
 
-        //Ghost Ball
-        this.ghostBall;
-
-        this.timesSelected = 0;
-
         scene.add(this);
 
     }
@@ -31,32 +26,11 @@ class Club extends Cylinder{
 
     
     select(index) {
-
-        //create ghost ball
-        this.timesSelected++;
-        if ( this.timesSelected == 1){
-            var radius = 5;
-            this.ghostBall = new Ball(radius, '#FFFFFF');
-
-            if (index == 0) this.ghostBall.setBall(-100+6.5+1, radius +0.05, 0);
-            else if (index == 1) this.ghostBall.setBall(-50 , radius +0.05, -(50-6.5-1));
-            else if (index == 2) this.ghostBall.setBall(50, radius +0.05, -(50-6.5-1));
-            else if (index == 3) this.ghostBall.setBall(100-6.5, radius +0.05, 0);
-            else if (index == 4) this.ghostBall.setBall(50, radius +0.05, 50-6.5-1);
-            else if (index == 5) this.ghostBall.setBall(-50, radius +0.05, 50-6.5-1);
-        }
-
-        //change color
         this.material.color.setHex(0xFAF301);
     }
 
     unselect(){
         this.material.color.setHex(this.orig_color.getHex());
-        this.timesSelected = 0;
-
-        //destroy ghost ball
-        scene.remove(this.ghostBall);
-        this.ghostBall = null;
     }
 
     angleRight(){

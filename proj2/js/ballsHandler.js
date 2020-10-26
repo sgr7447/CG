@@ -30,6 +30,37 @@ class BallsHandler {
         }
     }
 
+    shoot(){
+    }
+
+    addGhostBall(index){
+
+        var radius = 5;
+        var ghostBall = new Ball(radius, '#FFFFFF');
+
+        ghostBall.start_speed = 0;
+
+        if (index == 0){
+            ghostBall.setBall(-100+6.5+1, radius +0.05, 0);
+            ghostBall.direction.set(1,0,0);
+        }
+        else if (index == 1) ghostBall.setBall(-50 , radius +0.05, -(50-6.5-1));
+        else if (index == 2) ghostBall.setBall(50, radius +0.05, -(50-6.5-1));
+        else if (index == 3) ghostBall.setBall(100-6.5, radius +0.05, 0);
+        else if (index == 4) ghostBall.setBall(50, radius +0.05, 50-6.5-1);
+        else if (index == 5) ghostBall.setBall(-50, radius +0.05, 50-6.5-1);
+
+        this.balls.push(ghostBall);
+    }
+
+    remPrevGhostBall(){
+        if (this.balls.length > 15){
+            var ghostBall = this.balls[this.balls.length-1];
+            scene.remove(ghostBall);
+            ghostBall = null;
+        }
+    }
+
     verifyBalls(x, z, radius){
         var flag = true
         if (this.balls.length == 0){return flag;}
@@ -67,7 +98,7 @@ class BallsHandler {
 
     update(){
 
-        for (var i=0; i<this.balls.length; i++){
+        for (var i=0; i<15; i++){
 
             //does movement and checks for hole and wall colisions
             this.balls[i].update();

@@ -141,7 +141,7 @@ class BallsHandler {
 
             if(distBalls <= 2*ball1.radius){
                 list_ball_colisions.push(ball2);
-                    
+
             }
         }
 

@@ -70,7 +70,7 @@ class Ball extends Sphere{
 
       if (this.fall){
           this.direction.set(0, this.direction.length() + this.delta * 9.8, 0);
-          this.position.y -= (this.direction.length() * this.delta);
+              this.position.y -= (this.direction.length() * this.delta);
 
       }
 
@@ -197,24 +197,28 @@ class Ball extends Sphere{
             //verifica se as bolas estão na mesma posição nos yy
             if(ball1.direction.y == ball2.direction.y){
 
-                var speed1 = ball1.direction.length();
-                var speed2 = ball2.direction.length();
+                var diffVelocity1 = ball1.direction.clone().sub(ball2.direction);
+                var diffVelocity2 = ball2.direction.clone().sub(ball1.direction);
 
-                var x1 = ball1.direction.x;
-                var z1 = ball1.direction.z;
-                var x2 = ball2.direction.x;
-                var z2 = ball2.direction.z;
+                var diffPosition1 = ball1.position.clone().sub(ball2.position);
+                var diffPosition2 = ball2.position.clone().sub(ball1.position);
 
-                //if (speed1 == 0) speed1 = 1;
-                //if (speed2 == 0) speed2 = 1;
 
-                ball1.direction.set(x2, ball1.direction.y, z2);
-                ball2.direction.set(x1, ball2.direction.y, z1);
+                var dot1 = diffVelocity1.clone().dot(diffPosition1);
+                var dot2 = diffVelocity2.clone().dot(diffPosition2);
 
-                ball1.direction.setLength(speed2);
-                ball2.direction.setLength(speed1);
+                //norma ao quadrado
+                var norm1 = diffPosition1.lengthSq();
+                var norm2 = diffPosition2.lengthSq();
+
+                var tangent = new THREE.Vector3(-diffPosition1.z, 0 ,-diffPosition1.x);
+
+                var dir1 = ball1.direction.clone().sub(diffPosition1.multiplyScalar(dot1 / norm1));
+                var dir2 = ball2.direction.clone().sub(diffPosition2.multiplyScalar(dot2 / norm2));
+
+                ball1.direction = dir1;
+                ball2.direction = dir2;
             }
-
         }
     }
 

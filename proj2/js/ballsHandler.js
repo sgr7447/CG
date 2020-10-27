@@ -100,10 +100,16 @@ class BallsHandler {
         this.ghostBalls[index] = ghostBall;
     }
 
-    shoot(index){
+    shoot(index, clubs){
+        var x = -Math.sin(clubs[index].rotation.y);
+        var z = Math.cos(clubs[index].rotation.y);
+        if(clubs[index].position.z < 0) x=-x;
+        if(clubs[index].position.z > 0) z=-z;
+
+        this.ghostBalls[index].direction.set(x, 0, z);
+        this.ghostBalls[index].direction.setLength(80);
         this.balls.push(this.ghostBalls[index]);
         this.createGhostBall(index);
-
     }
 
     remBall(ball){

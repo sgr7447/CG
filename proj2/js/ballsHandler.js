@@ -102,27 +102,26 @@ class BallsHandler {
 
     shoot(index, clubs){
 
-        var x = -Math.sin(clubs[index].rotation.y);
-        var z = Math.cos(clubs[index].rotation.y);
+        if (index >= 0){
 
-        if (index == 0 || index == 3){
-            if(clubs[index].position.x > 0) x=-x;
-            this.ghostBalls[index].direction.set(z, 0, x);
+            var x = -Math.sin(clubs[index].rotation.y);
+            var z = Math.cos(clubs[index].rotation.y);
+
+            if (index == 0 || index == 3){
+                if(clubs[index].position.x > 0) x=-x;
+                this.ghostBalls[index].direction.set(z, 0, x);
+            }
+
+            else{
+                if(clubs[index].position.z < 0) x=-x;
+                if(clubs[index].position.z > 0) z=-z;
+                this.ghostBalls[index].direction.set(x, 0, z);
+            }
+            this.ghostBalls[index].direction.setLength(80);
+            this.balls.push(this.ghostBalls[index]);
+            this.createGhostBall(index);
+
         }
-
-        else{
-            if(clubs[index].position.z < 0) x=-x;
-            if(clubs[index].position.z > 0) z=-z;
-            this.ghostBalls[index].direction.set(x, 0, z);
-        }
-        this.ghostBalls[index].direction.setLength(80);
-        this.balls.push(this.ghostBalls[index]);
-        this.createGhostBall(index);
-    }
-
-    remBall(ball){
-        scene.remove(ball);
-        ball = null;
     }
 
     verifyBalls(x, z, radius){
@@ -147,13 +146,15 @@ class BallsHandler {
 
         for (var j = ball_index+1; j < this.balls.length; j++) {
 
-            var ball2 = this.balls[j];
+            if (this.balls[j]){
+                var ball2 = this.balls[j];
 
-            var distBalls = Math.sqrt((ball1.position.x - ball2.position.x)**2 + (ball1.position.z - ball2.position.z)**2);
+                var distBalls = Math.sqrt((ball1.position.x - ball2.position.x)**2 + (ball1.position.z - ball2.position.z)**2);
 
-            if(distBalls <= 2*ball1.radius){
-                list_ball_colisions.push(ball2);
+                if(distBalls <= 2*ball1.radius){
+                    list_ball_colisions.push(ball2);
 
+                }
             }
         }
 
@@ -164,16 +165,26 @@ class BallsHandler {
 
         for (var i=0; i<this.balls.length; i++){
 
-            //does movement and checks for hole and wall colisions
-            this.balls[i].update();
+            if (this.balls[i]){
+                //does movement and checks for hole and wall colisions
+                this.balls[i].update();
 
-            //checks for ball colisions
-            var list_ball_colisions = this.checkBallColision(i);
+                //checks for ball colisions
+                var list_ball_colisions = this.checkBallColision(i);
 
-            //treating all colisions
-            this.balls[i].moveInsideHole();
-            this.balls[i].treatWallColision();
-            this.balls[i].treatBallsColision(list_ball_colisions);
+                //treating all colisions
+                this.balls[i].moveInsideHole();
+                this.balls[i].treatWallColision();
+                this.balls[i].treatBallsColision(list_ball_colisions);
+            }
+        }
+
+        for (var i=15; i<this.balls.length; i++){
+
+            if (this.balls[i] && (this.balls[i].direction.length() < 1 || this.balls[i].fall)){
+                scene.remove(this.balls[i]);
+                delete this.balls[i];
+            }
         }
     }
 }

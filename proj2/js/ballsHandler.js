@@ -182,13 +182,5 @@ class BallsHandler {
                 this.balls[i].treatBallsColision(list_ball_colisions);
             }
         }
-
-        for (var i=15; i<this.balls.length; i++){
-
-            if (this.balls[i] && (this.balls[i].direction.length() < 1 || this.balls[i].fall)){
-                scene.remove(this.balls[i]);
-                delete this.balls[i];
-            }
-        }
     }
 }

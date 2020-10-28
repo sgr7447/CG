@@ -31,6 +31,7 @@ function createCamera() {
 
     orthographicCamera = new OrthographicCamera();
     perspectiveCamera = new PerspectiveCamera();
+    //ballCamera = new BallCamera();
 
     currentCamera = orthographicCamera;
 }
@@ -66,6 +67,7 @@ function onKeyDown(e) {
             break;
 
         case 51: //key 3 - mobile perspective camera
+            //currentCamera = ballCamera;
             break;
 
         case 52: //key 4 - club1

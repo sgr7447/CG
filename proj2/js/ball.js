@@ -1,15 +1,15 @@
 class Ball extends Sphere{
 
-    constructor(radius, color){
+    constructor(x, z, radius, color){
 
-        super(0, 0, 0, radius, color);
+        super(x, radius + 0.05, z, radius, color);
 
         //TIME
         this.time = new THREE.Clock();
         this.delta;
 
         //SPEED
-        this.start_speed = THREE.Math.randFloat(50,80);
+        this.start_speed = THREE.Math.randFloat(40,80);
         this.fall_speed = 0;
 
         //DIRECTION
@@ -31,6 +31,7 @@ class Ball extends Sphere{
         this.hole_radius;
 
         scene.add(this);
+        this.setBall(x,radius+0.05,z);
 
     }
 

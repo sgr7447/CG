@@ -7,6 +7,8 @@ class BallsHandler {
         this.radius = 5;
         this.ghostSpeed = 80;
 
+        //ballCamera = new BallCamera();
+
         //NORMAL BALLS
         //amarelo, azul, verde, rosa, roxo, vermelho
         var color_array = ['#FFE4B5', '#87CEEB', '#8FBC8F', '#DB7093', '#9370DB', '#FF6347'];
@@ -25,11 +27,12 @@ class BallsHandler {
             if (flag){
                 var index_color = THREE.Math.randInt(0,4);
                 var color = color_array[index_color];
-                var ball = new Ball(this.radius, color);
-                ball.setBall(x_position, this.radius +0.05, z_position);
+                
+                var ball = new Ball(x_position, z_position, this.radius, color);
                 this.balls.push(ball);
 
             }
+
         }
 
         //GHOST BALLS
@@ -56,7 +59,6 @@ class BallsHandler {
 
     createGhostBall(index){
 
-        var ghostBall = new Ball(this.radius, '#FFFFFF');
         var x=0, z=0;
         var direction = new THREE.Vector3(0,0,0);
 
@@ -93,8 +95,7 @@ class BallsHandler {
             z = 50-6.5-1;
             direction.set(0,0,-1);
         }
-
-        ghostBall.setBall(x, this.radius + 0.05 , z);
+        var ghostBall = new Ball(x, z, this.radius, '#FFFFFF');
         ghostBall.direction = direction;
         ghostBall.direction.setLength(this.ghostSpeed);
         this.ghostBalls[index] = ghostBall;

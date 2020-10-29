@@ -1,10 +1,11 @@
 /*global THREE, requestAnimationFrame, console*/
 
-var orthographicCamera, perspectiveCamera, currentCamera, scene, renderer;
+var orthographicCamera, perspectiveCamera, ballCamera, currentCamera, scene, renderer;
 var geometry, material, mesh;
 var poolTable;
 var balls;
 var clubs;
+var shoot;
 
 
 function createPoolTable(x, y, z){
@@ -31,7 +32,7 @@ function createCamera() {
 
     orthographicCamera = new OrthographicCamera();
     perspectiveCamera = new PerspectiveCamera();
-    //ballCamera = new BallCamera();
+    ballCamera = new BallCamera();
 
     currentCamera = orthographicCamera;
 }
@@ -67,7 +68,9 @@ function onKeyDown(e) {
             break;
 
         case 51: //key 3 - mobile perspective camera
-            //currentCamera = ballCamera;
+            if (shoot){
+                currentCamera = ballCamera;
+            }
             break;
 
         case 52: //key 4 - club1
@@ -104,6 +107,9 @@ function onKeyDown(e) {
 
         case 32: //shoot -space
             balls.shoot(clubs.getSelectedClub(), clubs.clubs);
+            if (clubs.getSelectedClub()){
+                shoot = true;
+            }
             break;
         }
     }
@@ -139,6 +145,8 @@ function init() {
     createScene();
     createCamera();
 
+    shoot = false;
+
     render();
 
     window.addEventListener("keydown", onKeyDown);
@@ -151,6 +159,7 @@ function animate() {
 
     clubs.update();
     balls.update();
+    currentCamera.update(balls.balls[balls.balls.length -1]);
 
     render();
     requestAnimationFrame(animate);

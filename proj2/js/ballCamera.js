@@ -1,6 +1,13 @@
 class BallCamera extends THREE.PerspectiveCamera {
     constructor() {
-        super();
+
+        var aspect = window.innerWidth / window.innerHeight;
+        var width = window.innerWidth / aspect;
+        var height = window.innerHeight / aspect;
+
+        super(60, aspect, 0.5, 5000);
+
+        this.onResize();
     }
 
     followBall(ball) {
@@ -8,25 +15,14 @@ class BallCamera extends THREE.PerspectiveCamera {
         this.update();
     }
 
-    update() {
-        var ballPos = this.ball.getPosition();
-        var ballDir = this.ball.getDirection();
+    update(ball) {
 
-        if(ballDir.x !=0 || ballDir.y != 0 || ballDir.z != 0){
-            this.position.set(ballPos.x - ballDir.x*10,
-                              ballPos.y - ballDir.y*10,
-                              ballPos.z - ballDir.z*10 )
-        }
-        else{
-            this.position.set(ballPos.x - Math.sin(this.ball.angle)*10,
-                              ballPos.y - ballDir.y*10,
-                              ballPos.z - Math.cos(this.ball.angle)*10)
-        }
+        this.position.set(ball.position.x, ball.position.y + ball.radius * 4, ball.position.z);
 
-        this.lookAt(ballPos);
+        this.lookAt(ball.position);
     }
 
-    resize() {
+    onResize() {
         this.aspect = renderer.getSize().width / renderer.getSize().height;
         this.updateProjectionMatrix();
     }

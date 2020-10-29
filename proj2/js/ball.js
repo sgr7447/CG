@@ -70,7 +70,7 @@ class Ball extends Sphere{
 
       if (this.fall){
           this.direction.set(0, this.direction.length() + this.delta * 9.8, 0);
-              this.position.y -= (this.direction.length() * this.delta);
+              this.position.y -= (this.direction.length() * this.delta * 20);
 
       }
 

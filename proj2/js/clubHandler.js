@@ -28,11 +28,16 @@ class ClubHandler {
     }
 
     getSelectedClub(){
-        if (this.selectedClub >= 0) return this.selectedClub;
+        if (this.selectedClub >= 0){
+            return this.selectedClub;
+        }
+        return null;
     }
 
     selected(index) {
-        if (this.selectedClub >= 0) this.clubs[this.selectedClub].unselect();
+        if (this.selectedClub >= 0){
+            this.clubs[this.selectedClub].unselect();
+        }
         this.clubs[index].select(index);
         this.selectedClub = index;
     }

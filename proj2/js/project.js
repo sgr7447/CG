@@ -52,16 +52,6 @@ function onKeyDown(e) {
             currentCamera.view1();
             break;
 
-        case 81: //para apagar FRONT
-            currentCamera = orthographicCamera;
-            currentCamera.view2();
-            break;
-
-        case 65: //para apagar SIDE
-            currentCamera = orthographicCamera;
-            currentCamera.view3();
-            break;
-
         case 50: //key 2 - perspective camera
             currentCamera = perspectiveCamera;
             currentCamera.view1();
@@ -107,7 +97,7 @@ function onKeyDown(e) {
 
         case 32: //shoot -space
             balls.shoot(clubs.getSelectedClub(), clubs.clubs);
-            if (clubs.getSelectedClub()){
+            if (clubs.getSelectedClub() >= 0){
                 shoot = true;
             }
             break;

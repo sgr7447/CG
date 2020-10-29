@@ -156,6 +156,11 @@ class BallsHandler {
                 var distBalls = Math.sqrt((ball1.position.x - ball2.position.x)**2 + (ball1.position.z - ball2.position.z)**2);
 
                 if(distBalls <= 2*ball1.radius){
+
+                    /*var translaction = ball1.radius - (ball1.radius*2 - distBalls);
+                    ball1.setPosition(ball1.position - translaction);
+                    ball2.setPosition(ball2.position - translaction);
+*/
                     list_ball_colisions.push(ball2);
 
                 }

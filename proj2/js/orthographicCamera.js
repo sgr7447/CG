@@ -22,22 +22,6 @@ class OrthographicCamera extends THREE.OrthographicCamera{
         this.lookAt(scene.position);
 
     }
-    /* FRONT */
-    view2(){
-
-        this.onResize();
-        this.position.set(0, 0, window.innerHeight);
-        this.lookAt(scene.position);
-
-    }
-
-    /* SIDE */
-    view3(){
-
-        this.onResize();
-        this.position.set(window.innerHeight, 0, 0);
-        this.lookAt(scene.position);
-    }
 
     update(){}
 

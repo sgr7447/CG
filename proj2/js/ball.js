@@ -47,8 +47,7 @@ class Ball extends Sphere{
         this.position.z += (this.direction.z * this.delta);
 
         if (this.direction.length() > 0) {
-            var l = this.direction.length()
-            this.direction.setLength(l - this.delta*10);
+            this.direction.setLength(this.direction.length() - this.delta*10);
         }
         else {
             this.direction.setLength(0);

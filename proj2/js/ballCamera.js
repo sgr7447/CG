@@ -17,9 +17,18 @@ class BallCamera extends THREE.PerspectiveCamera {
 
     update(ball) {
 
-        this.position.set(ball.position.x, ball.position.y + ball.radius * 4, ball.position.z);
+        if(ball.direction.length() > 0.02){
+            var speed = ball.direction.clone().multiplyScalar(-1).normalize();
 
-        this.lookAt(ball.position);
+            this.position.set(ball.position.x + speed.x, ball.position.y + ball.radius * 4, ball.position.z + speed.z);
+
+            this.lookAt(ball.position);
+        }
+
+        else{
+            this.position.set(ball.position.x, ball.position.y + ball.radius * 4, ball.position.z);
+            this.lookAt(ball.position);
+        }
     }
 
     onResize() {

@@ -9,7 +9,7 @@ class Ball extends Sphere{
         this.delta;
 
         //SPEED
-        this.start_speed = THREE.Math.randFloat(50,80);
+        this.start_speed = THREE.Math.randFloat(30,60);
         this.fall_speed = 0;
 
         //DIRECTION
@@ -202,7 +202,7 @@ class Ball extends Sphere{
                 var diffPosition1 = ball1.position.clone().sub(ball2.position);
                 var diffPosition2 = ball2.position.clone().sub(ball1.position);
 
-
+                //produto escalar/interno
                 var dot1 = diffVelocity1.clone().dot(diffPosition1);
                 var dot2 = diffVelocity2.clone().dot(diffPosition2);
 
@@ -210,8 +210,7 @@ class Ball extends Sphere{
                 var norm1 = diffPosition1.lengthSq();
                 var norm2 = diffPosition2.lengthSq();
 
-                var tangent = new THREE.Vector3(-diffPosition1.z, 0 ,-diffPosition1.x);
-
+                //v = v - diffPosition vector * um escalar
                 var dir1 = ball1.direction.clone().sub(diffPosition1.multiplyScalar(dot1 / norm1));
                 var dir2 = ball2.direction.clone().sub(diffPosition2.multiplyScalar(dot2 / norm2));
 

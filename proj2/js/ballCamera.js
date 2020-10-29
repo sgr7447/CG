@@ -17,10 +17,12 @@ class BallCamera extends THREE.PerspectiveCamera {
 
     update(ball) {
 
-        if(ball.direction.length() > 0.02){
-            var speed = ball.direction.clone().multiplyScalar(-1).normalize();
+        if(ball.direction.length() > 1){
+            //vetor com sentido oposto ao da velocidade
+            var oppositeDirection = ball.direction.clone().multiplyScalar(-1).normalize();
 
-            this.position.set(ball.position.x + speed.x, ball.position.y + ball.radius * 4, ball.position.z + speed.z);
+            //somar o vetor oposto à direção da bola à bola
+            this.position.set(ball.position.x + oppositeDirection.x, ball.position.y + ball.radius * 4, ball.position.z + oppositeDirection.z);
 
             this.lookAt(ball.position);
         }

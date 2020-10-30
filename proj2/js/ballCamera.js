@@ -22,13 +22,13 @@ class BallCamera extends THREE.PerspectiveCamera {
             var oppositeDirection = ball.direction.clone().multiplyScalar(-1).normalize();
 
             //somar o vetor oposto à direção da bola à bola
-            this.position.set(ball.position.x + oppositeDirection.x, ball.position.y + ball.radius * 4, ball.position.z + oppositeDirection.z);
+            this.position.set(ball.position.x + oppositeDirection.x -15, ball.position.y + ball.radius * 4 + 10, ball.position.z + oppositeDirection.z);
 
             this.lookAt(ball.position);
         }
 
         else{
-            this.position.set(ball.position.x, ball.position.y + ball.radius * 4, ball.position.z);
+            this.position.set(ball.position.x -15 , ball.position.y + ball.radius * 4 + 10, ball.position.z);
             this.lookAt(ball.position);
         }
     }

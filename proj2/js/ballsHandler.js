@@ -162,6 +162,7 @@ class BallsHandler {
                     var vector = distBalls.setLength(translaction);
                     ball2.position.sub(vector);
 
+            
                     list_ball_colisions.push(ball2);
 
                 }

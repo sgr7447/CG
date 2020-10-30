@@ -148,6 +148,7 @@ function animate() {
 
     clubs.update();
     balls.update();
+    //seguimos sempre a ultima bola a ser lancada (colocada na lista)
     currentCamera.update(balls.balls[balls.balls.length -1]);
 
     render();

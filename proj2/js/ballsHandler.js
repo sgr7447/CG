@@ -160,7 +160,7 @@ class BallsHandler {
                     /*var translaction = ball1.radius - (ball1.radius*2 - distBalls);
                     ball1.setPosition(ball1.position - translaction);
                     ball2.setPosition(ball2.position - translaction);
-*/
+                    */
                     list_ball_colisions.push(ball2);
 
                 }

@@ -9,12 +9,12 @@ class Ball extends Sphere{
         this.delta;
 
         //SPEED
-        this.start_speed = THREE.Math.randFloat(50,80);
+        this.start_speed = THREE.Math.randFloat(30,70);
         this.fall_speed = 0;
 
         //DIRECTION
-        var random_x = THREE.Math.randInt(-1,1);
-        var random_z = THREE.Math.randInt(-1,1);
+        var random_x = THREE.Math.randFloat(-1,1);
+        var random_z = THREE.Math.randFloat(-1,1);
         this.direction = new THREE.Vector3(random_x, 0, random_z);
         this.direction.setLength(this.start_speed);
 

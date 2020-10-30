@@ -137,7 +137,6 @@ function init() {
 
     shoot = false;
 
-    render();
 
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("keyup", onKeyUp);

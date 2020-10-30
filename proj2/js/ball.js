@@ -9,12 +9,12 @@ class Ball extends Sphere{
         this.delta;
 
         //SPEED
-        this.start_speed = THREE.Math.randFloat(50,80);
+        this.start_speed = THREE.Math.randFloat(40,70);
         this.fall_speed = 0;
 
         //DIRECTION
-        var random_x = THREE.Math.randInt(-1,1);
-        var random_z = THREE.Math.randInt(-1,1);
+        var random_x = THREE.Math.randFloat(-1,1);
+        var random_z = THREE.Math.randFloat(-1,1);
         this.direction = new THREE.Vector3(random_x, 0, random_z);
         this.direction.setLength(this.start_speed);
 
@@ -163,12 +163,31 @@ class Ball extends Sphere{
         var wallU = 50-0.05;
         var wallD = -50+0.05;
 
-        if((this.position.x <= wallL + this.radius) || (this.position.x >=wallR - this.radius)){
+        if(this.position.x <= wallL + this.radius){
           this.wall_colision_x = true;
+          var translaction = Math.abs(this.position.x - this.radius - wallL);
+
+          this.position.x += translaction;
+        }
+        if(this.position.x >=wallR - this.radius){
+          this.wall_colision_x = true;
+          var translaction = Math.abs(this.position.x + this.radius - wallR);
+
+          this.position.x -= translaction;
         }
 
-        if((this.position.z >= wallU - this.radius) || (this.position.z <=wallD + this.radius)){
+        if(this.position.z >= wallU - this.radius){
           this.wall_colision_z = true;
+          var translaction = Math.abs(this.position.z + this.radius - wallU);
+
+          this.position.z -= translaction;
+        }
+
+        if(this.position.z <=wallD + this.radius){
+          this.wall_colision_z = true;
+          var translaction = Math.abs(this.position.z - this.radius - wallD);
+
+          this.position.z += translaction;
         }
     }
 
@@ -210,7 +229,6 @@ class Ball extends Sphere{
                 var norm1 = diffPosition1.lengthSq();
                 var norm2 = diffPosition2.lengthSq();
 
-                var tangent = new THREE.Vector3(-diffPosition1.z, 0 ,-diffPosition1.x);
 
                 var dir1 = ball1.direction.clone().sub(diffPosition1.multiplyScalar(dot1 / norm1));
                 var dir2 = ball2.direction.clone().sub(diffPosition2.multiplyScalar(dot2 / norm2));

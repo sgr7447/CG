@@ -23,14 +23,9 @@ class BallCamera extends THREE.PerspectiveCamera {
 
             //somar o vetor oposto à direção da bola à bola
             this.position.set(ball.position.x + oppositeDirection.x -15, ball.position.y + ball.radius * 4 + 10, ball.position.z + oppositeDirection.z);
-
-            this.lookAt(ball.position);
         }
 
-        else{
-            this.position.set(ball.position.x -15 , ball.position.y + ball.radius * 4 + 10, ball.position.z);
-            this.lookAt(ball.position);
-        }
+        this.lookAt(ball.position);
     }
 
     onResize() {

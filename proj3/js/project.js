@@ -15,7 +15,6 @@ function createBase(x, y, z){
     chassis = new Chassis();
     bodyStyle = new BodyStyle();
 
-
 }
 
 function createScene() {

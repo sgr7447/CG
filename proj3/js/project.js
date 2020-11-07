@@ -2,7 +2,7 @@
 
 var orthographicCamera, perspectiveCamera, ballCamera, currentCamera, scene, renderer;
 var geometry, material, mesh;
-var floor, platform, chassis;
+var floor, platform, chassis, bodyStyle;
 
 
 
@@ -13,6 +13,7 @@ function createBase(x, y, z){
     floor = new Floor();
     platform = new Platform();
     chassis = new Chassis();
+    bodyStyle = new BodyStyle();
 
 
 }

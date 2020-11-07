@@ -22,15 +22,19 @@ class BodyStyle extends THREE.Object3D{
             new THREE.Vector3( -bottomBodyStyleLength/2, platformHeight + wheelRadius, bottomBodyStyleWidth/2),
         	new THREE.Vector3( bottomBodyStyleLength/2, platformHeight + wheelRadius, bottomBodyStyleWidth/2),
         	new THREE.Vector3( bottomBodyStyleLength/2, platformHeight + wheelRadius + bodyStyleHeight/2, bottomBodyStyleWidth/2),
-            new THREE.Vector3( -bottomBodyStyleLength/2, platformHeight + wheelRadius + bodyStyleHeight/2, bottomBodyStyleWidth/2),
+            new THREE.Vector3( -bottomBodyStyleLength/2, platformHeight + wheelRadius + bodyStyleHeight/2, bottomBodyStyleWidth/2)
         );
 
-        bodyStyle.faces.push(new THREE.Face3( 0, 1, 2));
+        bodyStyle.faces.push(new THREE.Face3( 0, 1, 2));//lado direito
         bodyStyle.faces.push(new THREE.Face3( 0, 2, 3));
+        bodyStyle.faces.push(new THREE.Face3( 4, 5, 6));//lado esquerdo
+        bodyStyle.faces.push(new THREE.Face3( 4, 6, 7));
+        bodyStyle.faces.push(new THREE.Face3( 5, 1, 2));//trás
+        bodyStyle.faces.push(new THREE.Face3( 5, 2, 6));//trás
 
         bodyStyle.computeBoundingSphere();
 
-        var mesh = new THREE.Mesh(bodyStyle, material);
+        mesh = new THREE.Mesh(bodyStyle, material);
         mesh.position.set(0, 0, 0);
         this.add(mesh);
 

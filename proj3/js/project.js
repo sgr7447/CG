@@ -11,6 +11,7 @@ function createBase(x, y, z){
 
     material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: false});
     floor = new Floor();
+    
     platform = new Platform();
     chassis = new Chassis();
     bodyStyle = new BodyStyle();
@@ -55,12 +56,11 @@ function onKeyDown(e) {
             currentCamera.view1();
             break;
 
-        /*case 51: //key 3 - mobile perspective camera
-            if (shoot){
-                currentCamera = ballCamera;
-            }
+        case 51: //key 3 - mobile perspective camera
+        currentCamera = orthographicCamera;
+        currentCamera.view3();
             break;
-
+/*
         case 52: //key 4 - club1
             clubs.selected(0);
             break;

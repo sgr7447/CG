@@ -40,7 +40,7 @@ class BodyStyle extends THREE.Object3D{
 
         bodyStyle.scale(0.2, 0.2, 0.2);
 
-        scene.add(this);
+        //scene.add(this);
 
 
 

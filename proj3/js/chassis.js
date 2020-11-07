@@ -1,9 +1,9 @@
 class Chassis extends THREE.Object3D{
 
     constructor(){
+
         super();
 
-        var chassis = new THREE.Object3D();
         var frontLeftWheel = new THREE.Object3D();
         var frontRightWheel = new THREE.Object3D();
         var rearLeftWheel = new THREE.Object3D();
@@ -20,27 +20,27 @@ class Chassis extends THREE.Object3D{
 
         frontLeftWheel.add(new Cylinder(-chassisPlatformLength/2, platformHeight + wheelRadius,
             -chassisPlatformWidth/2, 0, 1/2, 1/2, wheelHeight, wheelRadius, 200, 10, wheelColor));
-        chassis.add(frontLeftWheel);
+        this.add(frontLeftWheel);
 
         frontRightWheel.add(new Cylinder(-chassisPlatformLength/2, platformHeight + wheelRadius,
             chassisPlatformWidth/2, 0, 1/2, 1/2, wheelHeight, wheelRadius, 200, 10, wheelColor));
-        chassis.add(frontRightWheel);
+        this.add(frontRightWheel);
 
         rearLeftWheel.add(new Cylinder(chassisPlatformLength/2, platformHeight + wheelRadius,
             -chassisPlatformWidth/2, 0, 1/2, 1/2, wheelHeight, wheelRadius, 200, 10, wheelColor));
-        chassis.add(rearLeftWheel);
+        this.add(rearLeftWheel);
 
         rearRightWheel.add(new Cylinder(chassisPlatformLength/2, platformHeight + wheelRadius,
             chassisPlatformWidth/2, 0, 1/2, 1/2, wheelHeight, wheelRadius, 200, 10, wheelColor));
-        chassis.add(rearRightWheel);
+        this.add(rearRightWheel);
 
         chassisPlatform.add(new Cube(0, platformHeight + wheelRadius, 0, 0, 0, 0,
             chassisPlatformLength, chassisPlatformHeight, chassisPlatformWidth, wheelColor));
-        chassis.add(chassisPlatform);
+        this.add(chassisPlatform);
 
-        chassis.scale.set(0.2, 0.2, 0.2);
+        this.scale.set(0.2, 0.2, 0.2);
 
-        scene.add(chassis);
+        //scene.add(this);
 
     }
 

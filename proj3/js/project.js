@@ -2,7 +2,7 @@
 
 var orthographicCamera, perspectiveCamera, ballCamera, currentCamera, scene, renderer;
 var geometry, material, mesh;
-var base;
+var floor, platform, chassis;
 
 
 
@@ -10,7 +10,10 @@ function createBase(x, y, z){
     'use strict';
 
     material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: false});
-    base = new Base(x, y, z);
+    floor = new Floor();
+    platform = new Platform();
+    chassis = new Chassis();
+
 
 }
 

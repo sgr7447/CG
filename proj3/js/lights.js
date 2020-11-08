@@ -6,8 +6,6 @@ class Lights extends THREE.Object3D{
 
         material = new THREE.MeshBasicMaterial({ color: 0xd1dcff, wireframe: false});
         const lights = new THREE.Geometry();
-        const frontLight = new THREE.Geometry();
-        const rearLight = new THREE.Geometry();
 
         var bottomBodyStyleLength = 588.5;
         var bottomBodyStyleWidth = 202.7;
@@ -30,14 +28,15 @@ class Lights extends THREE.Object3D{
             new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4 -6, -bottomBodyStyleWidth/2)//11
         );
 
-        lights.faces.push(new THREE.Face3(6, 3, 2));//frente
-        lights.faces.push(new THREE.Face3(6, 7, 3));//frente
-        lights.faces.push(new THREE.Face3(7, 4, 0));//frente
-        lights.faces.push(new THREE.Face3(7, 0, 3));//frente
-        lights.faces.push(new THREE.Face3(4, 5, 1));//frente
-        lights.faces.push(new THREE.Face3(1, 0, 4));//frente
-        lights.faces.push(new THREE.Face3(10, 11, 9));//traseira
-        lights.faces.push(new THREE.Face3(9, 8, 10));//traseira
+        lights.faces.push(new THREE.Face3(6, 3, 2),//frente
+                          new THREE.Face3(6, 7, 3),//frente
+                          new THREE.Face3(7, 4, 0),//frente
+                          new THREE.Face3(7, 0, 3),//frente
+                          new THREE.Face3(4, 5, 1),//frente
+                          new THREE.Face3(1, 0, 4),//frente
+                          new THREE.Face3(10, 11, 9),//traseira
+                          new THREE.Face3(9, 8, 10)//traseira
+        );
 
         lights.computeBoundingSphere();
 
@@ -45,5 +44,4 @@ class Lights extends THREE.Object3D{
         mesh.position.set(0, 0, 0);
         this.add(mesh);
     }
-
 }

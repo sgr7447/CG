@@ -5,6 +5,10 @@ var geometry, material, mesh;
 var floor, platform, chassis, bodyStyle;
 var totalParts;
 
+//TIME
+var time;
+var delta;
+
 
 function createBase(x, y, z){
     'use strict';
@@ -34,7 +38,7 @@ function createCamera() {
     orthographicCamera = new OrthographicCamera();
     perspectiveCamera = new PerspectiveCamera();
 
-    currentCamera = orthographicCamera;
+    currentCamera = perspectiveCamera;
 }
 
 function onResize() {
@@ -47,25 +51,26 @@ function onKeyDown(e) {
 
     switch (e.keyCode) {
 
-        case 49: //key 1 - top orthographic camera
-            currentCamera = orthographicCamera;
-            currentCamera.view1();
-            break;
-
-
-        case 50: //key 2 - perspective camera
+        case 52: //key 4 - perspective camera
             currentCamera = perspectiveCamera;
-            currentCamera.view1();
+            currentCamera.view_scene();
             break;
 
+
+        case 53: //key 5 - top orthographic camera
+            currentCamera = orthographicCamera;
+            currentCamera.view_from_platform();
+            break;
 
         case 39: //key ->
             totalParts.spinPositive();
+            currentCamera.spinPositive();
             break;
 
 
         case 37: //key <-
             totalParts.spinNegative();
+            currentCamera.spinNegative();
             break;
 
     }
@@ -78,11 +83,13 @@ function onKeyUp(e) {
 
         case 39: //key ->
             totalParts.stopSpinPos();
+            currentCamera.stopSpinPositive();
             break;
 
 
         case 37: //key <-
             totalParts.stopSpinNeg();
+            currentCamera.stopSpinNegative();
             break;
 
     }
@@ -101,6 +108,8 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
+    time = new THREE.Clock();
+
     createScene();
     createCamera();
 
@@ -109,10 +118,18 @@ function init() {
     window.addEventListener("resize", onResize);
 }
 
+
+function updateTime() {
+    delta = time.getDelta();
+}
+
+
 function animate() {
     'use strict';
 
-    totalParts.update();
+    updateTime();
+    totalParts.update(delta);
+    currentCamera.update(delta);
 
     render();
     requestAnimationFrame(animate);

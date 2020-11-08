@@ -19,12 +19,6 @@ class PerspectiveCamera extends THREE.PerspectiveCamera{
         this.lookAt(scene.position);
     }
 
-    spinPositive(){}
-    spinNegative(){}
-    stopSpinPositive(){}
-    stopSpinNegative(){}
-    update(delta){}
-
     onResize() {
         renderer.setSize(window.innerWidth, window.innerHeight);
         this.updateProjectionMatrix();

@@ -1,6 +1,6 @@
 /*global THREE, requestAnimationFrame, console*/
 
-var orthographicCamera, perspectiveCamera, ballCamera, currentCamera, scene, renderer;
+var orthographicCamera, perspectiveCamera, currentCamera, scene, renderer;
 var geometry, material, mesh;
 var floor, platform, chassis, bodyStyle;
 var totalParts;
@@ -64,13 +64,13 @@ function onKeyDown(e) {
 
         case 39: //key ->
             totalParts.spinPositive();
-            currentCamera.spinPositive();
+            orthographicCamera.spinPositive();
             break;
 
 
         case 37: //key <-
             totalParts.spinNegative();
-            currentCamera.spinNegative();
+            orthographicCamera.spinNegative();
             break;
 
     }
@@ -83,13 +83,13 @@ function onKeyUp(e) {
 
         case 39: //key ->
             totalParts.stopSpinPos();
-            currentCamera.stopSpinPositive();
+            orthographicCamera.stopSpinPositive();
             break;
 
 
         case 37: //key <-
             totalParts.stopSpinNeg();
-            currentCamera.stopSpinNegative();
+            orthographicCamera.stopSpinNegative();
             break;
 
     }
@@ -129,7 +129,7 @@ function animate() {
 
     updateTime();
     totalParts.update(delta);
-    currentCamera.update(delta);
+    orthographicCamera.update(delta);
 
     render();
     requestAnimationFrame(animate);

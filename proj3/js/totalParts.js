@@ -44,26 +44,17 @@ class TotalParts extends THREE.Object3D{
         this.spinNeg = false;
     }
 
-    spin(typeNeg, typePos, speed) {
+    spin(speed, delta) {
 
         var direction = 0;
-        if ( typeNeg && !typePos) direction = -1;
-        else if ( typePos && !typeNeg ) direction = 1;
+        if ( this.spinNeg && !this.spinPos) direction = -1;
+        else if ( this.spinPos && !this.spinNeg ) direction = 1;
 
-        this.rotateY( direction * this.delta * speed);
+        this.rotateY( direction * delta * speed);
     }
 
-
-    // UPDATES
-
-    updateTime() {
-        this.delta = this.time.getDelta();
-    }
-
-    update() {
-
-        this.updateTime();
-        this.spin(this.spinNeg, this.spinPos, 0.5);
+    update(delta) {
+        this.spin(0.5, delta);
     }
 
 }

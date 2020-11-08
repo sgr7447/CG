@@ -1,9 +1,13 @@
 /*global THREE, requestAnimationFrame, console*/
 
-var orthographicCamera, perspectiveCamera, ballCamera, currentCamera, scene, renderer;
+var orthographicCamera, perspectiveCamera, currentCamera, scene, renderer;
 var geometry, material, mesh;
 var floor;
 var totalParts;
+
+//TIME
+var time;
+var delta;
 
 
 function createBase(x, y, z){
@@ -30,7 +34,7 @@ function createCamera() {
     orthographicCamera = new OrthographicCamera();
     perspectiveCamera = new PerspectiveCamera();
 
-    currentCamera = orthographicCamera;
+    currentCamera = perspectiveCamera;
 }
 
 function onResize() {
@@ -43,25 +47,26 @@ function onKeyDown(e) {
 
     switch (e.keyCode) {
 
-        case 49: //key 1 - top orthographic camera
-            currentCamera = orthographicCamera;
-            currentCamera.view1();
-            break;
-
-
-        case 50: //key 2 - perspective camera
+        case 52: //key 4 - perspective camera
             currentCamera = perspectiveCamera;
-            currentCamera.view1();
+            currentCamera.view_scene();
             break;
 
+
+        case 53: //key 5 - top orthographic camera
+            currentCamera = orthographicCamera;
+            currentCamera.view_from_platform();
+            break;
 
         case 39: //key ->
             totalParts.spinPositive();
+            orthographicCamera.spinPositive();
             break;
 
 
         case 37: //key <-
             totalParts.spinNegative();
+            orthographicCamera.spinNegative();
             break;
 
     }
@@ -74,11 +79,13 @@ function onKeyUp(e) {
 
         case 39: //key ->
             totalParts.stopSpinPos();
+            orthographicCamera.stopSpinPositive();
             break;
 
 
         case 37: //key <-
             totalParts.stopSpinNeg();
+            orthographicCamera.stopSpinNegative();
             break;
 
     }
@@ -97,6 +104,8 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
+    time = new THREE.Clock();
+
     createScene();
     createCamera();
 
@@ -105,10 +114,18 @@ function init() {
     window.addEventListener("resize", onResize);
 }
 
+
+function updateTime() {
+    delta = time.getDelta();
+}
+
+
 function animate() {
     'use strict';
 
-    totalParts.update();
+    updateTime();
+    totalParts.update(delta);
+    orthographicCamera.update(delta);
 
     render();
     requestAnimationFrame(animate);

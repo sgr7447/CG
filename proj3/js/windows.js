@@ -21,7 +21,6 @@ class Windows extends THREE.Object3D{
         nove_dez.subVectors (bodyStyle.bodyStyle.vertices[10], bodyStyle.bodyStyle.vertices[9]);
 
         var nove = new THREE.Vector3();
-        nove.addVectors(nove_dez, nove_quinze).normalize();
 
         //ponto 10
         var dez_nove = new THREE.Vector3();
@@ -31,7 +30,6 @@ class Windows extends THREE.Object3D{
         dez_quinze.subVectors (bodyStyle.bodyStyle.vertices[15], bodyStyle.bodyStyle.vertices[10]);
 
         var dez = new THREE.Vector3();
-        dez.addVectors(dez_nove, dez_quinze).normalize();
 
         //ponto 15
         var quinze_nove = new THREE.Vector3();
@@ -41,7 +39,6 @@ class Windows extends THREE.Object3D{
         quinze_dez.subVectors (bodyStyle.bodyStyle.vertices[10], bodyStyle.bodyStyle.vertices[15]);
 
         var quinzeL = new THREE.Vector3();
-        quinzeL.addVectors(quinze_nove, quinze_dez).normalize();
 
         // Calculos janela lateral 11 - 12 - 14
         //ponto 11
@@ -52,7 +49,6 @@ class Windows extends THREE.Object3D{
         onze_catorze.subVectors (bodyStyle.bodyStyle.vertices[14], bodyStyle.bodyStyle.vertices[11]);
 
         var onze = new THREE.Vector3();
-        onze.addVectors(onze_doze, onze_catorze).normalize();
 
         //ponto 12
         var doze_onze = new THREE.Vector3();
@@ -62,7 +58,6 @@ class Windows extends THREE.Object3D{
         doze_catorze.subVectors (bodyStyle.bodyStyle.vertices[14], bodyStyle.bodyStyle.vertices[12]);
 
         var doze = new THREE.Vector3();
-        doze.addVectors(doze_onze, doze_catorze).normalize();
 
         //ponto 14
         var catorze_onze = new THREE.Vector3();
@@ -72,7 +67,6 @@ class Windows extends THREE.Object3D{
         catorze_doze.subVectors (bodyStyle.bodyStyle.vertices[12], bodyStyle.bodyStyle.vertices[14]);
 
         var catorzeL = new THREE.Vector3();
-        catorzeL.addVectors(catorze_onze, catorze_doze).normalize();
 
         // Calculos janela frontal 8 - 13 - 14 - 15
         //ponto 8
@@ -83,37 +77,34 @@ class Windows extends THREE.Object3D{
         oito_quinze.subVectors (bodyStyle.bodyStyle.vertices[15], bodyStyle.bodyStyle.vertices[8]);
 
         var oito = new THREE.Vector3();
-        oito.addVectors(oito_treze, oito_quinze).normalize();
 
         //ponto 13
         var treze_oito = new THREE.Vector3();
-        treze_oito.subVectors (bodyStyle.bodyStyle.vertices[8], bodyStyle.bodyStyle.vertices[13]);
+        treze_oito.subVectors(bodyStyle.bodyStyle.vertices[8], bodyStyle.bodyStyle.vertices[13]);
 
         var treze_catorze = new THREE.Vector3();
-        treze_catorze.subVectors (bodyStyle.bodyStyle.vertices[14], bodyStyle.bodyStyle.vertices[13]);
+        treze_catorze.subVectors(bodyStyle.bodyStyle.vertices[14], bodyStyle.bodyStyle.vertices[13]);
 
         var treze = new THREE.Vector3();
-        treze.addVectors(treze_oito, treze_catorze).normalize();
 
         //ponto 14
         var catorze_treze = new THREE.Vector3();
-        catorze_treze.subVectors (bodyStyle.bodyStyle.vertices[13], bodyStyle.bodyStyle.vertices[14]);
+        catorze_treze.subVectors(bodyStyle.bodyStyle.vertices[13], bodyStyle.bodyStyle.vertices[14]);
 
         var catorze_quinze = new THREE.Vector3();
-        catorze_quinze.subVectors (bodyStyle.bodyStyle.vertices[15], bodyStyle.bodyStyle.vertices[14]);
+        catorze_quinze.subVectors(bodyStyle.bodyStyle.vertices[15], bodyStyle.bodyStyle.vertices[14]);
 
         var catorzeF = new THREE.Vector3();
-        catorzeF.addVectors(catorze_treze, catorze_quinze).normalize();
 
         //ponto 15
         var quinze_oito = new THREE.Vector3();
-        quinze_oito.subVectors (bodyStyle.bodyStyle.vertices[8], bodyStyle.bodyStyle.vertices[15]);
+        quinze_oito.subVectors(bodyStyle.bodyStyle.vertices[8], bodyStyle.bodyStyle.vertices[15]);
 
         var quinze_catorze = new THREE.Vector3();
-        quinze_catorze.subVectors (bodyStyle.bodyStyle.vertices[14], bodyStyle.bodyStyle.vertices[15]);
+        quinze_catorze.subVectors(bodyStyle.bodyStyle.vertices[14], bodyStyle.bodyStyle.vertices[15]);
 
         var quinzeF = new THREE.Vector3();
-        quinzeF.addVectors(quinze_oito, quinze_catorze).normalize();
+
 
 
         nove.setLength(50);
@@ -124,10 +115,15 @@ class Windows extends THREE.Object3D{
         doze.setLength(50);
         catorzeL.setLength(15);
 
-        oito.setLength(20);
-        treze.setLength(20);
-        catorzeF.setLength(20);
-        quinzeF.setLength(20);
+        oito.setLength(15);
+        oito_treze.normalize();
+        oito_treze.setLength(30);
+        oito.add(oito_treze);
+
+        treze.setLength(15);
+        catorzeF.setLength(15);
+        quinzeF.setLength(15);
+
 
         windows.vertices.push(
             nove.add(bodyStyle.bodyStyle.vertices[9]),

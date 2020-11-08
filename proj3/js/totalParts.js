@@ -12,14 +12,20 @@ class TotalParts extends THREE.Object3D{
         this.time = new THREE.Clock();
         this.delta;
 
-        var chassis = new Chassis();
-        var bodyStyle = new BodyStyle();
-        var platform = new Platform();
+        var platformHeight = 60;
+        var wheelRadius = 44.5;
+
+        var platform = new Platform(platformHeight);
+        var chassis = new Chassis(wheelRadius, platformHeight);
+        var bodyStyle = new BodyStyle(wheelRadius, platformHeight);
+        var lights = new Lights(wheelRadius, platformHeight);
+
 
         // ADD PARTS
         this.add(chassis);
         this.add(bodyStyle);
         this.add(platform);
+        this.add(lights);
         this.scale.multiplyScalar(0.3);
 
         scene.add(this);

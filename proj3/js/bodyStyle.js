@@ -1,14 +1,11 @@
 class BodyStyle extends THREE.Object3D{
 
-    constructor(){
+    constructor(wheelRadius, platformHeight){
 
         super();
 
         material = new THREE.MeshBasicMaterial({ color: 0x575a63, wireframe: false});
         const bodyStyle = new THREE.Geometry();
-
-        var platformHeight = 60;
-        var wheelRadius = 44.5;
 
         var bottomBodyStyleLength = 588.5;
         var bottomBodyStyleWidth = 202.7;
@@ -18,8 +15,8 @@ class BodyStyle extends THREE.Object3D{
             new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius +10, bottomBodyStyleWidth/2 -40),//0
             new THREE.Vector3(-bottomBodyStyleLength/2 +50, platformHeight + wheelRadius, bottomBodyStyleWidth/2),//1
             new THREE.Vector3( bottomBodyStyleLength/2 -50, platformHeight + wheelRadius, bottomBodyStyleWidth/2),//2
-            new THREE.Vector3( bottomBodyStyleLength/2, platformHeight + wheelRadius +20, bottomBodyStyleWidth/2),//3
-            new THREE.Vector3( bottomBodyStyleLength/2, platformHeight + wheelRadius +20, -bottomBodyStyleWidth/2),//4
+            new THREE.Vector3( bottomBodyStyleLength/2, platformHeight + wheelRadius +30, bottomBodyStyleWidth/2),//3
+            new THREE.Vector3( bottomBodyStyleLength/2, platformHeight + wheelRadius +30, -bottomBodyStyleWidth/2),//4
             new THREE.Vector3( bottomBodyStyleLength/2 -50, platformHeight + wheelRadius, -bottomBodyStyleWidth/2),//5
             new THREE.Vector3(-bottomBodyStyleLength/2 +50, platformHeight + wheelRadius, -bottomBodyStyleWidth/2),//6
             new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius +10, -bottomBodyStyleWidth/2 +40),//7
@@ -60,7 +57,7 @@ class BodyStyle extends THREE.Object3D{
         bodyStyle.faces.push(new THREE.Face3(10, 11, 15));//cima
         bodyStyle.faces.push(new THREE.Face3(11, 14, 15));//cima
         bodyStyle.faces.push(new THREE.Face3(9, 10, 15));//lado direito
-        bodyStyle.faces.push(new THREE.Face3(12, 14, 11));//lado direito
+        bodyStyle.faces.push(new THREE.Face3(12, 14, 11));//lado esquerdo
 
         bodyStyle.computeBoundingSphere();
 

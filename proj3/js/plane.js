@@ -4,7 +4,7 @@ class Plane extends THREE.Object3D{
 
         super();
 
-        var material = new THREE.MeshBasicMaterial({ color: color, wireframe: true});
+        var material = new THREE.MeshBasicMaterial({ color: color, wireframe: false});
         var geometry = new THREE.PlaneGeometry(len, height, segL, segH);
 
         mesh = new THREE.Mesh(geometry, material);

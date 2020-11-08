@@ -1,6 +1,6 @@
 class TotalParts extends THREE.Object3D{
 
-    constructor(chassis, bodyStyle, platform){
+    constructor(){
 
         super();
 
@@ -12,10 +12,15 @@ class TotalParts extends THREE.Object3D{
         this.time = new THREE.Clock();
         this.delta;
 
+        var chassis = new Chassis();
+        var bodyStyle = new BodyStyle();
+        var platform = new Platform();
+
         // ADD PARTS
         this.add(chassis);
         this.add(bodyStyle);
         this.add(platform);
+        this.scale.multiplyScalar(0.3);
 
         scene.add(this);
 

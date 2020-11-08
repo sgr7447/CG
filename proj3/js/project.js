@@ -2,7 +2,7 @@
 
 var orthographicCamera, perspectiveCamera, ballCamera, currentCamera, scene, renderer;
 var geometry, material, mesh;
-var floor, platform, chassis, bodyStyle;
+var floor;
 var totalParts;
 
 
@@ -12,11 +12,7 @@ function createBase(x, y, z){
     material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: false});
 
     floor = new Floor();
-    chassis = new Chassis();
-    bodyStyle = new BodyStyle();
-    platform = new Platform();
-    totalParts = new TotalParts(chassis, bodyStyle, platform);
-
+    totalParts = new TotalParts();
 }
 
 function createScene() {

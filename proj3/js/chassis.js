@@ -10,7 +10,7 @@ class Chassis extends THREE.Object3D{
         var rearRightWheel = new THREE.Object3D();
         var chassisPlatform = new THREE.Object3D();
 
-        var wheelRadius = 88.9; //in cm
+        var wheelRadius = 44.5; //in cm
         var wheelHeight = 29.6;
         var chassisPlatformLength = 380.7;
         var chassisPlatformWidth = 202.7;
@@ -35,12 +35,8 @@ class Chassis extends THREE.Object3D{
         this.add(rearRightWheel);
 
         chassisPlatform.add(new Cube(0, platformHeight + wheelRadius, 0, 0, 0, 0,
-            chassisPlatformLength, chassisPlatformHeight, chassisPlatformWidth, wheelColor));
+            chassisPlatformLength, chassisPlatformHeight, chassisPlatformWidth-1, wheelColor));
         this.add(chassisPlatform);
-
-        this.scale.set(0.2, 0.2, 0.2);
-
-        //scene.add(this);
 
     }
 

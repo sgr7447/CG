@@ -4,7 +4,7 @@ class Platform extends THREE.Object3D{
 
         super();
 
-        var platformColor = '#848999';
+        var platformColor = '#4682B4';
         var platformRadius = 350;
 
         this.add(new Cylinder(0, platformHeight/2, 0, 0, 0, 0, platformHeight, platformRadius, 200, 10, platformColor));

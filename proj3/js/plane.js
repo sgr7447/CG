@@ -11,7 +11,7 @@ class Plane extends THREE.Object3D{
 
         var geometry = new THREE.PlaneGeometry(len, height, segL, segH);
 
-        mesh = new CreateMesh(geometry, materials);
+        mesh = new MeshHandler(geometry, materials);
         mesh.rotation.set(Math.PI*rad, 0, 0);
         mesh.position.set(x, y, z);
         this.add(mesh);

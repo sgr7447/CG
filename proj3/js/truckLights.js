@@ -1,4 +1,4 @@
-class Lights extends THREE.Object3D{
+class TruckLights extends THREE.Object3D{
 
     constructor(wheelRadius, platformHeight, body){
 
@@ -55,7 +55,7 @@ class Lights extends THREE.Object3D{
 
         lights.computeBoundingSphere();
 
-        mesh = new CreateMesh(lights, materials);
+        mesh = new MeshHandler(lights, materials);
         mesh.position.set(0, 0, 0);
         this.add(mesh);
     }

@@ -11,7 +11,7 @@ class Cube extends THREE.Object3D{
 
         var geometry = new THREE.BoxGeometry(len, height, depth);
 
-        mesh = new CreateMesh(geometry, materials);
+        mesh = new MeshHandler(geometry, materials);
         mesh.rotation.set(Math.PI*radx, Math.PI*rady, Math.PI*radz);
         mesh.position.set(x, y, z);
 

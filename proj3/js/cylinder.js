@@ -9,9 +9,8 @@ class Cylinder extends THREE.Object3D{
             ]
 
         var geometry = new THREE.CylinderGeometry(radius, radius, len, radialSeg, heightSeg);
-        this.material = material;
 
-        mesh = new CreateMesh(geometry, materials);
+        mesh = new MeshHandler(geometry, materials);
         mesh.rotation.set(Math.PI*radx, Math.PI*rady, Math.PI*radz);
         mesh.position.set(x, y, z);
 

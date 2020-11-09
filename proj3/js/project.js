@@ -1,7 +1,7 @@
 /*global THREE, requestAnimationFrame, console*/
 
 var orthographicCamera, perspectiveCamera, currentCamera, scene, renderer;
-var geometry, material, mesh;
+var geometry, mesh;
 var floor;
 var totalParts;
 var allMeshes;

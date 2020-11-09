@@ -112,7 +112,7 @@ class BodyStyle extends THREE.Object3D{
 
         bodyStyle.computeBoundingSphere();
 
-        mesh = new CreateMesh(bodyStyle, materials);
+        mesh = new MeshHandler(bodyStyle, materials);
         mesh.position.set(0, 0, 0);
         this.add(mesh);
 

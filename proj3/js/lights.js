@@ -4,7 +4,11 @@ class Lights extends THREE.Object3D{
 
         super();
 
-        material = new THREE.MeshBasicMaterial({ color: 0xd1dcff, wireframe: false});
+        var color = 0xd1dcff;
+        var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
+            new THREE.MeshLambertMaterial({color: color, wireframe: false}),
+            new THREE.MeshPhongMaterial({color: color, wireframe: false}) 
+            ]
         const lights = new THREE.Geometry();
 
         var bottomBodyStyleLength = 588.5;
@@ -51,7 +55,7 @@ class Lights extends THREE.Object3D{
 
         lights.computeBoundingSphere();
 
-        mesh = new THREE.Mesh(lights, material);
+        mesh = new CreateMesh(lights, materials);
         mesh.position.set(0, 0, 0);
         this.add(mesh);
     }

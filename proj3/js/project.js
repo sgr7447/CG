@@ -4,6 +4,10 @@ var orthographicCamera, perspectiveCamera, currentCamera, scene, renderer;
 var geometry, material, mesh;
 var floor;
 var totalParts;
+var allMeshes;
+
+//LIGHTS
+var gLight;
 
 //TIME
 var time;
@@ -13,8 +17,7 @@ var delta;
 function createBase(x, y, z){
     'use strict';
 
-    material = new THREE.MeshBasicMaterial({color: 0x00ff00, wireframe: false});
-
+    allMeshes = [];
     floor = new Floor();
     totalParts = new TotalParts();
 }
@@ -23,7 +26,7 @@ function createScene() {
     'use strict';
 
     time = new THREE.Clock();
-    
+
     scene = new THREE.Scene();
     scene.add(new THREE.AxisHelper(50));
 
@@ -31,6 +34,9 @@ function createScene() {
     currentCamera = perspectiveCamera;
 
     createBase(0,0,0);
+
+    //LIGHTS
+    gLight = new globalLight();
 }
 
 function onResize() {
@@ -61,6 +67,20 @@ function onKeyDown(e) {
 
         case 37: //key <-
             totalParts.spinNegative();
+            break;
+
+        case 81: //key Q/q
+            gLight.flipSwitch();
+            break;
+
+        case 87: //key W/w
+            //switch between Basic and (Lambert or Phong)
+            allMeshes.forEach( _mesh => { _mesh.switchIlumination(); } );
+            break;
+
+        case 69: //key E/e
+            //switch between Lambert or Phong
+            allMeshes.forEach( _mesh => { _mesh.switchShading(); } );
             break;
 
     }

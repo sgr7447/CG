@@ -4,7 +4,11 @@ class BodyStyle extends THREE.Object3D{
 
         super();
 
-        material = new THREE.MeshBasicMaterial({ color: 0x575a63, wireframe: true});
+        var color = 0x575a63;
+        var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
+                        new THREE.MeshLambertMaterial({color: color, wireframe: false}),
+                        new THREE.MeshPhongMaterial({color: color, wireframe: false}) 
+                        ]
         const bodyStyle = new THREE.Geometry();
 
         var bottomBodyStyleLength = 588.5;
@@ -108,7 +112,7 @@ class BodyStyle extends THREE.Object3D{
 
         bodyStyle.computeBoundingSphere();
 
-        mesh = new THREE.Mesh(bodyStyle, material);
+        mesh = new CreateMesh(bodyStyle, materials);
         mesh.position.set(0, 0, 0);
         this.add(mesh);
 

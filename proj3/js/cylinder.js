@@ -3,11 +3,15 @@ class Cylinder extends THREE.Object3D{
     constructor(x, y, z, radx, rady, radz, len, radius, radialSeg, heightSeg, color){
         super();
 
-        var material = new THREE.MeshBasicMaterial({ color: color, wireframe: false });
+        var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
+            new THREE.MeshLambertMaterial({color: color, wireframe: false}),
+            new THREE.MeshPhongMaterial({color: color, wireframe: false}) 
+            ]
+
         var geometry = new THREE.CylinderGeometry(radius, radius, len, radialSeg, heightSeg);
         this.material = material;
 
-        mesh = new THREE.Mesh(geometry, material);
+        mesh = new CreateMesh(geometry, materials);
         mesh.rotation.set(Math.PI*radx, Math.PI*rady, Math.PI*radz);
         mesh.position.set(x, y, z);
 

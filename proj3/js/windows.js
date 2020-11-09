@@ -4,7 +4,11 @@ class Windows extends THREE.Object3D{
 
         super();
 
-        material = new THREE.MeshBasicMaterial({ color: '#34558B', wireframe: false});
+        var color = '#34558B';
+        var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
+            new THREE.MeshLambertMaterial({color: color, wireframe: false}),
+            new THREE.MeshPhongMaterial({color: color, wireframe: false}) 
+            ]
         const windows = new THREE.Geometry();
 
         var bottomBodyStyleLength = 588.5;
@@ -140,7 +144,7 @@ class Windows extends THREE.Object3D{
 
         windows.computeBoundingSphere();
 
-        mesh = new THREE.Mesh(windows, material);
+        mesh = new CreateMesh(windows, materials);
         mesh.position.set(0, 0, 0);
         this.add(mesh);
     }

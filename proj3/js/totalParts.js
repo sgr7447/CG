@@ -20,6 +20,7 @@ class TotalParts extends THREE.Object3D{
         var bodyStyle = new BodyStyle(wheelRadius, platformHeight);
         var lights = new Lights(wheelRadius, platformHeight);
         var windows = new Windows(wheelRadius, platformHeight, bodyStyle);
+        orthographicCamera = new OrthographicCamera();
 
         // ADD PARTS
         this.add(chassis);
@@ -27,6 +28,7 @@ class TotalParts extends THREE.Object3D{
         this.add(platform);
         this.add(lights);
         this.add(windows);
+        this.add(orthographicCamera);
         this.scale.multiplyScalar(0.3);
 
         scene.add(this);
@@ -58,6 +60,7 @@ class TotalParts extends THREE.Object3D{
         else if ( this.spinPos && !this.spinNeg ) direction = 1;
 
         this.rotateY( direction * delta * speed);
+
     }
 
     update(delta) {

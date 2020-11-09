@@ -23,18 +23,12 @@ function createScene() {
     'use strict';
 
     scene = new THREE.Scene();
-    scene.add(new THREE.AxesHelper(50));
+    scene.add(new THREE.AxisHelper(50));
+
+    perspectiveCamera = new PerspectiveCamera();
+    currentCamera = perspectiveCamera;
 
     createBase(0,0,0);
-}
-
-function createCamera() {
-    'use strict';
-
-    orthographicCamera = new OrthographicCamera();
-    perspectiveCamera = new PerspectiveCamera();
-
-    currentCamera = perspectiveCamera;
 }
 
 function onResize() {
@@ -60,13 +54,11 @@ function onKeyDown(e) {
 
         case 39: //key ->
             totalParts.spinPositive();
-            orthographicCamera.spinPositive();
             break;
 
 
         case 37: //key <-
             totalParts.spinNegative();
-            orthographicCamera.spinNegative();
             break;
 
     }
@@ -79,13 +71,11 @@ function onKeyUp(e) {
 
         case 39: //key ->
             totalParts.stopSpinPos();
-            orthographicCamera.stopSpinPositive();
             break;
 
 
         case 37: //key <-
             totalParts.stopSpinNeg();
-            orthographicCamera.stopSpinNegative();
             break;
 
     }
@@ -107,7 +97,6 @@ function init() {
     time = new THREE.Clock();
 
     createScene();
-    createCamera();
 
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("keyup", onKeyUp);
@@ -125,7 +114,6 @@ function animate() {
 
     updateTime();
     totalParts.update(delta);
-    orthographicCamera.update(delta);
 
     render();
     requestAnimationFrame(animate);

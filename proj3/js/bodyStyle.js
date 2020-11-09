@@ -13,17 +13,17 @@ class BodyStyle extends THREE.Object3D{
 
         var vertex0 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius +10, bottomBodyStyleWidth/2 -40);//0
         var vertex1 = new THREE.Vector3(-bottomBodyStyleLength/2 +50, platformHeight + wheelRadius, bottomBodyStyleWidth/2);//1
-        var vertex2 = new THREE.Vector3( bottomBodyStyleLength/2 -50, platformHeight + wheelRadius, bottomBodyStyleWidth/2);//2
-        var vertex3 = new THREE.Vector3( bottomBodyStyleLength/2, platformHeight + wheelRadius +30, bottomBodyStyleWidth/2);//3
-        var vertex4 = new THREE.Vector3( bottomBodyStyleLength/2, platformHeight + wheelRadius +30, -bottomBodyStyleWidth/2);//4
-        var vertex5 = new THREE.Vector3( bottomBodyStyleLength/2 -50, platformHeight + wheelRadius, -bottomBodyStyleWidth/2);//5
+        var vertex2 = new THREE.Vector3(bottomBodyStyleLength/2 -50, platformHeight + wheelRadius, bottomBodyStyleWidth/2);//2
+        var vertex3 = new THREE.Vector3(bottomBodyStyleLength/2, platformHeight + wheelRadius +30, bottomBodyStyleWidth/2);//3
+        var vertex4 = new THREE.Vector3(bottomBodyStyleLength/2, platformHeight + wheelRadius +30, -bottomBodyStyleWidth/2);//4
+        var vertex5 = new THREE.Vector3(bottomBodyStyleLength/2 -50, platformHeight + wheelRadius, -bottomBodyStyleWidth/2);//5
         var vertex6 = new THREE.Vector3(-bottomBodyStyleLength/2 +50, platformHeight + wheelRadius, -bottomBodyStyleWidth/2);//6
         var vertex7 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius +10, -bottomBodyStyleWidth/2 +40);//7
         var vertex8 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius *9/4, bottomBodyStyleWidth/2 -40);//8
-        var vertex9 = new THREE.Vector3();//9
-        var vertex10 = new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4, bottomBodyStyleWidth/2);//10
-        var vertex11 = new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4, -bottomBodyStyleWidth/2);//11
-        var vertex12 = new THREE.Vector3();//12
+        var vertex9 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius *9/4, bottomBodyStyleWidth/2 -40);//9
+        var vertex10 = new THREE.Vector3(bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4, bottomBodyStyleWidth/2);//10
+        var vertex11 = new THREE.Vector3(bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4, -bottomBodyStyleWidth/2);//11
+        var vertex12 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius *9/4, -bottomBodyStyleWidth/2 +40);//12
         var vertex13 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius *9/4, -bottomBodyStyleWidth/2 +40);//13
         var vertex14 = new THREE.Vector3(-bottomBodyStyleWidth *1/6, platformHeight + bodyStyleHeight, -bottomBodyStyleWidth/2 +20);//14
         var vertex15 = new THREE.Vector3(-bottomBodyStyleWidth *1/6, platformHeight + bodyStyleHeight, bottomBodyStyleWidth/2 -20);//15
@@ -31,11 +31,34 @@ class BodyStyle extends THREE.Object3D{
         var vec8_15 = new THREE.Vector3();
         vec8_15.subVectors(vertex15, vertex8);
         vec8_15.normalize();
+
+        var vec13_14 = new THREE.Vector3();
+        vec13_14.subVectors(vertex14, vertex13);
+        vec13_14.normalize();
+
         var vec8_13 = new THREE.Vector3();
         vec8_13.subVectors(vertex13, vertex8);
         vec8_13.normalize();
-        vertex9.addVectors(vec8_13.setLength(-10), vec8_15.setLength(5));
-        vertex12.addVectors(vec8_13.setLength(10), vec8_15.setLength(5))
+
+        /*var vec13_8 = new THREE.Vector3();
+        vec13_8.subVectors(vertex8, vertex13);
+        vec13_8.normalize();*/
+
+        vec8_15.setLength(50);
+        vec13_14.setLength(50);
+        vec8_13.setLength(30);
+
+        vertex9.sub(vec8_13);
+        vertex9.add(vec8_15);
+        vertex12.add(vec8_13);
+        vertex12.add(vec13_14);
+
+        vertex1.x = vertex9.x;
+        vertex1.z = vertex9.z;
+        vertex6.x = vertex12.x;
+        vertex6.z = vertex12.z;
+
+
 
         bodyStyle.vertices.push(
             vertex0,

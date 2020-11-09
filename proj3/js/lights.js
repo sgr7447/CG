@@ -1,6 +1,6 @@
 class Lights extends THREE.Object3D{
 
-    constructor(wheelRadius, platformHeight){
+    constructor(wheelRadius, platformHeight, body){
 
         super();
 
@@ -10,6 +10,17 @@ class Lights extends THREE.Object3D{
         var bottomBodyStyleLength = 588.5;
         var bottomBodyStyleWidth = 202.7;
         var bodyStyleHeight = 190.5;
+
+        var vertex0 = new THREE.Vector3();
+        var vertex1 = new THREE.Vector3();
+        var vertex2 = new THREE.Vector3();
+        var vertex3 = new THREE.Vector3();
+        var vertex4 = new THREE.Vector3();
+        var vertex5 = new THREE.Vector3();
+        var vertex6 = new THREE.Vector3();
+        var vertex7 = new THREE.Vector3();
+
+        vertex0 =          
 
         lights.vertices.push(
             new THREE.Vector3(-bottomBodyStyleLength/2 -0.1, platformHeight + wheelRadius *9/4, bottomBodyStyleWidth/2 -40),//8 cima 0

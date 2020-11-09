@@ -22,6 +22,8 @@ function createBase(x, y, z){
 function createScene() {
     'use strict';
 
+    time = new THREE.Clock();
+    
     scene = new THREE.Scene();
     scene.add(new THREE.AxisHelper(50));
 
@@ -93,8 +95,6 @@ function init() {
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
-
-    time = new THREE.Clock();
 
     createScene();
 

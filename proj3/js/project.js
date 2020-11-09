@@ -1,9 +1,10 @@
 /*global THREE, requestAnimationFrame, console*/
 
 var orthographicCamera, perspectiveCamera, currentCamera, scene, renderer;
-var geometry, material, mesh;
+var geometry, mesh;
 var floor;
 var totalParts;
+var materials = [new THREE.MeshBasicMaterial(), new THREE.MeshLambertMaterial(), new THREE.MeshPhongMaterial()];
 
 //TIME
 var time;
@@ -23,7 +24,7 @@ function createScene() {
     'use strict';
 
     time = new THREE.Clock();
-    
+
     scene = new THREE.Scene();
     scene.add(new THREE.AxisHelper(50));
 

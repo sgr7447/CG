@@ -1,4 +1,4 @@
-class Lights extends THREE.Object3D{
+class CyberTruckLights extends THREE.Object3D{
 
     constructor(wheelRadius, platformHeight, bodyStyle){
 

@@ -2,8 +2,8 @@ class SpotlightsHandler{
     constructor(wheelRadius, platformHeight, platform){
 
         var spotlights = [];
-        var radius = 2;
-        var height = 1;
+        var radius = 4*0.5;
+        var height = 15*0.5;
 
         var direction0 = new THREE.Vector3(5, 150, 0);
         var direction1 = new THREE.Vector3(-90, 46, 175);

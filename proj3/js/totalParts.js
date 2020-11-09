@@ -18,7 +18,7 @@ class TotalParts extends THREE.Object3D{
         var platform = new Platform(platformHeight);
         var chassis = new Chassis(wheelRadius, platformHeight);
         var bodyStyle = new BodyStyle(wheelRadius, platformHeight);
-        var lights = new Lights(wheelRadius, platformHeight, bodyStyle);
+        var carLights = new CyberTruckLights(wheelRadius, platformHeight, bodyStyle);
         var windows = new Windows(wheelRadius, platformHeight, bodyStyle);
         var bodyStyle = new BodyStyle(wheelRadius, platformHeight);
         var spotlights = new SpotlightsHandler(wheelRadius, platformHeight, platform);
@@ -29,7 +29,7 @@ class TotalParts extends THREE.Object3D{
         this.add(chassis);
         this.add(bodyStyle);
         this.add(platform);
-        this.add(lights);
+        this.add(carLights);
         this.add(windows);
         this.add(orthographicCamera);
         this.scale.multiplyScalar(0.3);

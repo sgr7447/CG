@@ -18,7 +18,7 @@ class OrthographicCamera extends THREE.OrthographicCamera{
     view_from_platform(){
 
         this.onResize();
-        this.position.set(0, 30, 620);
+        this.position.set(0, 120, 620);
         this.lookAt(scene.position);
 
     }

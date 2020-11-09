@@ -7,7 +7,7 @@ class Windows extends THREE.Object3D{
         var color = '#34558B';
         var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
             new THREE.MeshLambertMaterial({color: color, wireframe: false}),
-            new THREE.MeshPhongMaterial({color: color, wireframe: false}) 
+            new THREE.MeshPhongMaterial({color: color, wireframe: false})
             ]
         const windows = new THREE.Geometry();
 
@@ -53,6 +53,12 @@ class Windows extends THREE.Object3D{
         vec15L = bodyStyle.bodyStyle.vertices[15].clone();
         vec15L.add(vec15_9.setLength(25));
         vec15L.add(vec15_10.setLength(25));
+        var normalR = new THREE.Vector3();
+        normalR.crossVectors(vec10_9, vec9_15).normalize();
+        vec9.sub(normalR);
+        vec10.sub(normalR);
+        vec15L.sub(normalR);
+
 
         // Calculos janela lateral 11 - 12 - 14
         //ponto 11
@@ -91,6 +97,12 @@ class Windows extends THREE.Object3D{
         vec14L = bodyStyle.bodyStyle.vertices[14].clone();
         vec14L.add(vec14_11.setLength(25));
         vec14L.add(vec14_12.setLength(25));
+
+        var normalL = new THREE.Vector3();
+        normalL.crossVectors(vec12_11, vec14_11).normalize();
+        vec11.add(normalL);
+        vec12.add(normalL);
+        vec14L.add(normalL);
 
 
         // Calculos janela frontal 9 - 12 - 14 - 15
@@ -141,12 +153,12 @@ class Windows extends THREE.Object3D{
         var vec15F = new THREE.Vector3();
         vec15F = bodyStyle.bodyStyle.vertices[15].clone();
 
-        var normal15 = new THREE.Vector3();
-        /*normal15.crossVectors(vec14_12, vec15_9).normalize();
-        vec9F.add(normal15);
-        vec12F.add(normal15);
-        vec14F.add(normal15);
-        vec15F.add(normal15);*/
+        var normalF = new THREE.Vector3();
+        normalF.crossVectors(vec14_12, vec15_9).normalize();
+        vec9F.add(normalF);
+        vec12F.add(normalF);
+        vec14F.add(normalF);
+        vec15F.add(normalF);
 
         windows.vertices.push(
                     vec9,

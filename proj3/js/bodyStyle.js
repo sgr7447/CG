@@ -11,25 +11,49 @@ class BodyStyle extends THREE.Object3D{
         var bottomBodyStyleWidth = 202.7;
         var bodyStyleHeight = 190.5;
 
+        var vertex0 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius +10, bottomBodyStyleWidth/2 -40);//0
+        var vertex1 = new THREE.Vector3(-bottomBodyStyleLength/2 +50, platformHeight + wheelRadius, bottomBodyStyleWidth/2);//1
+        var vertex2 = new THREE.Vector3( bottomBodyStyleLength/2 -50, platformHeight + wheelRadius, bottomBodyStyleWidth/2);//2
+        var vertex3 = new THREE.Vector3( bottomBodyStyleLength/2, platformHeight + wheelRadius +30, bottomBodyStyleWidth/2);//3
+        var vertex4 = new THREE.Vector3( bottomBodyStyleLength/2, platformHeight + wheelRadius +30, -bottomBodyStyleWidth/2);//4
+        var vertex5 = new THREE.Vector3( bottomBodyStyleLength/2 -50, platformHeight + wheelRadius, -bottomBodyStyleWidth/2);//5
+        var vertex6 = new THREE.Vector3(-bottomBodyStyleLength/2 +50, platformHeight + wheelRadius, -bottomBodyStyleWidth/2);//6
+        var vertex7 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius +10, -bottomBodyStyleWidth/2 +40);//7
+        var vertex8 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius *9/4, bottomBodyStyleWidth/2 -40);//8
+        var vertex9 = new THREE.Vector3();//9
+        var vertex10 = new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4, bottomBodyStyleWidth/2);//10
+        var vertex11 = new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4, -bottomBodyStyleWidth/2);//11
+        var vertex12 = new THREE.Vector3();//12
+        var vertex13 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius *9/4, -bottomBodyStyleWidth/2 +40);//13
+        var vertex14 = new THREE.Vector3(-bottomBodyStyleWidth *1/6, platformHeight + bodyStyleHeight, -bottomBodyStyleWidth/2 +20);//14
+        var vertex15 = new THREE.Vector3(-bottomBodyStyleWidth *1/6, platformHeight + bodyStyleHeight, bottomBodyStyleWidth/2 -20);//15
+
+        var vec8_15 = new THREE.Vector3();
+        vec8_15.subVectors(vertex15, vertex8);
+        vec8_15.normalize();
+        var vec8_13 = new THREE.Vector3();
+        vec8_13.subVectors(vertex13, vertex8);
+        vec8_13.normalize();
+        vertex9.addVectors(vec8_13.setLength(-10), vec8_15.setLength(5));
+        vertex12.addVectors(vec8_13.setLength(10), vec8_15.setLength(5))
+
         bodyStyle.vertices.push(
-            new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius +10, bottomBodyStyleWidth/2 -40),//0
-            new THREE.Vector3(-bottomBodyStyleLength/2 +50, platformHeight + wheelRadius, bottomBodyStyleWidth/2),//1
-            new THREE.Vector3( bottomBodyStyleLength/2 -50, platformHeight + wheelRadius, bottomBodyStyleWidth/2),//2
-            new THREE.Vector3( bottomBodyStyleLength/2, platformHeight + wheelRadius +30, bottomBodyStyleWidth/2),//3
-            new THREE.Vector3( bottomBodyStyleLength/2, platformHeight + wheelRadius +30, -bottomBodyStyleWidth/2),//4
-            new THREE.Vector3( bottomBodyStyleLength/2 -50, platformHeight + wheelRadius, -bottomBodyStyleWidth/2),//5
-            new THREE.Vector3(-bottomBodyStyleLength/2 +50, platformHeight + wheelRadius, -bottomBodyStyleWidth/2),//6
-            new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius +10, -bottomBodyStyleWidth/2 +40),//7
-            new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius *9/4, bottomBodyStyleWidth/2 -40),//8
-            new THREE.Vector3(-bottomBodyStyleLength/2 +50, platformHeight + wheelRadius *9/4, bottomBodyStyleWidth/2),//9
-            new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4, bottomBodyStyleWidth/2),//10
-            new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4, -bottomBodyStyleWidth/2),//11
-            new THREE.Vector3(-bottomBodyStyleLength/2 +50, platformHeight + wheelRadius *9/4, -bottomBodyStyleWidth/2),//12
-            new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius *9/4, -bottomBodyStyleWidth/2 +40),//13
-
-            new THREE.Vector3(-bottomBodyStyleWidth *1/6, platformHeight + bodyStyleHeight, -bottomBodyStyleWidth/2 +20),//14
-            new THREE.Vector3(-bottomBodyStyleWidth *1/6, platformHeight + bodyStyleHeight, bottomBodyStyleWidth/2 -20),//15
-
+            vertex0,
+            vertex1,
+            vertex2,
+            vertex3,
+            vertex4,
+            vertex5,
+            vertex6,
+            vertex7,
+            vertex8,
+            vertex9,
+            vertex10,
+            vertex11,
+            vertex12,
+            vertex13,
+            vertex14,
+            vertex15
         );
 
         bodyStyle.faces.push(new THREE.Face3(0, 1, 9));//lado direito
@@ -68,4 +92,17 @@ class BodyStyle extends THREE.Object3D{
         this.bodyStyle = bodyStyle;
 
     }
+
+    fixVertex(){
+
+    }
+    /*var quinze_oito = new THREE.Vector3();
+    quinze_oito.subVectors(bodyStyle.bodyStyle.vertices[8], bodyStyle.bodyStyle.vertices[15]).normalize();
+
+    var catorze_doze = new THREE.Vector3();
+    catorze_doze.subVectors(bodyStyle.bodyStyle.vertices[12], bodyStyle.bodyStyle.vertices[14]).normalize();
+
+    var catorzeF = new THREE.Vector3();
+    oito_quinze.setLength(90);
+    oito.add(oito_quinze);*/
 }

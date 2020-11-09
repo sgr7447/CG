@@ -33,12 +33,12 @@ class Lights extends THREE.Object3D{
         vertex12 = bodyStyle.bodyStyle.vertices[12].clone();
         vertex13 = bodyStyle.bodyStyle.vertices[13].clone();
 
-        vertex16 = bodyStyle.bodyStyle.vertices[8].clone();
-        vertex17 = bodyStyle.bodyStyle.vertices[9].clone();
-        vertex18 = bodyStyle.bodyStyle.vertices[10].clone();
-        vertex19 = bodyStyle.bodyStyle.vertices[11].clone();
-        vertex20 = bodyStyle.bodyStyle.vertices[12].clone();
-        vertex21 = bodyStyle.bodyStyle.vertices[13].clone();
+        vertex16 = bodyStyle.bodyStyle.vertices[12].clone();
+        vertex17 = bodyStyle.bodyStyle.vertices[13].clone();
+        vertex18 = bodyStyle.bodyStyle.vertices[8].clone();
+        vertex19 = bodyStyle.bodyStyle.vertices[9].clone();
+        vertex20 = bodyStyle.bodyStyle.vertices[10].clone();
+        vertex21 = bodyStyle.bodyStyle.vertices[11].clone();
 
         vertex16.add(translationF);
         vertex17.add(translationF);
@@ -48,26 +48,28 @@ class Lights extends THREE.Object3D{
         vertex21.add(translationT);
 
         lights.vertices.push(
-            vertex8,
-            vertex9,
-            vertex12,
-            vertex13,
-            vertex16,
-            vertex17,
-            vertex18,
-            vertex19,
-            vertex20,
-            vertex21
+            vertex8, //0
+            vertex9, //1
+            vertex12, //2
+            vertex13, //3
+            vertex16, //4
+            vertex17, //5
+            vertex18, //6
+            vertex19, //7
+            vertex10, //8
+            vertex11, //9
+            vertex20, //10
+            vertex21 //11
         );
 
-        lights.faces.push(new THREE.Face3(6, 3, 2),//frente
-                          new THREE.Face3(6, 7, 3),//frente
-                          new THREE.Face3(7, 4, 0),//frente
-                          new THREE.Face3(7, 0, 3),//frente
-                          new THREE.Face3(4, 5, 1),//frente
-                          new THREE.Face3(1, 0, 4),//frente
-                          new THREE.Face3(10, 11, 9),//traseira
-                          new THREE.Face3(9, 8, 10)//traseira
+        lights.faces.push(new THREE.Face3(0, 7, 1),//frente
+                          new THREE.Face3(0, 6, 7),//frente
+                          new THREE.Face3(0, 5, 6),//frente
+                          new THREE.Face3(0, 3, 5),//frente
+                          new THREE.Face3(2, 5, 3),//frente
+                          new THREE.Face3(2, 4, 5),//frente
+                          new THREE.Face3(8, 10, 9),//traseira
+                          new THREE.Face3(9, 10, 11)//traseira
         );
 
         lights.computeBoundingSphere();

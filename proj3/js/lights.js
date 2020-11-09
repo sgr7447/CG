@@ -1,6 +1,6 @@
 class Lights extends THREE.Object3D{
 
-    constructor(wheelRadius, platformHeight, body){
+    constructor(wheelRadius, platformHeight, bodyStyle){
 
         super();
 
@@ -11,32 +11,44 @@ class Lights extends THREE.Object3D{
         var bottomBodyStyleWidth = 202.7;
         var bodyStyleHeight = 190.5;
 
-        var vertex0 = new THREE.Vector3();
-        var vertex1 = new THREE.Vector3();
-        var vertex2 = new THREE.Vector3();
-        var vertex3 = new THREE.Vector3();
-        var vertex4 = new THREE.Vector3();
-        var vertex5 = new THREE.Vector3();
-        var vertex6 = new THREE.Vector3();
-        var vertex7 = new THREE.Vector3();
 
-        vertex0 =          
+        var vertex8 = new THREE.Vector3();
+        var vertex9 = new THREE.Vector3();
+        var vertex12 = new THREE.Vector3();
+        var vertex13 = new THREE.Vector3();
+        var vertex16 = new THREE.Vector3();
+        var vertex17 = new THREE.Vector3();
+        var vertex18 = new THREE.Vector3();
+        var vertex19 = new THREE.Vector3();
+        var vertex20 = new THREE.Vector3();
+        var vertex21 = new THREE.Vector3();
+
+        vertex8 = bodyStyle.bodyStyle.vertices[8].clone();
+        vertex9 = bodyStyle.bodyStyle.vertices[9].clone();
+        vertex10 = bodyStyle.bodyStyle.vertices[10].clone();
+        vertex11 = bodyStyle.bodyStyle.vertices[11].clone();
+        vertex12 = bodyStyle.bodyStyle.vertices[12].clone();
+        vertex13 = bodyStyle.bodyStyle.vertices[13].clone();
+
+        vertex16 = new THREE.Vector3(-bottomBodyStyleLength/2 -0.1, platformHeight + wheelRadius *9/4 -3, bottomBodyStyleWidth/2 -40);
+        vertex17 = new THREE.Vector3(-bottomBodyStyleLength/2 +50 -0.1, platformHeight + wheelRadius *9/4 -3, bottomBodyStyleWidth/2);
+        vertex18 = new THREE.Vector3(-bottomBodyStyleLength/2 +50 -0.1, platformHeight + wheelRadius *9/4 -3, bottomBodyStyleWidth/2);
+        vertex19 = new THREE.Vector3(-bottomBodyStyleLength/2 -0.1, platformHeight + wheelRadius *9/4 -3, -bottomBodyStyleWidth/2 +40);
+        vertex20 = new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4 -6, bottomBodyStyleWidth/2);
+        vertex21 = new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4 -6, -bottomBodyStyleWidth/2);
+
 
         lights.vertices.push(
-            new THREE.Vector3(-bottomBodyStyleLength/2 -0.1, platformHeight + wheelRadius *9/4, bottomBodyStyleWidth/2 -40),//8 cima 0
-            new THREE.Vector3(-bottomBodyStyleLength/2 +50 -0.1, platformHeight + wheelRadius *9/4, bottomBodyStyleWidth/2),//9 1
-            new THREE.Vector3(-bottomBodyStyleLength/2 +50 -0.1, platformHeight + wheelRadius *9/4, -bottomBodyStyleWidth/2),//12 2
-            new THREE.Vector3(-bottomBodyStyleLength/2 -0.1, platformHeight + wheelRadius *9/4, -bottomBodyStyleWidth/2 +40),//13 3
-
-            new THREE.Vector3(-bottomBodyStyleLength/2 -0.1, platformHeight + wheelRadius *9/4 -3, bottomBodyStyleWidth/2 -40),//16 baixo 4
-            new THREE.Vector3(-bottomBodyStyleLength/2 +50 -0.1, platformHeight + wheelRadius *9/4 -3, bottomBodyStyleWidth/2),//17 5
-            new THREE.Vector3(-bottomBodyStyleLength/2 +50 -0.1, platformHeight + wheelRadius *9/4 -3, -bottomBodyStyleWidth/2),//18 6
-            new THREE.Vector3(-bottomBodyStyleLength/2 -0.1, platformHeight + wheelRadius *9/4 -3, -bottomBodyStyleWidth/2 +40),//19 7
-
-            new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4, bottomBodyStyleWidth/2),//8
-            new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4, -bottomBodyStyleWidth/2),//9
-            new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4 -6, bottomBodyStyleWidth/2),//10
-            new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4 -6, -bottomBodyStyleWidth/2)//11
+            vertex8,
+            vertex9,
+            vertex12,
+            vertex13,
+            vertex16,
+            vertex17,
+            vertex18,
+            vertex19,
+            vertex20,
+            vertex21
         );
 
         lights.faces.push(new THREE.Face3(6, 3, 2),//frente

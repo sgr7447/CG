@@ -23,7 +23,7 @@ class Lights extends THREE.Object3D{
         var vertex19 = new THREE.Vector3();
         var vertex20 = new THREE.Vector3();
         var vertex21 = new THREE.Vector3();
-        var translationF = new THREE.Vector3(0, -3, 0);
+        var translationF = new THREE.Vector3(0, -6, 0);
         var translationT = new THREE.Vector3(0, -6, 0);
 
         vertex8 = bodyStyle.bodyStyle.vertices[8].clone();
@@ -44,6 +44,7 @@ class Lights extends THREE.Object3D{
         vertex17.add(translationF);
         vertex18.add(translationF);
         vertex19.add(translationF);
+
         vertex20.add(translationT);
         vertex21.add(translationT);
 

@@ -11,9 +11,10 @@ class Lights extends THREE.Object3D{
         var bottomBodyStyleWidth = 202.7;
         var bodyStyleHeight = 190.5;
 
-
         var vertex8 = new THREE.Vector3();
         var vertex9 = new THREE.Vector3();
+        var vertex10 = new THREE.Vector3();
+        var vertex11 = new THREE.Vector3();
         var vertex12 = new THREE.Vector3();
         var vertex13 = new THREE.Vector3();
         var vertex16 = new THREE.Vector3();
@@ -22,6 +23,8 @@ class Lights extends THREE.Object3D{
         var vertex19 = new THREE.Vector3();
         var vertex20 = new THREE.Vector3();
         var vertex21 = new THREE.Vector3();
+        var translationF = new THREE.Vector3(0, -3, 0);
+        var translationT = new THREE.Vector3(0, -6, 0);
 
         vertex8 = bodyStyle.bodyStyle.vertices[8].clone();
         vertex9 = bodyStyle.bodyStyle.vertices[9].clone();
@@ -30,13 +33,19 @@ class Lights extends THREE.Object3D{
         vertex12 = bodyStyle.bodyStyle.vertices[12].clone();
         vertex13 = bodyStyle.bodyStyle.vertices[13].clone();
 
-        vertex16 = new THREE.Vector3(-bottomBodyStyleLength/2 -0.1, platformHeight + wheelRadius *9/4 -3, bottomBodyStyleWidth/2 -40);
-        vertex17 = new THREE.Vector3(-bottomBodyStyleLength/2 +50 -0.1, platformHeight + wheelRadius *9/4 -3, bottomBodyStyleWidth/2);
-        vertex18 = new THREE.Vector3(-bottomBodyStyleLength/2 +50 -0.1, platformHeight + wheelRadius *9/4 -3, bottomBodyStyleWidth/2);
-        vertex19 = new THREE.Vector3(-bottomBodyStyleLength/2 -0.1, platformHeight + wheelRadius *9/4 -3, -bottomBodyStyleWidth/2 +40);
-        vertex20 = new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4 -6, bottomBodyStyleWidth/2);
-        vertex21 = new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4 -6, -bottomBodyStyleWidth/2);
+        vertex16 = bodyStyle.bodyStyle.vertices[8].clone();
+        vertex17 = bodyStyle.bodyStyle.vertices[9].clone();
+        vertex18 = bodyStyle.bodyStyle.vertices[10].clone();
+        vertex19 = bodyStyle.bodyStyle.vertices[11].clone();
+        vertex20 = bodyStyle.bodyStyle.vertices[12].clone();
+        vertex21 = bodyStyle.bodyStyle.vertices[13].clone();
 
+        vertex16.add(translationF);
+        vertex17.add(translationF);
+        vertex18.add(translationF);
+        vertex19.add(translationF);
+        vertex20.add(translationT);
+        vertex21.add(translationT);
 
         lights.vertices.push(
             vertex8,

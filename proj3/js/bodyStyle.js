@@ -63,7 +63,7 @@ class BodyStyle extends THREE.Object3D{
         vertex6.x = vertex12.x;
         vertex6.z = vertex12.z;
 
-        
+
         bodyStyle.vertices.push(
             vertex0,
             vertex1,
@@ -119,5 +119,5 @@ class BodyStyle extends THREE.Object3D{
         this.bodyStyle = bodyStyle;
 
     }
-    
+
 }

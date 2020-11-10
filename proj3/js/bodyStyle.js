@@ -7,7 +7,7 @@ class BodyStyle extends THREE.Object3D{
         var color = 0x575a63;
         var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
                         new THREE.MeshLambertMaterial({color: color, wireframe: false}),
-                        new THREE.MeshPhongMaterial({color: color, wireframe: false}) 
+                        new THREE.MeshPhongMaterial({color: color, wireframe: false})
                         ]
         const bodyStyle = new THREE.Geometry();
 
@@ -123,13 +123,4 @@ class BodyStyle extends THREE.Object3D{
     fixVertex(){
 
     }
-    /*var quinze_oito = new THREE.Vector3();
-    quinze_oito.subVectors(bodyStyle.bodyStyle.vertices[8], bodyStyle.bodyStyle.vertices[15]).normalize();
-
-    var catorze_doze = new THREE.Vector3();
-    catorze_doze.subVectors(bodyStyle.bodyStyle.vertices[12], bodyStyle.bodyStyle.vertices[14]).normalize();
-
-    var catorzeF = new THREE.Vector3();
-    oito_quinze.setLength(90);
-    oito.add(oito_quinze);*/
 }

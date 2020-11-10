@@ -8,18 +8,13 @@ class spotlight extends THREE.SpotLight{
 
         this.target = target;
         this.position.set(x, y, z);
+        this.visible = true;
 
-        this.on = true;
         scene.add(this);
         
     }
 
     flipSwitch() {
-        if (this.on)
-            scene.remove(this);
-        else
-            scene.add(this);
-
-        this.on = !this.on
+        this.visible = !this.visible;
     }
 }

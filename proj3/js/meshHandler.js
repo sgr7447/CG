@@ -4,7 +4,7 @@ class MeshHandler extends THREE.Mesh{
 
         super(geometry, materials[1]);
 
-        this.lightOn = true;
+        this.typeBasic = false;
 
         this.currMaterial = 1; // 1 ou 2
 
@@ -14,11 +14,10 @@ class MeshHandler extends THREE.Mesh{
         allMeshes.push(this);
     }
 
-    //Trocar entre Phong e Lambert
+    //Trocar entre Phong e Lambert - tecla E
     switchShading() {
 
-        //verifica que nao e Basic
-        if (this.lightOn){
+        if (!this.typeBasic){
 
             if (this.currMaterial == 1) { this.currMaterial = 2; }
             if (this.currMaterial == 2) { this.currMaterial = 1; }
@@ -28,10 +27,10 @@ class MeshHandler extends THREE.Mesh{
     }
     
 
-    //Trocar entre Basic e (Phong ou Lambert)
+    //Trocar entre Basic e (Phong ou Lambert) - tecla W
     switchIlumination() {
 
-        if (this.lightOn)
+        if (!this.typeBasic)
             //colocamos o material (Phong ou Lambert) como sendo Basic
             this.material = this.materials[0]
 
@@ -39,7 +38,7 @@ class MeshHandler extends THREE.Mesh{
             //colocamos o material Basic como sendo o anterior a ser mudado para Basic
             this.material = this.materials[this.currMaterial]
 
-        this.lightOn = !this.lightOn
+        this.typeBasic = !this.typeBasic
     }
     
 }

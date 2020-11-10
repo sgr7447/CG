@@ -6,9 +6,11 @@ class BodyStyle extends THREE.Object3D{
 
         var color = 0x575a63;
         var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
-                        new THREE.MeshLambertMaterial({color: color, wireframe: false}),
-                        new THREE.MeshPhongMaterial({color: color, wireframe: false}) 
+                        new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading}),
+                        new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading}) 
                         ]
+
+        //var material = new THREE.MeshLambertMaterial({color: color, side:THREE.DoubleSide, shading: THREE.FlatShading});
         const bodyStyle = new THREE.Geometry();
 
         var bottomBodyStyleLength = 588.5;
@@ -62,8 +64,7 @@ class BodyStyle extends THREE.Object3D{
         vertex6.x = vertex12.x;
         vertex6.z = vertex12.z;
 
-
-
+        
         bodyStyle.vertices.push(
             vertex0,
             vertex1,
@@ -111,7 +112,8 @@ class BodyStyle extends THREE.Object3D{
         bodyStyle.faces.push(new THREE.Face3(12, 14, 11));//lado esquerdo
 
         bodyStyle.computeBoundingSphere();
-
+        
+        //mesh = new THREE.Mesh(bodyStyle, material);
         mesh = new MeshHandler(bodyStyle, materials);
         mesh.position.set(0, 0, 0);
         this.add(mesh);
@@ -119,17 +121,5 @@ class BodyStyle extends THREE.Object3D{
         this.bodyStyle = bodyStyle;
 
     }
-
-    fixVertex(){
-
-    }
-    /*var quinze_oito = new THREE.Vector3();
-    quinze_oito.subVectors(bodyStyle.bodyStyle.vertices[8], bodyStyle.bodyStyle.vertices[15]).normalize();
-
-    var catorze_doze = new THREE.Vector3();
-    catorze_doze.subVectors(bodyStyle.bodyStyle.vertices[12], bodyStyle.bodyStyle.vertices[14]).normalize();
-
-    var catorzeF = new THREE.Vector3();
-    oito_quinze.setLength(90);
-    oito.add(oito_quinze);*/
+    
 }

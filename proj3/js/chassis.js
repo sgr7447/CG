@@ -31,9 +31,4 @@ class Chassis extends THREE.Object3D{
         this.add(chassisPlatform);
 
     }
-
-    /*newWheel(x, y, z){
-        var wheelColor = '#1a1a1a';
-        new Cylinder(x, y, z, 0, 1/2, 1/2, wheelHeight, wheelRadius, 200, 10, wheelColor);
-    }*/
 }

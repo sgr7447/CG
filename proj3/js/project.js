@@ -8,6 +8,7 @@ var allMeshes;
 
 //LIGHTS
 var gLight;
+var spotLights;
 
 //TIME
 var time;
@@ -37,6 +38,7 @@ function createScene() {
 
     //LIGHTS
     gLight = new globalLight();
+    spotLights = new spotlightsHandler();
 }
 
 function onResize() {
@@ -49,11 +51,22 @@ function onKeyDown(e) {
 
     switch (e.keyCode) {
 
+        case 49: //key 1 - flip switch spotlight 1
+            spotLights.flipSwitch(0);
+            break;
+
+        case 50: //key 2 - flip switch spotlight 2
+            spotLights.flipSwitch(1);
+            break;
+
+        case 51: //key 3 - flip switch spotlight 3
+            spotLights.flipSwitch(2);
+            break;
+
         case 52: //key 4 - perspective camera
             currentCamera = perspectiveCamera;
             currentCamera.view_scene();
             break;
-
 
         case 53: //key 5 - top orthographic camera
             currentCamera = orthographicCamera;
@@ -63,7 +76,6 @@ function onKeyDown(e) {
         case 39: //key ->
             totalParts.spinPositive();
             break;
-
 
         case 37: //key <-
             totalParts.spinNegative();

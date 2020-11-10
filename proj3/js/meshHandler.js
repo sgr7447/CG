@@ -19,9 +19,10 @@ class MeshHandler extends THREE.Mesh{
 
         if (!this.typeBasic){
 
-            if (this.currMaterial == 1) { this.currMaterial = 2; }
-            if (this.currMaterial == 2) { this.currMaterial = 1; }
+            if (this.currMaterial == 1) { var currMaterial = 2; }
+            if (this.currMaterial == 2) { var currMaterial = 1; }
 
+            this.currMaterial = currMaterial;
             this.material = this.materials[this.currMaterial];
         }
     }

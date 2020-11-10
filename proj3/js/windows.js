@@ -4,7 +4,7 @@ class Windows extends THREE.Object3D{
 
         super();
 
-        var color = '#34558B';
+        var color = '#1d1e1f';
         var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
             new THREE.MeshLambertMaterial({color: color, wireframe: false}),
             new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading})

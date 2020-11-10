@@ -27,8 +27,8 @@ class BodyStyle extends THREE.Object3D{
         var vertex7 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius +10, -bottomBodyStyleWidth/2 +40);//7
         var vertex8 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius *9/4, bottomBodyStyleWidth/2 -40);//8
         var vertex9 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius *9/4, bottomBodyStyleWidth/2 -40);//9
-        var vertex10 = new THREE.Vector3(bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4, bottomBodyStyleWidth/2);//10
-        var vertex11 = new THREE.Vector3(bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4, -bottomBodyStyleWidth/2);//11
+        var vertex10 = new THREE.Vector3(bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *13/4, bottomBodyStyleWidth/2);//10
+        var vertex11 = new THREE.Vector3(bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *13/4, -bottomBodyStyleWidth/2);//11
         var vertex12 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius *9/4, -bottomBodyStyleWidth/2 +40);//12
         var vertex13 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius *9/4, -bottomBodyStyleWidth/2 +40);//13
         var vertex14 = new THREE.Vector3(-bottomBodyStyleWidth *1/6, platformHeight + bodyStyleHeight, -bottomBodyStyleWidth/2 +20);//14
@@ -112,7 +112,7 @@ class BodyStyle extends THREE.Object3D{
         bodyStyle.faces.push(new THREE.Face3(12, 14, 11));//lado esquerdo
 
         bodyStyle.computeBoundingSphere();
-        
+
         //mesh = new THREE.Mesh(bodyStyle, material);
         mesh = new MeshHandler(bodyStyle, materials);
         mesh.position.set(0, 0, 0);

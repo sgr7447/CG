@@ -4,12 +4,12 @@ class TruckLights extends THREE.Object3D{
 
         super();
 
-        var color = 0xd1dcff;
+        var color = 0xf0f5fc;
         var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
             new THREE.MeshLambertMaterial({color: color, wireframe: false}),
             new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading})
             ]
-        const lights = new THREE.Geometry();
+        const frontLights = new THREE.Geometry();
 
         var bottomBodyStyleLength = 588.5;
         var bottomBodyStyleWidth = 202.7;
@@ -27,8 +27,8 @@ class TruckLights extends THREE.Object3D{
         var vertex19 = new THREE.Vector3();
         var vertex20 = new THREE.Vector3();
         var vertex21 = new THREE.Vector3();
-        var translationF = new THREE.Vector3(0, -6, 0);
-        var translationT = new THREE.Vector3(0, -6, 0);
+        var translation = new THREE.Vector3(0, -8, 0);
+        var translation2 = new THREE.Vector3(0, -5, 0);
         var vec12_18 = new THREE.Vector3();
         var vec13_19 = new THREE.Vector3();
         var vec8_16 = new THREE.Vector3();
@@ -51,10 +51,10 @@ class TruckLights extends THREE.Object3D{
         vertex20 = bodyStyle.bodyStyle.vertices[10].clone();
         vertex21 = bodyStyle.bodyStyle.vertices[11].clone();
 
-        vertex16.add(translationF);
-        vertex17.add(translationF);
-        vertex18.add(translationF);
-        vertex19.add(translationF);
+        vertex16.add(translation);
+        vertex17.add(translation2);
+        vertex18.add(translation2);
+        vertex19.add(translation);
 
         vec12_18.subVectors(vertex18, vertex12);
         vec13_19.subVectors(vertex19, vertex13);
@@ -75,10 +75,10 @@ class TruckLights extends THREE.Object3D{
         vertex19.add(normalF);
 
 
-        vertex20.add(translationT);
-        vertex21.add(translationT);
+        vertex20.add(translation);
+        vertex21.add(translation);
 
-        lights.vertices.push(
+        frontLights.vertices.push(
             vertex8, //0
             vertex9, //1
             vertex12, //2
@@ -87,26 +87,47 @@ class TruckLights extends THREE.Object3D{
             vertex17, //5
             vertex18, //6
             vertex19, //7
+        );
+
+        frontLights.faces.push(new THREE.Face3(0, 7, 1),//frente
+                          new THREE.Face3(0, 6, 7),//frente
+                          new THREE.Face3(0, 5, 6),//frente
+                          new THREE.Face3(0, 3, 5),//frente
+                          new THREE.Face3(2, 5, 3),//frente
+                          new THREE.Face3(2, 4, 5),//frente
+        );
+
+        frontLights.computeBoundingSphere();
+
+        mesh = new MeshHandler(frontLights, materials);
+        mesh.position.set(0, 0, 0);
+        this.add(mesh);
+
+
+        const rearLights = new THREE.Geometry();
+
+        color = 0xed0505;
+        materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
+            new THREE.MeshLambertMaterial({color: color, wireframe: false}),
+            new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading})
+            ]
+
+        rearLights.vertices.push(
             vertex10, //8
             vertex11, //9
             vertex20, //10
             vertex21 //11
         );
 
-        lights.faces.push(new THREE.Face3(0, 7, 1),//frente
-                          new THREE.Face3(0, 6, 7),//frente
-                          new THREE.Face3(0, 5, 6),//frente
-                          new THREE.Face3(0, 3, 5),//frente
-                          new THREE.Face3(2, 5, 3),//frente
-                          new THREE.Face3(2, 4, 5),//frente
-                          new THREE.Face3(8, 10, 9),//traseira
-                          new THREE.Face3(9, 10, 11)//traseira
+        rearLights.faces.push(new THREE.Face3(0, 2, 1),//traseira
+                          new THREE.Face3(1, 2, 3)//traseira
         );
 
-        lights.computeBoundingSphere();
+        rearLights.computeBoundingSphere();
 
-        mesh = new MeshHandler(lights, materials);
+        mesh = new MeshHandler(rearLights, materials);
         mesh.position.set(0, 0, 0);
         this.add(mesh);
     }
+
 }

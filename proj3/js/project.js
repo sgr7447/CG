@@ -3,7 +3,7 @@
 var orthographicCamera, perspectiveCamera, currentCamera, scene, renderer;
 var geometry, mesh;
 var floor;
-var totalParts;
+var totalParts = new THREE.Object3D();
 var allMeshes;
 
 //LIGHTS

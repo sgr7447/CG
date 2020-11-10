@@ -6,11 +6,10 @@ class BodyStyle extends THREE.Object3D{
 
         var color = 0x575a63;
         var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
-                        new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading}),
+                        new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading, emissive: color}),
                         new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading})
                         ]
 
-        //var material = new THREE.MeshLambertMaterial({color: color, side:THREE.DoubleSide, shading: THREE.FlatShading});
         const bodyStyle = new THREE.Geometry();
 
         var bottomBodyStyleLength = 588.5;
@@ -112,8 +111,7 @@ class BodyStyle extends THREE.Object3D{
         bodyStyle.faces.push(new THREE.Face3(12, 14, 11));//lado esquerdo
 
         bodyStyle.computeBoundingSphere();
-
-        //mesh = new THREE.Mesh(bodyStyle, material);
+        
         mesh = new MeshHandler(bodyStyle, materials);
         mesh.position.set(0, 0, 0);
         this.add(mesh);

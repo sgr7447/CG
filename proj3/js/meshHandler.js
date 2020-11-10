@@ -2,11 +2,12 @@ class MeshHandler extends THREE.Mesh{
 
     constructor(geometry, materials) {
 
-        super(geometry, materials[1]);
+        var begin_material = 2;
+        super(geometry, materials[begin_material]);
 
         this.typeBasic = false;
 
-        this.currMaterial = 1; // 1 ou 2
+        this.currMaterial = begin_material; // 1 ou 2
 
         //ordem materials: Basic, Lambert, Phong
         this.materials = materials;

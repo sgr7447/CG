@@ -6,7 +6,7 @@ class Windows extends THREE.Object3D{
 
         var color = '#1d1e1f';
         var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
-            new THREE.MeshLambertMaterial({color: color, wireframe: false}),
+            new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading, emissive: color}),
             new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading})
             ]
         const windows = new THREE.Geometry();

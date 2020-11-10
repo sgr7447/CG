@@ -1,6 +1,6 @@
 class TruckLights extends THREE.Object3D{
 
-    constructor(wheelRadius, platformHeight, bodyStyle){
+    constructor(bodyStyle){
 
         super();
 
@@ -10,10 +10,6 @@ class TruckLights extends THREE.Object3D{
             new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading})
             ]
         const frontLights = new THREE.Geometry();
-
-        var bottomBodyStyleLength = 588.5;
-        var bottomBodyStyleWidth = 202.7;
-        var bodyStyleHeight = 190.5;
 
         var vertex8 = new THREE.Vector3();
         var vertex9 = new THREE.Vector3();

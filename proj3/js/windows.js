@@ -1,6 +1,6 @@
 class Windows extends THREE.Object3D{
 
-    constructor(wheelRadius, platformHeight, bodyStyle){
+    constructor(bodyStyle){
 
         super();
 

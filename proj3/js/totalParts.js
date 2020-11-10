@@ -20,7 +20,6 @@ class TotalParts extends THREE.Object3D{
         var bodyStyle = new BodyStyle(wheelRadius, platformHeight);
         var carLights = new TruckLights(wheelRadius, platformHeight, bodyStyle);
         var windows = new Windows(wheelRadius, platformHeight, bodyStyle);
-        //var bodyStyle = new BodyStyle(wheelRadius, platformHeight);
 
         orthographicCamera = new OrthographicCamera();
 

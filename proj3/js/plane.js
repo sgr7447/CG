@@ -4,7 +4,7 @@ class Plane extends THREE.Object3D{
 
         super();
 
-        var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
+        var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading}),
                         new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading}),
                         new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading})
                         ]

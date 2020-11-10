@@ -108,7 +108,7 @@ class TruckLights extends THREE.Object3D{
 
         color = 0xed0505;
         materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
-            new THREE.MeshLambertMaterial({color: color, wireframe: false}),
+            new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading, emissive: color}),
             new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading})
             ]
 

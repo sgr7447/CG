@@ -15,7 +15,7 @@ class PerspectiveCamera extends THREE.PerspectiveCamera{
 
     view_scene(){
         this.onResize();
-        this.position.set(120, 50, 300);
+        this.position.set(120, 80, 300);
         this.lookAt(scene.position);
     }
 

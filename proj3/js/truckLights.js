@@ -1,13 +1,13 @@
 class TruckLights extends THREE.Object3D{
 
-    constructor(wheelRadius, platformHeight, body){
+    constructor(wheelRadius, platformHeight, bodyStyle){
 
         super();
 
         var color = 0xd1dcff;
         var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
             new THREE.MeshLambertMaterial({color: color, wireframe: false}),
-            new THREE.MeshPhongMaterial({color: color, wireframe: false}) 
+            new THREE.MeshPhongMaterial({color: color, wireframe: false})
             ]
         const lights = new THREE.Geometry();
 
@@ -15,42 +15,66 @@ class TruckLights extends THREE.Object3D{
         var bottomBodyStyleWidth = 202.7;
         var bodyStyleHeight = 190.5;
 
-        var vertex0 = new THREE.Vector3();
-        var vertex1 = new THREE.Vector3();
-        var vertex2 = new THREE.Vector3();
-        var vertex3 = new THREE.Vector3();
-        var vertex4 = new THREE.Vector3();
-        var vertex5 = new THREE.Vector3();
-        var vertex6 = new THREE.Vector3();
-        var vertex7 = new THREE.Vector3();
+        var vertex8 = new THREE.Vector3();
+        var vertex9 = new THREE.Vector3();
+        var vertex10 = new THREE.Vector3();
+        var vertex11 = new THREE.Vector3();
+        var vertex12 = new THREE.Vector3();
+        var vertex13 = new THREE.Vector3();
+        var vertex16 = new THREE.Vector3();
+        var vertex17 = new THREE.Vector3();
+        var vertex18 = new THREE.Vector3();
+        var vertex19 = new THREE.Vector3();
+        var vertex20 = new THREE.Vector3();
+        var vertex21 = new THREE.Vector3();
+        var translationF = new THREE.Vector3(0, -6, 0);
+        var translationT = new THREE.Vector3(0, -6, 0);
 
-        vertex0 =          
+        vertex8 = bodyStyle.bodyStyle.vertices[8].clone();
+        vertex9 = bodyStyle.bodyStyle.vertices[9].clone();
+        vertex10 = bodyStyle.bodyStyle.vertices[10].clone();
+        vertex11 = bodyStyle.bodyStyle.vertices[11].clone();
+        vertex12 = bodyStyle.bodyStyle.vertices[12].clone();
+        vertex13 = bodyStyle.bodyStyle.vertices[13].clone();
+
+        vertex16 = bodyStyle.bodyStyle.vertices[12].clone();
+        vertex17 = bodyStyle.bodyStyle.vertices[13].clone();
+        vertex18 = bodyStyle.bodyStyle.vertices[8].clone();
+        vertex19 = bodyStyle.bodyStyle.vertices[9].clone();
+        vertex20 = bodyStyle.bodyStyle.vertices[10].clone();
+        vertex21 = bodyStyle.bodyStyle.vertices[11].clone();
+
+        vertex16.add(translationF);
+        vertex17.add(translationF);
+        vertex18.add(translationF);
+        vertex19.add(translationF);
+
+        vertex20.add(translationT);
+        vertex21.add(translationT);
 
         lights.vertices.push(
-            new THREE.Vector3(-bottomBodyStyleLength/2 -0.1, platformHeight + wheelRadius *9/4, bottomBodyStyleWidth/2 -40),//8 cima 0
-            new THREE.Vector3(-bottomBodyStyleLength/2 +50 -0.1, platformHeight + wheelRadius *9/4, bottomBodyStyleWidth/2),//9 1
-            new THREE.Vector3(-bottomBodyStyleLength/2 +50 -0.1, platformHeight + wheelRadius *9/4, -bottomBodyStyleWidth/2),//12 2
-            new THREE.Vector3(-bottomBodyStyleLength/2 -0.1, platformHeight + wheelRadius *9/4, -bottomBodyStyleWidth/2 +40),//13 3
-
-            new THREE.Vector3(-bottomBodyStyleLength/2 -0.1, platformHeight + wheelRadius *9/4 -3, bottomBodyStyleWidth/2 -40),//16 baixo 4
-            new THREE.Vector3(-bottomBodyStyleLength/2 +50 -0.1, platformHeight + wheelRadius *9/4 -3, bottomBodyStyleWidth/2),//17 5
-            new THREE.Vector3(-bottomBodyStyleLength/2 +50 -0.1, platformHeight + wheelRadius *9/4 -3, -bottomBodyStyleWidth/2),//18 6
-            new THREE.Vector3(-bottomBodyStyleLength/2 -0.1, platformHeight + wheelRadius *9/4 -3, -bottomBodyStyleWidth/2 +40),//19 7
-
-            new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4, bottomBodyStyleWidth/2),//8
-            new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4, -bottomBodyStyleWidth/2),//9
-            new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4 -6, bottomBodyStyleWidth/2),//10
-            new THREE.Vector3( bottomBodyStyleLength/2 +10, platformHeight + wheelRadius *11/4 -6, -bottomBodyStyleWidth/2)//11
+            vertex8, //0
+            vertex9, //1
+            vertex12, //2
+            vertex13, //3
+            vertex16, //4
+            vertex17, //5
+            vertex18, //6
+            vertex19, //7
+            vertex10, //8
+            vertex11, //9
+            vertex20, //10
+            vertex21 //11
         );
 
-        lights.faces.push(new THREE.Face3(6, 3, 2),//frente
-                          new THREE.Face3(6, 7, 3),//frente
-                          new THREE.Face3(7, 4, 0),//frente
-                          new THREE.Face3(7, 0, 3),//frente
-                          new THREE.Face3(4, 5, 1),//frente
-                          new THREE.Face3(1, 0, 4),//frente
-                          new THREE.Face3(10, 11, 9),//traseira
-                          new THREE.Face3(9, 8, 10)//traseira
+        lights.faces.push(new THREE.Face3(0, 7, 1),//frente
+                          new THREE.Face3(0, 6, 7),//frente
+                          new THREE.Face3(0, 5, 6),//frente
+                          new THREE.Face3(0, 3, 5),//frente
+                          new THREE.Face3(2, 5, 3),//frente
+                          new THREE.Face3(2, 4, 5),//frente
+                          new THREE.Face3(8, 10, 9),//traseira
+                          new THREE.Face3(9, 10, 11)//traseira
         );
 
         lights.computeBoundingSphere();

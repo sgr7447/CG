@@ -15,19 +15,21 @@ class SpotlightsHandler{
 
         spotlights.push(
             new Spotlight(radius, height, 5 , 150, 0),
-            //new Spotlight(radius, height, -90, 46, 175),
-            //new Spotlight(radius, height, 60, 100, 75)
+            new Spotlight(radius, height, -90, 46, 175),
+            new Spotlight(radius, height, 60, 100, 75)
         );
 
 
         spotlights[0].position.set(-10, 0, 150);
-        //spotlights[1].position.set(-30, 0, 175);
-        //spotlights[2].position.set(60, 0, 75);
+        spotlights[1].position.set(-30, 0, 175);
+        spotlights[2].position.set(60, 0, 75);
+
+        
 
 
 
-        spotlights[0].lookAt(platform.position);
-        spotlights[0].position.set(-10, 30, 150);
+        //spotlights[0].lookAt(platform.position);
+        //spotlights[0].position.set(-10, 30, 150);
 
 
 

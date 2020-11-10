@@ -5,7 +5,7 @@ class BodyStyle extends THREE.Object3D{
         super();
 
         var color = 0xdb7093;
-        var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
+        var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false, side:THREE.DoubleSide}),
                         new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading, emissive: color}),
                         new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, shading: THREE.FlatShading})
                         ]

@@ -14,8 +14,8 @@ class spotlight extends THREE.SpotLight{
 
         this.lamp = new THREE.Object3D();
 
-        this.lamp.add(new Cone(5, 9, 0, 0, 0, 0xddff00));
-        this.lamp.add(new Sphere(0, 4.5, 0, 3, 0xddff00));
+        this.lamp.add(new Cone(5, 9, 0, 0, 0, 0xadadad));
+        this.lamp.add(new Sphere(0, 4.5, 0, 3, 0xadadad));
         this.lamp.position.set(x, y, z);
         this.lamp.lookAt(target.position);
         this.lamp.rotateOnWorldAxis(THREE.Object3D.DefaultUp, Math.PI);

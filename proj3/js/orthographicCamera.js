@@ -9,7 +9,7 @@ class OrthographicCamera extends THREE.OrthographicCamera{
         //delimita os campos da camara
         super(-width/2, width/2, height/2, -height/2);
         this.aspect = aspect;
-        this.zoom = 0.5;
+        this.zoom = 0.3;
         this.view_from_platform();
         this.onResize();
 
@@ -18,7 +18,7 @@ class OrthographicCamera extends THREE.OrthographicCamera{
     view_from_platform(){
 
         this.onResize();
-        this.position.set(0, 120, 620);
+        this.position.set(0, 120, 920);
         this.lookAt(scene.position);
 
     }

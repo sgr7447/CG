@@ -3,18 +3,15 @@ class Sphere extends THREE.Object3D{
     constructor(x, y, z, radius, color){
         super();
 
-        var material = new THREE.MeshBasicMaterial({ color: color, wireframe: false});
+        var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
+            new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true, emissive: color}),
+            new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true})
+            ]
         var geometry = new THREE.SphereGeometry(radius, 30, 30);
-        this.material = material;
 
-        this.radius = radius;
-
-        mesh = new THREE.Mesh(geometry, material);
+        mesh = new MeshHandler(geometry, materials);
+        mesh.position.set(x, y, z);
 
         this.add(mesh);
-
-        this.x = x;
-        this.y = y;
-        this.z = z;
     }
 }

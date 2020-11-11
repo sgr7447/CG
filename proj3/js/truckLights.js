@@ -92,7 +92,8 @@ class TruckLights extends THREE.Object3D{
                           new THREE.Face3(2, 5, 3),//frente
                           new THREE.Face3(2, 4, 5),//frente
         );
-
+        
+        frontLights.computeFlatVertexNormals();
         frontLights.computeBoundingSphere();
 
         mesh = new MeshHandler(frontLights, materials);
@@ -119,6 +120,7 @@ class TruckLights extends THREE.Object3D{
                           new THREE.Face3(1, 2, 3)//traseira
         );
 
+        rearLights.computeFlatVertexNormals();
         rearLights.computeBoundingSphere();
 
         mesh = new MeshHandler(rearLights, materials);

@@ -4,7 +4,7 @@ class BodyStyle extends THREE.Object3D{
 
         super();
 
-        var color = 0xddff00;
+        var color = 0xdb7093;
         var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false, side:THREE.DoubleSide}),
                         new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true, emissive: color}),
                         new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true})
@@ -110,6 +110,7 @@ class BodyStyle extends THREE.Object3D{
         bodyStyle.faces.push(new THREE.Face3(9, 10, 15));//lado direito
         bodyStyle.faces.push(new THREE.Face3(12, 14, 11));//lado esquerdo
 
+        bodyStyle.computeFlatVertexNormals();
         bodyStyle.computeBoundingSphere();
 
         mesh = new MeshHandler(bodyStyle, materials);

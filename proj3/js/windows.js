@@ -181,7 +181,7 @@ class Windows extends THREE.Object3D{
             new THREE.Face3(6, 8, 7),
             new THREE.Face3(6, 9, 8)
         );
-
+        windows.computeFlatVertexNormals();
         windows.computeBoundingSphere();
 
         mesh = new MeshHandler(windows, materials);

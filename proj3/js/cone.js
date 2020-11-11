@@ -1,9 +1,8 @@
 class Cone extends THREE.Object3D{
 
-    constructor(radius, height, x, y, z){
+    constructor(radius, height, x, y, z, color){
         super();
 
-        var color ='#adadad';
         var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
             new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true, emissive: color}),
             new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true})

@@ -10,11 +10,26 @@ class spotlight extends THREE.SpotLight{
         this.position.set(x, y, z);
         this.visible = true;
 
+        this.on = true;
+
+        this.lamp = new THREE.Object3D();
+
+        this.lamp.add(new Cone(5, 9, 0, 0, 0));
+
+        this.lamp.position.set(x, y, z);
+        this.lamp.lookAt(target.position);
+        this.lamp.rotateOnWorldAxis(THREE.Object3D.DefaultUp, Math.PI);
+        //this.lamp.add(new Sphere);
+
+
+        scene.add(this.lamp);
         scene.add(this);
-        
+
+
     }
 
     flipSwitch() {
         this.visible = !this.visible;
+        this.lamp.visible = !this.lamp.visible;
     }
 }

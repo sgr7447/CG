@@ -11,17 +11,12 @@ class globalLight extends THREE.DirectionalLight {
 
         this.position.set(30, 200, 30);
         
-        this.on = true;
+        this.visible = true;
         scene.add(this);
     }
 
     flipSwitch() {
-        if (this.on)
-            scene.remove(this);
-        else
-            scene.add(this);
-
-        this.on = !this.on
+        this.visible = !this.visible
     }
 
 }

@@ -13,13 +13,17 @@ class spotlight extends THREE.SpotLight{
 
         var lamp = new THREE.Object3D();
 
-        lamp.add(new Cone(5, 9, -100, 120, -50));
-        
+        lamp.add(new Cone(5, 9, 0, 0, 0));
+
+        lamp.position.set(x, y, z);
+        lamp.lookAt(target.position);
+        lamp.rotateOnWorldAxis(THREE.Object3D.DefaultUp, Math.PI);
         //lamp.add(new Sphere);
 
-        //lamp.scale.multiplyScalar(0.3);
+
         scene.add(lamp);
         scene.add(this);
+
 
     }
 

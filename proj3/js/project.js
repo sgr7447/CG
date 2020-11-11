@@ -29,7 +29,7 @@ function createScene() {
     time = new THREE.Clock();
 
     scene = new THREE.Scene();
-    scene.add(new THREE.AxisHelper(50));
+    scene.add(new THREE.AxesHelper(50));
 
     perspectiveCamera = new PerspectiveCamera();
     currentCamera = perspectiveCamera;

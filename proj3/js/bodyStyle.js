@@ -14,7 +14,7 @@ class BodyStyle extends THREE.Object3D{
 
         var bottomBodyStyleLength = 588.5;
         var bottomBodyStyleWidth = 202.7;
-        var bodyStyleHeight = 190.5;
+        var bodyStyleHeight = 200;
 
         var vertex0 = new THREE.Vector3(-bottomBodyStyleLength/2, platformHeight + wheelRadius +10, bottomBodyStyleWidth/2 -40);//0
         var vertex1 = new THREE.Vector3(-bottomBodyStyleLength/2 +50, platformHeight + wheelRadius, bottomBodyStyleWidth/2);//1

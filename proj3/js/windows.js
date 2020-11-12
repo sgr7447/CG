@@ -27,7 +27,7 @@ class Windows extends THREE.Object3D{
         var vec9 = new THREE.Vector3();
         vec9 = bodyStyle.bodyStyle.vertices[9].clone();
         vec9.add(vec9_15.setLength(25));
-        vec9.add(vec9_10.setLength(25));
+        vec9.add(vec9_10.setLength(30));
 
         //ponto 10
         var vec10_9 = new THREE.Vector3();
@@ -41,6 +41,11 @@ class Windows extends THREE.Object3D{
         vec10.add(vec10_9.setLength(150));
         vec10.add(vec10_15.setLength(40));
 
+        //ponto 22
+        var vec22 = new THREE.Vector3();
+        vec22 = vec9.clone();
+        vec22.add(vec9_10.setLength(235));
+        vec22.add(vec9_15.setLength(80));
 
         //ponto 15
         var vec15_9 = new THREE.Vector3();
@@ -53,11 +58,13 @@ class Windows extends THREE.Object3D{
         vec15L = bodyStyle.bodyStyle.vertices[15].clone();
         vec15L.add(vec15_9.setLength(25));
         vec15L.add(vec15_10.setLength(25));
+
         var normalR = new THREE.Vector3();
         normalR.crossVectors(vec10_9, vec9_15).normalize();
         vec9.sub(normalR);
         vec10.sub(normalR);
         vec15L.sub(normalR);
+        vec22.sub(normalR);
 
 
         // Calculos janela lateral 11 - 12 - 14
@@ -84,7 +91,7 @@ class Windows extends THREE.Object3D{
         var vec12 = new THREE.Vector3();
         vec12 = bodyStyle.bodyStyle.vertices[12].clone();
         vec12.add(vec12_11.setLength(25));
-        vec12.add(vec12_14.setLength(25));
+        vec12.add(vec12_14.setLength(30));
 
         //ponto 14
         var vec14_11 = new THREE.Vector3();
@@ -98,11 +105,19 @@ class Windows extends THREE.Object3D{
         vec14L.add(vec14_11.setLength(25));
         vec14L.add(vec14_12.setLength(25));
 
+        //ponto 23
+        var vec23 = new THREE.Vector3();
+        vec23 = vec12.clone();
+        vec23.add(vec12_11.setLength(235));
+        vec23.add(vec12_14.setLength(80));
+
+
         var normalL = new THREE.Vector3();
         normalL.crossVectors(vec12_11, vec14_11).normalize();
         vec11.add(normalL);
         vec12.add(normalL);
         vec14L.add(normalL);
+        vec23.add(normalL);
 
 
         // Calculos janela frontal 9 - 12 - 14 - 15
@@ -164,10 +179,12 @@ class Windows extends THREE.Object3D{
                     vec9,
                     vec10,
                     vec15L,
+                    vec22,
 
                     vec11,
                     vec12,
                     vec14L,
+                    vec23,
 
                     vec9F,
                     vec12F,
@@ -177,9 +194,11 @@ class Windows extends THREE.Object3D{
 
         windows.faces.push(
             new THREE.Face3(0, 1, 2),
-            new THREE.Face3(3, 4, 5),
-            new THREE.Face3(6, 8, 7),
-            new THREE.Face3(6, 9, 8)
+            new THREE.Face3(1, 2, 3),
+            new THREE.Face3(4, 5, 6),
+            new THREE.Face3(8, 10, 9),
+            new THREE.Face3(8, 11, 10),
+            new THREE.Face3(7, 6, 4)
         );
         windows.computeFlatVertexNormals();
         windows.computeBoundingSphere();

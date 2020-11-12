@@ -1,15 +1,11 @@
 class CyberTruckLights extends THREE.Object3D{
 
-    constructor(wheelRadius, platformHeight, bodyStyle){
+    constructor(bodyStyle){
 
         super();
 
         material = new THREE.MeshBasicMaterial({ color: 0xd1dcff, wireframe: false});
         const lights = new THREE.Geometry();
-
-        var bottomBodyStyleLength = 588.5;
-        var bottomBodyStyleWidth = 202.7;
-        var bodyStyleHeight = 190.5;
 
         var vertex8 = new THREE.Vector3();
         var vertex9 = new THREE.Vector3();

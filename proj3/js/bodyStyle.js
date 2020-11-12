@@ -45,10 +45,6 @@ class BodyStyle extends THREE.Object3D{
         vec8_13.subVectors(vertex13, vertex8);
         vec8_13.normalize();
 
-        /*var vec13_8 = new THREE.Vector3();
-        vec13_8.subVectors(vertex8, vertex13);
-        vec13_8.normalize();*/
-
         vec8_15.setLength(50);
         vec13_14.setLength(50);
         vec8_13.setLength(30);

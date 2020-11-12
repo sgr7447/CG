@@ -2,6 +2,7 @@ class spotlightsHandler{
 
     constructor(){
 
+        //array de spotlights
         this.spotlights = [];
 
         this.spotlights.push( new spotlight(0, 120, 140, Math.PI/4, totalParts) );

@@ -21,7 +21,8 @@ class PerspectiveCamera extends THREE.PerspectiveCamera{
 
     onResize() {
         var target = new THREE.Vector2();
-        this.aspect = renderer.getSize(target).width / renderer.getSize(target).height;
+        var size = renderer.getSize(target);
+        this.aspect = size.width / size.height;
         this.updateProjectionMatrix();
 
     }

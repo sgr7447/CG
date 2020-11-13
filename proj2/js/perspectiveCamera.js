@@ -21,9 +21,9 @@ class PerspectiveCamera extends THREE.PerspectiveCamera{
 
     update(){}
 
-    onResize() {
-        renderer.setSize(window.innerWidth, window.innerHeight);
+    onResize(){
+        this.aspect = window.innerWidth / window.innerHeight;
         this.updateProjectionMatrix();
-
+        renderer.setSize(window.innerWidth, window.innerHeight);
     }
 }

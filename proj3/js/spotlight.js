@@ -2,6 +2,8 @@ class spotlight extends THREE.SpotLight{
 
     constructor(x, y, z, rad, target){
 
+        //SpotLight( color : Integer, intensity : Float, distance : Float, angle :
+        //Radians, penumbra : Float, decay : Float )
         super(0xffffff, 1, 0, rad, 0, 1);
 
         scene.add(this.target);

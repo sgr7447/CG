@@ -6,7 +6,7 @@ class TruckLights extends THREE.Object3D{
 
         var color = 0xf0f5fc;
         var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
-            new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true, emissive: color}),
+            new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true}),
             new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true})
             ]
         const frontLights = new THREE.Geometry();
@@ -92,7 +92,7 @@ class TruckLights extends THREE.Object3D{
                           new THREE.Face3(2, 5, 3),//frente
                           new THREE.Face3(2, 4, 5),//frente
         );
-        
+
         frontLights.computeFlatVertexNormals();
         frontLights.computeBoundingSphere();
 

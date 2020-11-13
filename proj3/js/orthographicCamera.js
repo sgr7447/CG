@@ -24,17 +24,10 @@ class OrthographicCamera extends THREE.OrthographicCamera{
     }
 
     onResize() {
-        /*var target = new THREE.Vector2();
-        var size = renderer.getSize(target);
-        this.aspect = size.width / size.height;
-        this.updateProjectionMatrix();*/
 
         renderer.setSize(window.innerWidth, window.innerHeight);
 
         if (window.innerHeight > 0 && window.innerWidth > 0) {
-
-            //this.zoom = 2;
-            //var aspect = window.innerWidth / window.innerHeight;
 
             var width = window.innerWidth / this.aspect;
             var height = window.innerHeight / this.aspect;

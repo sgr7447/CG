@@ -4,7 +4,11 @@ class CyberTruckLights extends THREE.Object3D{
 
         super();
 
-        material = new THREE.MeshBasicMaterial({ color: 0xd1dcff, wireframe: false});
+        var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
+            new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true, emissive: color}),
+            new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true})
+            ]
+
         const lights = new THREE.Geometry();
 
         var vertex8 = new THREE.Vector3();
@@ -71,7 +75,7 @@ class CyberTruckLights extends THREE.Object3D{
 
         lights.computeBoundingSphere();
 
-        mesh = new THREE.Mesh(lights, material);
+        mesh = new MeshHandler(lights, material);
         mesh.position.set(0, 0, 0);
         this.add(mesh);
     }

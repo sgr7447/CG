@@ -5,8 +5,8 @@ class Cube extends THREE.Object3D{
         super();
 
         var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
-            new THREE.MeshLambertMaterial({color: color, wireframe: false}),
-            new THREE.MeshPhongMaterial({color: color, wireframe: false}) 
+            new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true, emissive: color}),
+            new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true})
             ]
 
         var geometry = new THREE.BoxGeometry(len, height, depth);

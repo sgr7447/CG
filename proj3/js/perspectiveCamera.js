@@ -3,8 +3,6 @@ class PerspectiveCamera extends THREE.PerspectiveCamera{
     constructor(){
 
         var aspect = window.innerWidth / window.innerHeight;
-        var width = window.innerWidth / aspect;
-        var height = window.innerHeight / aspect;
 
         //delimita os campos da camara
         super(60, aspect, 0.5, 5000);
@@ -20,10 +18,9 @@ class PerspectiveCamera extends THREE.PerspectiveCamera{
     }
 
     onResize() {
-        var target = new THREE.Vector2();
-        var size = renderer.getSize(target);
-        this.aspect = size.width / size.height;
+        this.aspect = window.innerWidth / window.innerHeight;
         this.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
 
     }
 }

@@ -31,6 +31,19 @@ function createScene() {
     persCamera = new PerspectiveCamera();
     currentCamera = persCamera;
 
+    //SKYBOX
+    /*scene.background = new THREE.CubeTextureLoader()
+        .setPath( 'textures/cubeMaps/' )
+        .load( [
+            'px.png',
+            'nx.png',
+            'py.png',
+            'ny.png',
+            'pz.png',
+            'nz.png'
+        ] );*/
+
+    //PARTS
     createBase(0,0,0);
 
     //LIGHTS
@@ -52,7 +65,7 @@ function onKeyDown(e) {
             dirLight.flipSwitch();
             break;
 
-        case 80: //key D/d
+        case 80: //key P/p
             pLight.flipSwitch();
             break;
 

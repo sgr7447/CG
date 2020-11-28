@@ -12,7 +12,7 @@ class Floor extends THREE.Object3D{
         texture.wrapT = THREE.RepeatWrapping;
         texture.repeat.set(4, 4);
 
-        this.add(new Plane(0, 0, 0, 1/2, 100, 100, 200, 200, floorColor, texture));
+        this.add(new Plane(0, 0, 0, 1/2, 700, 700, 800, 800, floorColor, texture));
 
         /*const loader = new THREE.TextureLoader();
         loader.load('textures/patter_floor.png', (texture) => {

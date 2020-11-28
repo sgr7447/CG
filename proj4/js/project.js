@@ -2,7 +2,7 @@
 
 var orthoCamera, persCamera, currentCamera, scene, renderer;
 var geometry, mesh;
-var floor;
+var floor, flag;
 var allMeshes;
 
 //LIGHTS
@@ -18,6 +18,7 @@ function createBase(x, y, z){
 
     allMeshes = [];
     floor = new Floor();
+    flag = new Flag();
 }
 
 function createScene() {

@@ -1,12 +1,12 @@
 class Plane extends THREE.Object3D{
 
-    constructor(x, y, z, rad, len, height, segL, segH, color){
+    constructor(x, y, z, rad, len, height, segL, segH, color, texture){
 
         super();
 
-        var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true}),
-                        new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true}),
-                        new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, flatShading: true})
+        var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false, side:THREE.DoubleSide, map: texture}),
+                        new THREE.MeshLambertMaterial({color: color, wireframe: false, side:THREE.DoubleSide, map: texture}),
+                        new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, map: texture})
                         ]
 
         var geometry = new THREE.PlaneGeometry(len, height, segL, segH);

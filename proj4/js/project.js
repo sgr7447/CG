@@ -1,12 +1,12 @@
 /*global THREE, requestAnimationFrame, console*/
 
-var camera, scene, renderer;
+var orthoCamera, persCamera, currentCamera, scene, renderer;
 var geometry, mesh;
 var floor;
 var allMeshes;
 
 //LIGHTS
-var dirLight;
+var dirLight, pLight;
 
 //TIME
 var time;
@@ -28,12 +28,14 @@ function createScene() {
     scene = new THREE.Scene();
     scene.add(new THREE.AxesHelper(50));
 
-    camera = new PerspectiveCamera();
+    persCamera = new PerspectiveCamera();
+    currentCamera = persCamera;
 
     createBase(0,0,0);
 
     //LIGHTS
     dirLight = new directionalLight();
+    pLight = new pointLight();
 }
 
 function onResize() {
@@ -48,6 +50,10 @@ function onKeyDown(e) {
 
         case 68: //key D/d
             dirLight.flipSwitch();
+            break;
+
+        case 80: //key D/d
+            pLight.flipSwitch();
             break;
 
         case 87: //key I/i
@@ -112,7 +118,7 @@ function onKeyUp(e) {
 
 function render() {
     'use strict';
-    renderer.render(scene, camera);
+    renderer.render(scene, currentCamera);
 }
 
 function init() {

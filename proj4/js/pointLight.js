@@ -1,15 +1,10 @@
-
-class directionalLight extends THREE.DirectionalLight {
+class pointLight extends THREE.PointLight {
 
     constructor() {
         
         super();
 
-        scene.add(this.target);
-
-        this.target = scene;
-
-        this.position.set(30, 0, 0);
+        this.position.set(30, 200, 30);
         
         this.visible = true;
         scene.add(this);

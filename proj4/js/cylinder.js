@@ -16,11 +16,5 @@ class Cylinder extends THREE.Object3D{
 
         //adds geometry to class Cylinder and adds Cylinder to obj
         this.add(mesh);
-
-        this.len = len;
-
-        this.x = x;
-        this.y = y;
-        this.z = z;
     }
 }

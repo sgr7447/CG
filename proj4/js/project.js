@@ -2,7 +2,7 @@
 
 var orthoCamera, persCamera, currentCamera, scene, renderer;
 var geometry, mesh;
-var floor, flag;
+var floor, flag, ball;
 var allMeshes;
 
 //LIGHTS
@@ -19,6 +19,7 @@ function createBase(x, y, z){
     allMeshes = [];
     floor = new Floor();
     flag = new Flag();
+    ball = new Ball();
 }
 
 function createScene() {
@@ -160,6 +161,7 @@ function animate() {
     'use strict';
 
     updateTime();
+    flag.update(delta);
 
     render();
     requestAnimationFrame(animate);

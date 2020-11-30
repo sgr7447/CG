@@ -4,9 +4,8 @@ class Cylinder extends THREE.Object3D{
         super();
 
         var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
-            new THREE.MeshLambertMaterial({color: color, wireframe: false, flatShading: true}),
-            new THREE.MeshPhongMaterial({color: color, wireframe: false, flatShading: true})
-            ]
+                          new THREE.MeshPhongMaterial({color: color, wireframe: false, flatShading: true})
+                        ];
 
         var geometry = new THREE.CylinderGeometry(radius, radius, len, radialSeg, heightSeg);
 

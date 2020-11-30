@@ -1,44 +1,26 @@
 class MeshHandler extends THREE.Mesh{
 
     constructor(geometry, materials) {
-
-        var begin_material = 2;
-        super(geometry, materials[begin_material]);
+        super(geometry, materials[1]);
 
         this.typeBasic = false;
 
-        this.currMaterial = begin_material; // 1 ou 2
-
-        //ordem materials: Basic, Lambert, Phong
+        //ordem materials: Basic, Phong
         this.materials = materials;
 
         allMeshes.push(this);
     }
 
-    //Trocar entre Phong e Lambert - tecla E
-    switchShading() {
-
-        if (!this.typeBasic){
-
-            if (this.currMaterial == 1) { var currMaterial = 2; }
-            if (this.currMaterial == 2) { var currMaterial = 1; }
-
-            this.currMaterial = currMaterial;
-            this.material = this.materials[this.currMaterial];
-        }
-    }
-
 
     //Trocar entre Basic e (Phong ou Lambert) - tecla W
     switchIlumination() {
-
-        if (!this.typeBasic)
-            //colocamos o material (Phong ou Lambert) como sendo Basic
-            this.material = this.materials[0];
+        if (this.typeBasic)
+            //colocamos o material como sendo Basic
+            this.material = this.materials[1];
 
         else
-            //colocamos o material Basic como sendo o anterior a ser mudado para Basic
-            this.material = this.materials[this.currMaterial];
+            //colocamos o material Basic como sendo Phong
+            this.material = this.materials[0];
 
         this.typeBasic = !this.typeBasic;
     }

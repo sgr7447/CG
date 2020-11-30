@@ -6,18 +6,19 @@ class Floor extends THREE.Object3D{
         var floorColor = '#ffffff';
 
         //FLOOR
+        var textLoader = new THREE.TextureLoader();
 
-        const texture = new THREE.TextureLoader().load("textures/pattern_floor.jpg");
+        var texture = textLoader.load("textures/pattern_floor.jpg");
         texture.wrapS = THREE.RepeatWrapping;
         texture.wrapT = THREE.RepeatWrapping;
         texture.repeat.set(8, 8);
 
-        const grassTexture = new THREE.TextureLoader().load("textures/pattern_grass2.jpg");
+        var grassTexture = textLoader.load("textures/pattern_grass.jpg");
         grassTexture.wrapS = THREE.RepeatWrapping;
         grassTexture.wrapT = THREE.RepeatWrapping;
         grassTexture.repeat.set(8, 8);
 
-        this.add(new Plane(0, 0, 0, 1/2, 700, 700, 800, 800, floorColor, texture, grassTexture));
+        this.add(new Plane(0, 0, 0, 1/2,0, 700, 700, 800, 800, floorColor, texture, grassTexture));
 
         /*const loader = new THREE.TextureLoader();
         loader.load('textures/patter_floor.png', (texture) => {

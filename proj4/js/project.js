@@ -1,8 +1,8 @@
 /*global THREE, requestAnimationFrame, console*/
 
-var orthoCamera, persCamera, currentCamera, scene, renderer;
+var persCamera, orthCamera, scene, pauseScene, renderer, controls;
 var geometry, mesh;
-var floor, flag, ball;
+var floor, flag, ball, message;
 var allMeshes;
 
 //LIGHTS
@@ -11,6 +11,7 @@ var dirLight, pLight;
 //TIME
 var time;
 var delta;
+var pause = false;
 
 
 function createBase(x, y, z){
@@ -18,6 +19,7 @@ function createBase(x, y, z){
 
     allMeshes = [];
     floor = new Floor();
+    message = new PauseMessage();
     flag = new Flag();
     ball = new Ball();
 }
@@ -28,10 +30,13 @@ function createScene() {
     time = new THREE.Clock();
 
     scene = new THREE.Scene();
+    pauseScene = new THREE.Scene();
     scene.add(new THREE.AxesHelper(50));
 
     persCamera = new PerspectiveCamera();
-    currentCamera = persCamera;
+    orthCamera = new OrthographicCamera();
+    controls = new THREE.OrbitControls(persCamera, renderer.domElement);
+
 
     //SKYBOX
     /*scene.background = new THREE.CubeTextureLoader()
@@ -55,7 +60,7 @@ function createScene() {
 
 function onResize() {
     'use strict';
-    currentCamera.onResize();
+    persCamera.onResize();
 }
 
 function onKeyDown(e) {
@@ -63,18 +68,35 @@ function onKeyDown(e) {
 
     switch (e.keyCode) {
 
+        case 66: //key B/b
+            ball.jumping = !ball.jumping;
+            break;
+
         case 68: //key D/d
             dirLight.flipSwitch();
+            break;
+
+        case 73: //key I/i
+            //ativa ou desativa calculo da iluminacao
+            allMeshes.forEach( _mesh => { _mesh.switchIlumination(); } );
             break;
 
         case 80: //key P/p
             pLight.flipSwitch();
             break;
 
-        case 87: //key I/i
-            //ativa ou desativa calculo da iluminacao
-            allMeshes.forEach( _mesh => { _mesh.switchIlumination(); } );
+        case 83: //key S/s
+            pause = !pause;
             break;
+
+        case 87: //key W/w
+            scene.traverse( function (node) {
+                if (node instanceof THREE.Mesh) {
+                    node.material.wireframe = !node.material.wireframe;
+                }
+            } );
+            break;
+
 
         /*case 49: //key 1 - flip switch spotlight 1
             spotLights.flipSwitch(0);
@@ -104,17 +126,11 @@ function onKeyDown(e) {
 
         case 37: //key <-
             totalParts.spinNegative();
-            break;
-
-        case 69: //key E/e
-            //switch between Lambert or Phong
-            allMeshes.forEach( _mesh => { _mesh.switchShading(); } );
             break;*/
-
     }
   }
 
-function onKeyUp(e) {
+/*function onKeyUp(e) {
     'use strict';
 
     switch (e.keyCode) {
@@ -126,14 +142,21 @@ function onKeyUp(e) {
 
         case 37: //key <-
             totalParts.stopSpinNeg();
-            break;*/
+            break;
 
     }
-}
+}*/
 
 function render() {
     'use strict';
-    renderer.render(scene, currentCamera);
+    renderer.render(scene, persCamera);
+    if(pause){
+        renderer.autoClear = false;
+        renderer.clear();
+        renderer.render(scene, persCamera);
+        renderer.clearDepth();
+        renderer.render(pauseScene, orthCamera);
+    }
 }
 
 function init() {
@@ -147,13 +170,18 @@ function init() {
     createScene();
 
     window.addEventListener("keydown", onKeyDown);
-    window.addEventListener("keyup", onKeyUp);
+    //window.addEventListener("keyup", onKeyUp);
     window.addEventListener("resize", onResize);
 }
 
 
 function updateTime() {
-    delta = time.getDelta();
+    if(pause){
+        delta = 0;
+    }
+    else{
+      delta = time.getDelta();
+    }
 }
 
 
@@ -162,7 +190,8 @@ function animate() {
 
     updateTime();
     flag.update(delta);
-
+    ball.update(delta);
+    controls.update();
     render();
     requestAnimationFrame(animate);
 }

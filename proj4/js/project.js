@@ -39,8 +39,8 @@ function createScene() {
 
 
     //SKYBOX
-    /*scene.background = new THREE.CubeTextureLoader()
-        .setPath( 'textures/cubeMaps/' )
+    scene.background = new THREE.CubeTextureLoader()
+        .setPath( 'textures/cubemap3/' )
         .load( [
             'px.png',
             'nx.png',
@@ -48,7 +48,7 @@ function createScene() {
             'ny.png',
             'pz.png',
             'nz.png'
-        ] );*/
+        ] );
 
     //PARTS
     createBase(0,0,0);

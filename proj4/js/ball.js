@@ -34,8 +34,8 @@ class Ball extends THREE.Object3D{
     }
 //acho que isto esta mal, forçamos a paragem da bola
     ballJump(delta){
-        if(this.jumping && delta!=0){
-          this.step += 0.04;
+        if(this.jumping){
+          this.step += 2*delta;
           this.ball.position.y = Math.abs(200*(Math.sin(this.step)));
           this.ball.position.z = 100*(Math.cos(this.step));
         }

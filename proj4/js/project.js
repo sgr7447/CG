@@ -96,6 +96,10 @@ function onKeyDown(e) {
                 }
             } );
             break;
+
+        case 82: //key R/r
+            reset();
+            break;
     }
   }
 
@@ -115,6 +119,23 @@ function onKeyDown(e) {
 
     }
 }*/
+
+function reset() {
+    pause = 0;
+
+    ball.reset();
+    flag.reset();
+
+    pLight.reset();
+    dirLight.reset();
+
+    allMeshes.forEach( _mesh => { _mesh.reset(); } );
+    scene.traverse( function (node) {
+        if (node instanceof THREE.Mesh) {
+            node.material.wireframe = false;
+        }
+    } );
+}
 
 function render() {
     'use strict';
@@ -146,6 +167,7 @@ function init() {
 
 function updateTime() {
     if(pause){
+        time.getDelta();
         delta = 0;
     }
     else{

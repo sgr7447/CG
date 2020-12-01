@@ -19,4 +19,8 @@ class directionalLight extends THREE.DirectionalLight {
         this.visible = !this.visible
     }
 
+    reset(){
+        this.visible = true;
+    }
+
 }

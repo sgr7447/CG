@@ -1,10 +1,10 @@
 class Cylinder extends THREE.Object3D{
 
-    constructor(x, y, z, radx, rady, radz, len, radius, radialSeg, heightSeg, color){
+    constructor(x, y, z, radx, rady, radz, len, radius, radialSeg, heightSeg, color, texture){
         super();
 
-        var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false}),
-                          new THREE.MeshPhongMaterial({color: color, wireframe: false})
+        var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false, bumpMap: texture}),
+                          new THREE.MeshPhongMaterial({color: color, wireframe: false, bumpMap: texture})
                         ];
 
         var geometry = new THREE.CylinderGeometry(radius, radius, len, radialSeg, heightSeg);

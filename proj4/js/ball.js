@@ -3,12 +3,12 @@ class Ball extends THREE.Object3D{
     constructor(){
 
         super();
-        var radius = 10;
         var color = '#ffffff';
 
         this.ball = new THREE.Object3D();
-        this.jumping = true;
+        this.jumping = false;
         this.step = 0;
+        this.radius = 10;
 
         /*const texture = new THREE.TextureLoader().load("textures/pattern_golfball.jpg");
         texture.wrapS = THREE.RepeatWrapping;
@@ -28,7 +28,7 @@ class Ball extends THREE.Object3D{
         texture2.wrapS = THREE.RepeatWrapping;
         texture2.wrapT = THREE.RepeatWrapping;
 
-        this.ball = new Sphere(50, radius, 30, radius, color, texture1, texture2);
+        this.ball = new Sphere(0, this.radius, 0, this.radius, color, texture1, texture2);
 
         scene.add(this.ball);
     }
@@ -36,9 +36,14 @@ class Ball extends THREE.Object3D{
     ballJump(delta){
         if(this.jumping){
           this.step += 2*delta;
-          this.ball.position.y = Math.abs(200*(Math.sin(this.step)));
-          this.ball.position.z = 100*(Math.cos(this.step));
+          this.ball.position.y = this.radius + Math.abs(200*(Math.sin(this.step)));
+          this.ball.position.z = this.radius + 100*(Math.cos(this.step));
         }
+    }
+
+    reset(){
+        this.jumping = false;
+        this.ball.position.set(0, 0, 0);
     }
 
 

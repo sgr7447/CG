@@ -25,4 +25,12 @@ class MeshHandler extends THREE.Mesh{
         this.typeBasic = !this.typeBasic;
     }
 
+    reset() {
+        if (this.typeBasic){
+            //colocamos o material como sendo Basic
+            this.material = this.materials[1];
+            this.typeBasic = !this.typeBasic;
+        }
+    }
+
 }

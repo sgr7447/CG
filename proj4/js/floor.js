@@ -18,7 +18,7 @@ class Floor extends THREE.Object3D{
         grassTexture.wrapT = THREE.RepeatWrapping;
         grassTexture.repeat.set(8, 8);
 
-        this.add(new Plane(0, 0, 0, 1/2,0, 700, 700, 800, 800, floorColor, texture, grassTexture));
+        this.add(new Plane(0, 0, 0, 1/2,0, 700, 700, 20, 20, floorColor, texture, grassTexture));
 
         /*const loader = new THREE.TextureLoader();
         loader.load('textures/patter_floor.png', (texture) => {

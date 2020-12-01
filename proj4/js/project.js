@@ -121,8 +121,9 @@ function onKeyDown(e) {
 }*/
 
 function reset() {
-    pause = 0;
+    pause = false;
 
+    //fix ball
     ball.reset();
     flag.reset();
 
@@ -135,6 +136,9 @@ function reset() {
             node.material.wireframe = false;
         }
     } );
+
+    //OrbitControls
+    controls.reset();
 }
 
 function render() {

@@ -13,7 +13,7 @@ class Flag extends THREE.Object3D{
         flagTexture.repeat.set(8, 8);
 
         //x, y, z, radx, rady, radz, len, radius, radialSeg, heightSeg, color
-        this.add(new Cylinder(0, 0, 0, 0, 0, 0, 140, 3, 20, 20, stickColor, null));
+        this.add(new Cylinder(0, 0, 0, 0, 0, 0, 140, 3, 8, 8, stickColor, null));
         this.add(new Cylinder(18, 40, 0, 1/2, 1/2, 0, 0.5, 30, 3, 3, flagColor, flagTexture));
 
         this.position.set(-240, 70, 210);

@@ -36,6 +36,7 @@ function createScene() {
     persCamera = new PerspectiveCamera();
     orthCamera = new OrthographicCamera();
     controls = new THREE.OrbitControls(persCamera, renderer.domElement);
+    //controls.saveState();
 
 
     //SKYBOX

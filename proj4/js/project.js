@@ -70,7 +70,7 @@ function onKeyDown(e) {
     switch (e.keyCode) {
 
         case 66: //key B/b
-            ball.jumping = !ball.jumping;
+            ball.startOrStopJumping();
             break;
 
         case 68: //key D/d
@@ -107,11 +107,11 @@ function onKeyDown(e) {
 
 function reset() {
     pause = false;
+    time.getDelta(); 
     delta = 0;
 
     //fix ball
     ball.reset();
-    ball.jumping = true;
     flag.reset();
 
     pLight.reset();
@@ -147,7 +147,6 @@ function init() {
     createScene();
 
     window.addEventListener("keydown", onKeyDown);
-    //window.addEventListener("keyup", onKeyUp);
     window.addEventListener("resize", onResize);
 }
 

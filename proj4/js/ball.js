@@ -23,6 +23,7 @@ class Ball extends THREE.Object3D{
     }
 
     ballJump(delta){
+
         if(this.jumping){
           this.step += 2*delta;
           this.ball.position.y = Math.abs(200*(Math.sin(this.step)));
@@ -30,11 +31,16 @@ class Ball extends THREE.Object3D{
         }
     }
 
-    reset(){
-        this.ball.position.set(0, 0, 0);
-        this.jumping = false;
+    startOrStopJumping(){
+        this.jumping = !this.jumping;
     }
 
+    reset(){
+        this.ball.position.set(0, 0, 0);
+        this.jumping = true;
+        this.step = 0;
+        
+    }
 
     update(delta) {
         this.ballJump(delta);

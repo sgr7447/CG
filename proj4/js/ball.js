@@ -17,7 +17,7 @@ class Ball extends THREE.Object3D{
         texture.wrapS = THREE.RepeatWrapping;
         texture.wrapT = THREE.RepeatWrapping;
 
-        this.ball = new Sphere(0, this.radius, 100, this.radius, color, texture, null);
+        this.ball = new Sphere(0, this.radius, 0, this.radius, color, texture, null);
 
         scene.add(this.ball);
     }
@@ -26,14 +26,13 @@ class Ball extends THREE.Object3D{
         if(this.jumping){
           this.step += 2*delta;
           this.ball.position.y = Math.abs(200*(Math.sin(this.step)));
-          this.ball.position.z = 100*(Math.cos(this.step));
+          this.ball.position.z = 100 -100*(Math.cos(this.step));
         }
     }
 
     reset(){
+        this.ball.position.set(0, 0, 0);
         this.jumping = false;
-        this.ball.position.set(0, 0, 100);
-        this.jumping = true;
     }
 
 

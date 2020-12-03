@@ -41,7 +41,7 @@ function createScene() {
 
     //SKYBOX
     scene.background = new THREE.CubeTextureLoader()
-        .setPath( 'textures/cubemap3/' )
+        .setPath( 'textures/cubemap 5/' )
         .load( [
             'px.png',
             'nx.png',
@@ -91,11 +91,12 @@ function onKeyDown(e) {
             break;
 
         case 87: //key W/w
-            scene.traverse( function (node) {
+        allMeshes.forEach( _mesh => { _mesh.material.wireframe = !_mesh.material.wireframe; } );
+            /*scene.traverse( function (node) {
                 if (node instanceof THREE.Mesh) {
                     node.material.wireframe = !node.material.wireframe;
                 }
-            } );
+            } );*/
             break;
 
         case 82: //key R/r
@@ -104,39 +105,20 @@ function onKeyDown(e) {
     }
   }
 
-/*function onKeyUp(e) {
-    'use strict';
-
-    switch (e.keyCode) {
-
-        /*case 39: //key ->
-            totalParts.stopSpinPos();
-            break;
-
-
-        case 37: //key <-
-            totalParts.stopSpinNeg();
-            break;
-
-    }
-}*/
-
 function reset() {
     pause = false;
+    delta = 0;
 
     //fix ball
     ball.reset();
+    ball.jumping = true;
     flag.reset();
 
     pLight.reset();
     dirLight.reset();
 
     allMeshes.forEach( _mesh => { _mesh.reset(); } );
-    scene.traverse( function (node) {
-        if (node instanceof THREE.Mesh) {
-            node.material.wireframe = false;
-        }
-    } );
+    allMeshes.forEach( _mesh => { _mesh.material.wireframe = false; } );
 
     //OrbitControls
     controls.reset();

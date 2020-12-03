@@ -4,7 +4,7 @@ class Sphere extends THREE.Object3D{
         super();
 
         var materials = [ new THREE.MeshBasicMaterial({color: color, wireframe: false, map: texture1}),
-                          new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, map: texture1, bumpMap: texture2})
+                          new THREE.MeshPhongMaterial({color: color, wireframe: false, side:THREE.DoubleSide, map: texture1, bumpMap: texture2, shininess: 90})
                         ];
         var geometry = new THREE.SphereGeometry(radius, 30, 30);
 

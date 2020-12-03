@@ -6,7 +6,7 @@ class Ball extends THREE.Object3D{
         var color = '#ffffff';
 
         this.ball = new THREE.Object3D();
-        this.jumping = true;
+        this.jumping = false;
         this.step = 0;
         this.radius = 10;
 

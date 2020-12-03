@@ -111,7 +111,6 @@ function reset() {
 
     //fix ball
     ball.reset();
-    ball.jumping = true;
     flag.reset();
 
     pLight.reset();

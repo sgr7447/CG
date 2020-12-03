@@ -4,7 +4,8 @@ class pointLight extends THREE.PointLight {
 
         super();
 
-        this.position.set(30, 20, 30);
+        this.position.set(0, 100, 0);
+        //this.power = 20;
 
         this.visible = true;
         scene.add(this);

@@ -6,7 +6,7 @@ class Ball extends THREE.Object3D{
         var color = '#ffffff';
 
         this.ball = new THREE.Object3D();
-        this.jumping = false;
+        this.jumping = true;
         this.step = 0;
         this.radius = 10;
 
@@ -27,7 +27,7 @@ class Ball extends THREE.Object3D{
         if(this.jumping){
           this.step += 2*delta;
           this.ball.position.y = Math.abs(200*(Math.sin(this.step)));
-          this.ball.position.z = 100 -100*(Math.cos(this.step));
+          this.ball.position.z = 100 - 100*(Math.cos(this.step));
         }
     }
 
@@ -39,7 +39,7 @@ class Ball extends THREE.Object3D{
         this.ball.position.set(0, 0, 0);
         this.jumping = true;
         this.step = 0;
-        
+
     }
 
     update(delta) {

@@ -1,6 +1,6 @@
 class Plane extends THREE.Object3D{
 
-    constructor(x, y, z, radx, rady, len, height, segL, segH, color, texture, texture2){
+    constructor(x, y, z, radx, rady, len, height, segL, segH, color, texture, texture2 = null){
 
         super();
 

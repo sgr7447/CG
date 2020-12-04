@@ -2,7 +2,8 @@
 
 var persCamera, orthCamera, scene, pauseScene, renderer, controls;
 var geometry, mesh;
-var floor, flag, ball, message;
+var floor, flag, ball;
+var message = new THREE.Object3D;
 var allMeshes;
 
 //LIGHTS
@@ -91,7 +92,7 @@ function onKeyDown(e) {
             break;
 
         case 87: //key W/w
-        allMeshes.forEach( _mesh => { _mesh.material.wireframe = !_mesh.material.wireframe; } );
+            allMeshes.forEach( _mesh => { _mesh.material.wireframe = !_mesh.material.wireframe; } );
             /*scene.traverse( function (node) {
                 if (node instanceof THREE.Mesh) {
                     node.material.wireframe = !node.material.wireframe;
@@ -107,7 +108,7 @@ function onKeyDown(e) {
 
 function reset() {
     pause = false;
-    time.getDelta(); 
+    time.getDelta();
     delta = 0;
 
     //fix ball
@@ -126,13 +127,16 @@ function reset() {
 
 function render() {
     'use strict';
-    renderer.render(scene, persCamera);
+
     if(pause){
-        renderer.autoClear = false;
         renderer.clear();
         renderer.render(scene, persCamera);
+        renderer.autoClear = false;
         renderer.clearDepth();
         renderer.render(pauseScene, orthCamera);
+    }
+    else{
+        renderer.render(scene, persCamera);
     }
 }
 

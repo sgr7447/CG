@@ -3,7 +3,7 @@ class PauseMessage extends THREE.Object3D{
     constructor(){
 
         super();
-        var color = '#ffffff';
+        var color = '#ebebeb';
 
         //FLOOR
         var textLoader = new THREE.TextureLoader();
@@ -12,9 +12,9 @@ class PauseMessage extends THREE.Object3D{
         texture.wrapS = THREE.RepeatWrapping;
         texture.wrapT = THREE.RepeatWrapping;
 
-        this.add(new Plane(0, 75, 600, 0, 1/4, 200, 120, 800, 800, color, texture, null));
+        this.message = new Plane(0, 75, 600, 0, 0, 200, 120, 80, 80, color, texture, null);
 
-        pauseScene.add(this);
+        pauseScene.add(this.message);
 
     }
 }

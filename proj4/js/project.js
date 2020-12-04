@@ -1,4 +1,4 @@
-/*global THREE, requestAnimationFrame, console*/
+
 
 var persCamera, orthCamera, scene, pauseScene, renderer, controls;
 var geometry, mesh;
@@ -37,12 +37,10 @@ function createScene() {
     persCamera = new PerspectiveCamera();
     orthCamera = new OrthographicCamera();
     controls = new THREE.OrbitControls(persCamera, renderer.domElement);
-    //controls.saveState();
-
 
     //SKYBOX
     scene.background = new THREE.CubeTextureLoader()
-        .setPath( 'textures/cubemap 5/' )
+        .setPath( 'textures/cubemap/' )
         .load( [
             'px.png',
             'nx.png',
@@ -93,11 +91,6 @@ function onKeyDown(e) {
 
         case 87: //key W/w
             allMeshes.forEach( _mesh => { _mesh.material.wireframe = !_mesh.material.wireframe; } );
-            /*scene.traverse( function (node) {
-                if (node instanceof THREE.Mesh) {
-                    node.material.wireframe = !node.material.wireframe;
-                }
-            } );*/
             break;
 
         case 82: //key R/r

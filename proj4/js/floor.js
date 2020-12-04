@@ -20,16 +20,6 @@ class Floor extends THREE.Object3D{
 
         this.add(new Plane(0, 0, 0, 1/2,0, 700, 700, 20, 20, floorColor, texture, grassTexture));
 
-        /*const loader = new THREE.TextureLoader();
-        loader.load('textures/patter_floor.png', (texture) => {
-        const material = new THREE.MeshBasicMaterial({
-            map: texture,
-        });
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-        cubes.push(cube);  // add to our list of cubes to rotate
-        });*/
-
         scene.add(this);
 
     }

@@ -8,9 +8,6 @@ class Flag extends THREE.Object3D{
         var textLoader = new THREE.TextureLoader();
 
         var flagTexture = textLoader.load("textures/pattern_flag.jpg");
-        flagTexture.wrapS = THREE.RepeatWrapping;
-        flagTexture.wrapT = THREE.RepeatWrapping;
-        flagTexture.repeat.set(8, 8);
 
         //x, y, z, radx, rady, radz, len, radius, radialSeg, heightSeg, color
         this.add(new Cylinder(0, 0, 0, 0, 0, 0, 140, 3, 8, 8, stickColor, null));

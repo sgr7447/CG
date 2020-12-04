@@ -14,8 +14,6 @@ class Ball extends THREE.Object3D{
         var textLoader = new THREE.TextureLoader();
 
         var texture = textLoader.load("textures/pattern_golfball.jpg");
-        texture.wrapS = THREE.RepeatWrapping;
-        texture.wrapT = THREE.RepeatWrapping;
 
         this.ball = new Sphere(0, this.radius, 0, this.radius, color, texture, null);
 
